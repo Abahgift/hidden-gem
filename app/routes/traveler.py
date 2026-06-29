@@ -1,9 +1,11 @@
 from flask import render_template
 from app import app
 
+
 @app.route("/")
 def landing_page():
     return render_template("traveler/homePage.html")
+
 
 @app.route("/signup/")
 def signup():
@@ -25,6 +27,12 @@ def dashboard():
     return render_template("traveler/dashboard.html")
 
 
+@app.route("/explore/<name>/")
+def destination(name):
+    '''check out passing parameters through the url'''
+    return render_template("traveler/dashboard_explore.html") # I think this should take a paramter of the actual "destination name" e.g. Chappal Waddi
+
+
 @app.route("/guides/")
 def guides():
     return render_template("traveler/guides.html") #attach actual dashboard-guides page
@@ -43,6 +51,7 @@ def profile():
 @app.route("/notifications/")
 def notifications():
     return render_template("traveler/notifications.html") #attach actual notification page
+
 
 @app.route("/filter/")
 def filter():
