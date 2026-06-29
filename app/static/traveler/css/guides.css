@@ -1,0 +1,251 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+:root {
+  --white: #ffffff;
+  --white-grey: #f2f4f3;
+
+  --header-bg: #f8fdf2;
+  --green-light-1: #e9f9d7;
+  --green-light-2: #d7f4b8;
+
+  --green-accent-1: #b4eb7a;
+  --green-accent-2: #b5eb79;
+
+  --green-primary: #64e47e;
+  --green-primary-dark: #1fcb60;
+
+  --green-dark-1: #042e1c;
+  --green-dark-2: #042f1c;
+  --green-dark-3: #032e1c;
+
+  --black: #000000;
+
+  --stroke: #d0ddd0;
+  --placeholder: #7c8e7b;
+  --button-inactive: #8ce4a9;
+  --text-grey: #3e4631;
+
+  --error: #b40101;
+
+  --difficulty-easy: #d7f4b8;
+  --difficulty-moderate: #fee3bd;
+  --difficulty-hard: #ffd5d5;
+
+  /* ----------- */ /* TYPOGRAPHY */ /* ----------- */
+  --bs-body-font-family: "Radio Canada Big", sans-serif;
+
+  /* BOOTSTRAP MODIFICATIONS */
+  --bs-primary: var(--sharp-green-2) !important;
+  --bs-primary-rgb: 31, 203, 96 !important;
+
+  /* BORDER RADII */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+  --border-radius-xl: 1rem;
+  --border-radius-pill: 625rem;
+}
+
+.btn-primary {
+  background-color: var(--green-primary-dark);
+  color: var(--green-dark-3);
+  border: none;
+  border-radius: var(--border-radius-md);
+  transition: transform 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--green-primary);
+  color: var(--green-dark-3);
+  border: none;
+  transform: scale(1.01);
+}
+
+.btn-secondary {
+  background-color: var(--green-light-2);
+  color: var(--green-dark-3);
+  border: none;
+  border-radius: var(--border-radius-md);
+  transition: transform 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.btn-secondary:hover {
+  background-color: var(--green-light-1);
+  color: var(--green-dark-3);
+  border: none;
+  transform: scale(1.01);
+}
+
+/* ---------------------------------------------------------- */
+/* STYLING STARTS HERE */
+/* ---------------------------------------------------------- */
+
+h1 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.db_header {
+  background-color: var(--header-bg);
+}
+
+.username {
+  font-size: 0.875rem;
+}
+
+.notif_wrapper {
+  background-color: var(--green-primary);
+  padding: 0.5rem;
+  border-radius: var(--border-radius-pill);
+  width: 2rem;
+  height: 2rem;
+}
+
+.db_navbar {
+  background-color: var(--white-grey);
+  padding: 0.5rem;
+}
+
+.navbar_item_active {
+  background-color: var(--green-light-2);
+  padding: 0.875rem 1.5rem;
+  font-weight: 500;
+  border-color: var(--green-primary);
+  border-bottom: 2px solid var(--green-primary-dark);
+}
+
+.navbar_item {
+  padding: 0.875rem 1.5rem;
+}
+
+.filter_pill_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter_pill {
+  display: inline-block;
+  border-radius: var(--border-radius-pill);
+  background-color: var(--white-grey);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.filter_pill_active {
+  display: inline-block;
+  border-radius: var(--border-radius-pill);
+  background-color: var(--green-light-2);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.each_card {
+  background-color: var(--white-grey);
+  border-radius: var(--border-radius-md);
+  padding: 0.85rem;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+}
+
+.guide_details {
+  min-width: 0;
+}
+
+.stats {
+  gap: 0.25rem 1rem;
+}
+
+.stats span {
+  align-items: center;
+}
+
+.stats .subtext {
+  padding-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .db_navbar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .navbar_item_active,
+  .navbar_item {
+    flex: 1 1 calc(50% - 0.5rem);
+    justify-content: center;
+    min-width: 140px;
+  }
+
+  .each_card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .avatar {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 0.5rem;
+  }
+
+  .guide_details {
+    width: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  .navbar_item_active,
+  .navbar_item {
+    flex: 1 1 100%;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+
+  .stats {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.name {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin: 0;
+  padding-bottom: 0.1rem;
+}
+
+.subtext {
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin: 0;
+  padding-bottom: 1rem;
+}

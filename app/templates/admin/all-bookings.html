@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hidden Gems — All Bookings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="brand-name">Hidden <span>Gems</span></div>
+          <div class="brand-sub">Admin Dashboard</div>
+        </div>
+        <div class="sidebar-admin">
+          <div class="admin-avatar">SA</div>
+          <div>
+            <div class="admin-name">Super Admin</div>
+            <div class="admin-role">Platform Administrator</div>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <div class="nav-section">Pages</div>
+          <!-- <a class="nav-item" href="admin-dashboard.html">Overview</a> -->
+          <a class="nav-item" href="analytics.html">Analytics</a>
+          <a class="nav-item" href="applications.html">Applications</a>
+          <a class="nav-item" href="all-guides.html">All guides</a>
+          <a class="nav-item" href="destinations.html">Destinations</a>
+          <a class="nav-item active" href="all-bookings.html">All bookings</a>
+          <a class="nav-item" href="reviews.html">Reviews</a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <div class="page-header">
+          <div>
+            <div class="page-title">All bookings</div>
+            <div class="page-sub">
+              Track every traveler reservation and follow-up action.
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-row">
+          <button
+            class="filter-btn active"
+            data-group="status"
+            data-filter="all"
+          >
+            All
+          </button>
+          <button class="filter-btn" data-group="status" data-filter="pending">
+            Pending
+          </button>
+          <button
+            class="filter-btn"
+            data-group="status"
+            data-filter="confirmed"
+          >
+            Confirmed
+          </button>
+          <button
+            class="filter-btn"
+            data-group="status"
+            data-filter="completed"
+          >
+            Completed
+          </button>
+          <button
+            class="filter-btn"
+            data-group="status"
+            data-filter="cancelled"
+          >
+            Cancelled
+          </button>
+          <input
+            class="search-input ml-auto"
+            type="text"
+            placeholder="Search bookings"
+            data-search="status"
+          />
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Traveler</th>
+                <th>Destination</th>
+                <th>Guide</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-group="status" data-status="confirmed">
+                <td>#001</td>
+                <td>Adaeze Nwosu</td>
+                <td>Chappal Waddi Summit</td>
+                <td>Emeka Okafor</td>
+                <td>18 May 2025</td>
+                <td>₦75,000</td>
+                <td><span class="pill pill-confirmed">Confirmed</span></td>
+              </tr>
+              <tr data-group="status" data-status="pending">
+                <td>#003</td>
+                <td>Seun Akinola</td>
+                <td>Chappal Waddi Summit</td>
+                <td>Emeka Okafor</td>
+                <td>2 Jun 2025</td>
+                <td>₦100,000</td>
+                <td><span class="pill pill-pending">Pending</span></td>
+              </tr>
+              <tr data-group="status" data-status="completed">
+                <td>#005</td>
+                <td>Fatima Bello</td>
+                <td>Ngel Nyaki Forest</td>
+                <td>Chukwuemeka Eze</td>
+                <td>3 May 2025</td>
+                <td>₦40,000</td>
+                <td><span class="pill pill-completed">Completed</span></td>
+              </tr>
+              <tr data-group="status" data-status="cancelled">
+                <td>#007</td>
+                <td>Emeka Chukwu</td>
+                <td>Mambilla Plateau</td>
+                <td>Emeka Okafor</td>
+                <td>12 Apr 2025</td>
+                <td>₦25,000</td>
+                <td><span class="pill pill-cancelled">Cancelled</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

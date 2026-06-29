@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <!-- -------------------------------------------
+       HEAD SECTION
+       ------------------------------------------- -->
+  <head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/login.css" />
+
+    <!-- Custom Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Responsiveness -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | Login</title>
+  </head>
+
+  <!-- --------------------------------------------
+       BODY SECTION
+       ------------------------------------------- -->
+  <body>
+    <div class="container-fluid min-vh-100">
+      <div class="row d-flex justify-content-center align-items-center vh-100">
+        <div class="col-md-12">
+          <div class="col-4 wrapper mx-auto p-5 rounded-3">
+            <div class="logo_and_pill d-flex justify-content-between mb-5">
+              <img src="/assets/hidden_gem_logo.svg" alt="logo" />
+              <span class="pill">Admin BackOffice</span>
+            </div>
+
+            <!-- Heading -->
+            <div class="heading mb-2">
+              <h2>Welcome Back</h2>
+              <p class="subtext">Sign in to manage the Hidden Gems platform.</p>
+            </div>
+
+            <!-- login form -->
+            <!-- email -->
+            <div class="mb-3">
+              <label for="Email" class="form-label">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="Email"
+                placeholder="john.doe@example.com"
+                aria-describedby="emailHelp"
+              />
+            </div>
+
+            <!-- password -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="••••••••"
+              />
+            </div>
+
+            <!-- Login Button -->
+            <button type="submit" class="btn btn-primary col-12 create-account">
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ----------------------------------------------
+         JAVASCRIPT SECTIONS
+         ------------------------------------------- -->
+    <script src="../css/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/login.js"></script>
+  </body>
+</html>

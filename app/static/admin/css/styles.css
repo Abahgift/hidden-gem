@@ -1,0 +1,204 @@
+:root {
+  --green: #2B5219;
+  --green-mid: #3D6E2B;
+  --green-light: #5C9448;
+  --green-pale: #EBF3E6;
+  --green-xpale: #F4F9F1;
+  --terra: #B5581E;
+  --terra-light: #F5EDE4;
+  --terra-pale: #FBF5EF;
+  --sand: #F6F1E7;
+  --sand-dark: #EDE5D4;
+  --dark: #18221A;
+  --mid: #3A4A3C;
+  --muted: #7A8C7D;
+  --border: #D6E0D0;
+  --white: #FEFCF8;
+  --shadow: 0 2px 16px rgba(27,82,25,0.08);
+  --radius: 12px;
+  --sidebar-w: 260px;
+  --danger: #DC2626;
+  --danger-pale: #FEF2F2;
+  --warning: #D97706;
+  --warning-pale: #FFFBEB;
+  --info: #0369A1;
+  --info-pale: #E0F2FE;
+  --bs-body-font-family: "Radio Canada Big", sans-serif;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--bs-body-font-family);
+  background: var(--sand);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+.brand-name, .page-title, .card-title, .stat-val, .chart-title, .modal-title, .confirm-dialog .confirm-title {
+  font-family: var(--bs-body-font-family);
+}
+
+body, .brand-name, .page-title, .page-sub, .card-title, .stat-label, .stat-val, .guide-app-name, .guide-app-meta, .chip, .review-name, .review-sub, .review-body, .dest-card-name, .dest-card-loc, .chart-title, .chart-sub, .filter-btn, .search-input, .pill, .btn, .form-group label, .modal-title, .modal-sub, .confirm-dialog .confirm-title, .confirm-dialog .confirm-body, .nav-item, .nav-section {
+  font-family: var(--bs-body-font-family);
+}
+
+a { text-decoration: none; }
+
+.app-shell { display: flex; min-height: 100vh; }
+.sidebar {
+  width: var(--sidebar-w);
+  background: var(--green);
+  color: #fff;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+.sidebar-brand { padding: 28px 24px 20px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+.brand-name { font-family: 'Radio Canada Big', sans-serif; font-size: 20px; line-height: 1; }
+.brand-name span { color: #A8D49C; }
+.brand-sub { font-size: 10px; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 4px; }
+.sidebar-admin { padding: 14px 24px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+.admin-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--terra); display: grid; place-items: center; font-weight: 700; }
+.admin-name { font-size: 13px; font-weight: 500; }
+.admin-role { font-size: 11px; color: rgba(255,255,255,0.45); }
+.sidebar-nav { padding: 16px 0; overflow-y: auto; }
+.nav-section { padding: 14px 24px 6px; font-size: 10px; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(255,255,255,0.28); }
+.nav-item {
+  display: flex; align-items: center; gap: 10px; padding: 10px 24px; color: rgba(255,255,255,0.7); border-left: 3px solid transparent; transition: 0.2s ease;
+}
+.nav-item:hover, .nav-item.active { color: #fff; background: rgba(255,255,255,0.08); border-left-color: #A8D49C; }
+.nav-icon { width: 18px; text-align: center; }
+.nav-badge { margin-left: auto; background: var(--terra); color: #fff; border-radius: 10px; padding: 2px 7px; font-size: 11px; font-weight: 600; }
+.nav-badge.green { background: var(--green-light); }
+
+.main-content { flex: 1; padding: 34px 44px; }
+.page-header { margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.page-title { font-family: 'Radio Canada Big', sans-serif; font-size: 28px; color: var(--dark); }
+.page-sub { color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+.card {
+  background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px;
+}
+.card + .card { margin-top: 16px; }
+.card-title { font-size: 12px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 16px; }
+
+.stats-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-bottom: 24px; }
+.stat-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px 22px; }
+.stat-label { font-size: 12px; color: var(--muted); font-weight: 500; margin-bottom: 6px; }
+.stat-val { font-family: 'Radio Canada Big', sans-serif; font-size: 30px; color: var(--dark); line-height: 1; }
+.stat-sub { font-size: 12px; color: var(--green-light); margin-top: 4px; }
+.stat-sub.warn { color: var(--terra); }
+
+.btn {
+  border: none; border-radius: 8px; padding: 8px 16px; font-size: 13px; font-weight: 500; cursor: pointer; font-family: 'Radio Canada Big', sans-serif; transition: 0.2s ease; display: inline-flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none;
+}
+.btn-green { background: var(--green); color: #fff; }
+.btn-green:hover { background: var(--green-mid); color: #fff; }
+.btn-terra { background: var(--terra); color: #fff; }
+.btn-terra:hover { background: #9B4818; color: #fff; }
+.btn-outline { border: 1.5px solid var(--border); background: transparent; color: var(--mid); }
+.btn-outline:hover { border-color: var(--green-mid); color: var(--green); background: var(--green-xpale); }
+.btn-danger { border: 1.5px solid #FCA5A5; background: transparent; color: var(--danger); }
+.btn-danger:hover { background: var(--danger-pale); }
+.btn-sm { padding: 6px 13px; font-size: 12px; }
+
+.filter-row { display: flex; gap: 10px; margin-bottom: 18px; align-items: center; flex-wrap: wrap; }
+.filter-btn { background: var(--white); border: 1.5px solid var(--border); border-radius: 20px; padding: 7px 16px; font-size: 13px; cursor: pointer; color: var(--mid); }
+.filter-btn.active { background: var(--green-pale); border-color: var(--green-mid); color: var(--green); font-weight: 500; }
+.search-input { border: 1.5px solid var(--border); border-radius: 20px; padding: 7px 16px 7px 36px; font-size: 13px; min-width: 220px; background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237A8C7D' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") 12px center no-repeat; outline: none; }
+.ml-auto { margin-left: auto; }
+
+.pill { display: inline-block; border-radius: 20px; padding: 4px 12px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.pill-pending { background: var(--warning-pale); color: var(--warning); }
+.pill-verified { background: var(--green-pale); color: var(--green); }
+.pill-rejected { background: var(--danger-pale); color: var(--danger); }
+.pill-confirmed { background: var(--green-pale); color: var(--green); }
+.pill-completed { background: var(--info-pale); color: var(--info); }
+.pill-cancelled { background: var(--danger-pale); color: var(--danger); }
+.pill-flagged { background: #FEF3C7; color: #92400E; }
+.pill-approved { background: var(--green-pale); color: var(--green); }
+.pill-easy { background: #DCFCE7; color: #166534; }
+.pill-moderate { background: #FEF9C3; color: #854D0E; }
+.pill-hard { background: #FEE2E2; color: #991B1B; }
+.pill-extreme { background: #EDE9FE; color: #5B21B6; }
+
+.guide-app-card, .review-card, .dest-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px 22px; }
+.guide-app-card { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 12px; }
+.guide-av { width: 52px; height: 52px; border-radius: 50%; background: var(--green-pale); color: var(--green); display: grid; place-items: center; font-weight: 700; flex-shrink: 0; }
+.guide-app-info { flex: 1; }
+.guide-app-name { font-weight: 600; color: var(--dark); }
+.guide-app-meta { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.guide-app-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.chip { background: var(--sand); color: var(--mid); border-radius: 20px; padding: 3px 10px; font-size: 12px; }
+.guide-app-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+.table-wrap { overflow: hidden; border-radius: var(--radius); border: 1px solid var(--border); background: var(--white); box-shadow: var(--shadow); }
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th, .data-table td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); font-size: 13px; }
+.data-table th { background: var(--sand); font-size: 11px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: var(--green-xpale); }
+
+.dest-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.dest-card { padding: 0; overflow: hidden; }
+.dest-card-hero { height: 110px; background: linear-gradient(135deg, var(--green-pale), var(--sand-dark)); display: grid; place-items: center; font-size: 42px; }
+.dest-card-body { padding: 16px 18px; }
+.dest-card-name { font-weight: 600; color: var(--dark); }
+.dest-card-loc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.dest-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.dest-card-actions { display: flex; gap: 8px; margin-top: 14px; }
+
+.bar-chart { display: flex; align-items: flex-end; gap: 10px; height: 170px; border-bottom: 1.5px solid var(--border); padding-bottom: 4px; }
+.bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; height: 100%; }
+.bar { width: 100%; border-radius: 6px 6px 0 0; min-height: 8px; }
+.bar-green { background: var(--green-light); }
+.bar-terra { background: var(--terra); }
+.bar-label { font-size: 11px; color: var(--muted); }
+.bar-val { font-size: 12px; font-weight: 600; color: var(--dark); }
+
+.charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.chart-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; }
+.chart-card.full { grid-column: 1 / -1; }
+.chart-title { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+.chart-sub { font-size: 12px; color: var(--muted); margin-bottom: 18px; }
+
+.review-card { margin-bottom: 12px; }
+.review-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.reviewer-av { width: 36px; height: 36px; border-radius: 50%; background: var(--terra-light); color: var(--terra); display: grid; place-items: center; font-weight: 700; flex-shrink: 0; }
+.reviewer-av.green { background: var(--green-pale); color: var(--green); }
+.review-meta { flex: 1; }
+.review-name { font-weight: 600; color: var(--dark); }
+.review-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.review-body { color: var(--mid); font-size: 14px; margin-bottom: 12px; }
+.review-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+.hyper-card {
+  background: linear-gradient(135deg, rgba(43,82,25,0.96), rgba(61,110,43,0.95));
+  color: white; padding: 24px; border-radius: var(--radius); box-shadow: var(--shadow); text-decoration: none; display: block;
+}
+.hyper-card h3 { font-family: 'Radio Canada Big', sans-serif; font-size: 22px; margin-bottom: 8px; }
+.hyper-card p { color: rgba(255,255,255,0.9); margin-bottom: 0; }
+.hyper-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+
+.muted { color: var(--muted); }
+.text-right { text-align: right; }
+
+@media (max-width: 1100px) { .stats-row { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 900px) {
+  .app-shell { flex-direction: column; }
+  .sidebar { width: 100%; height: auto; position: relative; }
+  .main-content { padding: 24px; }
+  .charts-grid, .hyper-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .stats-row { grid-template-columns: 1fr; }
+  .guide-app-card { flex-direction: column; }
+  .guide-app-actions { width: 100%; }
+  .search-input { min-width: 100%; }
+  .page-header { flex-direction: column; }
+}

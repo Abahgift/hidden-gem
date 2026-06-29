@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hidden Gems — Destinations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="brand-name">Hidden <span>Gems</span></div>
+          <div class="brand-sub">Admin Dashboard</div>
+        </div>
+        <div class="sidebar-admin">
+          <div class="admin-avatar">SA</div>
+          <div>
+            <div class="admin-name">Super Admin</div>
+            <div class="admin-role">Platform Administrator</div>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <div class="nav-section">Pages</div>
+          <!-- <a class="nav-item" href="admin-dashboard.html">Overview</a> -->
+          <a class="nav-item" href="analytics.html">Analytics</a>
+          <a class="nav-item" href="applications.html">Applications</a>
+          <a class="nav-item" href="all-guides.html">All guides</a>
+          <a class="nav-item active" href="destinations.html">Destinations</a>
+          <a class="nav-item" href="all-bookings.html">All bookings</a>
+          <a class="nav-item" href="reviews.html">Reviews</a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <div class="page-header">
+          <div>
+            <div class="page-title">Destinations</div>
+            <div class="page-sub">
+              Edit featured travel destinations and maintain their details.
+            </div>
+          </div>
+          <button class="btn btn-green">Add destination</button>
+        </div>
+
+        <div class="filter-row">
+          <button
+            class="filter-btn active"
+            data-group="difficulty"
+            data-filter="all"
+          >
+            All
+          </button>
+          <button class="filter-btn" data-group="difficulty" data-filter="easy">
+            Easy
+          </button>
+          <button
+            class="filter-btn"
+            data-group="difficulty"
+            data-filter="moderate"
+          >
+            Moderate
+          </button>
+          <button class="filter-btn" data-group="difficulty" data-filter="hard">
+            Hard
+          </button>
+          <button
+            class="filter-btn"
+            data-group="difficulty"
+            data-filter="extreme"
+          >
+            Extreme
+          </button>
+          <input
+            class="search-input ml-auto"
+            type="text"
+            placeholder="Search destinations"
+            data-search="difficulty"
+          />
+        </div>
+
+        <div class="dest-grid">
+          <div
+            class="dest-card"
+            data-group="difficulty"
+            data-difficulty="extreme"
+          >
+            <div class="dest-card-hero">M</div>
+            <div class="dest-card-body">
+              <div class="dest-card-name">Chappal Waddi Summit</div>
+              <div class="dest-card-loc">Taraba State</div>
+              <div class="dest-card-tags">
+                <span class="pill pill-extreme">Extreme</span
+                ><span class="chip">Trekking</span
+                ><span class="chip">Camping</span>
+              </div>
+              <div class="dest-card-actions">
+                <button class="btn btn-sm btn-outline">Edit</button
+                ><button class="btn btn-sm btn-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="dest-card" data-group="difficulty" data-difficulty="hard">
+            <div class="dest-card-hero">F</div>
+            <div class="dest-card-body">
+              <div class="dest-card-name">Gashaka-Gumti Forest</div>
+              <div class="dest-card-loc">Taraba / Adamawa</div>
+              <div class="dest-card-tags">
+                <span class="pill pill-hard">Hard</span
+                ><span class="chip">Forest</span
+                ><span class="chip">Wildlife</span>
+              </div>
+              <div class="dest-card-actions">
+                <button class="btn btn-sm btn-outline">Edit</button
+                ><button class="btn btn-sm btn-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="dest-card"
+            data-group="difficulty"
+            data-difficulty="moderate"
+          >
+            <div class="dest-card-hero">H</div>
+            <div class="dest-card-body">
+              <div class="dest-card-name">Idanre Hills</div>
+              <div class="dest-card-loc">Ondo State</div>
+              <div class="dest-card-tags">
+                <span class="pill pill-moderate">Moderate</span
+                ><span class="chip">Scenic</span
+                ><span class="chip">Cultural</span>
+              </div>
+              <div class="dest-card-actions">
+                <button class="btn btn-sm btn-outline">Edit</button
+                ><button class="btn btn-sm btn-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

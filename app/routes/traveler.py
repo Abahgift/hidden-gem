@@ -23,3 +23,27 @@ def otp():
 @app.route("/dashboard/", methods=["GET", "POST"])
 def dashboard():
     return render_template("traveler/dashboard.html")
+
+
+@app.route("/guides/")
+def guides():
+    return render_template("traveler/guides.html") #attach actual dashboard-guides page
+
+
+@app.route("/bookings/")
+def bookings():
+    return render_template("traveler/bookings.html") #attach actual dashboard-bookings page
+
+
+@app.route("/profile/")
+def profile():
+    return render_template("traveler/profile.html") #attach actual dashboard-profile page
+
+
+@app.route("/notifications/")
+def notifications():
+    return render_template("traveler/notifications.html") #attach actual notification page
+
+@app.route("/filter/")
+def filter():
+    return render_template("traveler/filter.html")

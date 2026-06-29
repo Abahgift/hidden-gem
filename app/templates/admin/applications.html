@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hidden Gems — Applications</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="brand-name">Hidden <span>Gems</span></div>
+          <div class="brand-sub">Admin Dashboard</div>
+        </div>
+        <div class="sidebar-admin">
+          <div class="admin-avatar">SA</div>
+          <div>
+            <div class="admin-name">Super Admin</div>
+            <div class="admin-role">Platform Administrator</div>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <div class="nav-section">Pages</div>
+          <!-- <a class="nav-item" href="admin-dashboard.html">Overview</a> -->
+          <a class="nav-item" href="analytics.html">Analytics</a>
+          <a class="nav-item active" href="applications.html">Applications</a>
+          <a class="nav-item" href="all-guides.html">All guides</a>
+          <a class="nav-item" href="destinations.html">Destinations</a>
+          <a class="nav-item" href="all-bookings.html">All bookings</a>
+          <a class="nav-item" href="reviews.html">Reviews</a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <div class="page-header">
+          <div>
+            <div class="page-title">Guide applications</div>
+            <div class="page-sub">
+              Review new guide requests and approve trusted local experts.
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-row">
+          <button
+            class="filter-btn active"
+            data-group="status"
+            data-filter="all"
+          >
+            All
+          </button>
+          <button class="filter-btn" data-group="status" data-filter="pending">
+            Pending
+          </button>
+          <button class="filter-btn" data-group="status" data-filter="verified">
+            Verified
+          </button>
+          <button class="filter-btn" data-group="status" data-filter="rejected">
+            Rejected
+          </button>
+          <input
+            class="search-input ml-auto"
+            type="text"
+            placeholder="Search by name"
+            data-search="status"
+          />
+        </div>
+
+        <div id="apps-list">
+          <div class="guide-app-card" data-group="status" data-status="pending">
+            <div class="guide-av">EO</div>
+            <div class="guide-app-info">
+              <div class="guide-app-name">Emeka Okafor</div>
+              <div class="guide-app-meta">
+                Taraba State · 12 years experience · ₦25,000/day · Applied 3 May
+                2025
+              </div>
+              <div class="guide-app-chips">
+                <span class="chip">Hiking</span>
+                <span class="chip">Camping</span>
+                <span class="chip">Nature walks</span>
+              </div>
+            </div>
+            <div class="guide-app-actions">
+              <span class="pill pill-pending">Pending</span>
+              <button class="btn btn-sm btn-outline">View</button>
+              <button class="btn btn-sm btn-green">Approve</button>
+              <button class="btn btn-sm btn-danger">Decline</button>
+            </div>
+          </div>
+
+          <div class="guide-app-card" data-group="status" data-status="pending">
+            <div
+              class="guide-av"
+              style="background: #f5ede4; color: var(--terra)"
+            >
+              AI
+            </div>
+            <div class="guide-app-info">
+              <div class="guide-app-name">Afolabi Idowu</div>
+              <div class="guide-app-meta">
+                Ondo State · 7 years experience · ₦18,000/day · Applied 3 May
+                2025
+              </div>
+              <div class="guide-app-chips">
+                <span class="chip">Scenic walks</span>
+                <span class="chip">Photography</span>
+                <span class="chip">English</span>
+              </div>
+            </div>
+            <div class="guide-app-actions">
+              <span class="pill pill-pending">Pending</span>
+              <button class="btn btn-sm btn-outline">View</button>
+              <button class="btn btn-sm btn-green">Approve</button>
+              <button class="btn btn-sm btn-danger">Decline</button>
+            </div>
+          </div>
+
+          <div
+            class="guide-app-card"
+            data-group="status"
+            data-status="verified"
+          >
+            <div class="guide-av">CE</div>
+            <div class="guide-app-info">
+              <div class="guide-app-name">Chukwuemeka Eze</div>
+              <div class="guide-app-meta">
+                Anambra State · 8 years experience · ₦20,000/day · Verified 28
+                Apr 2025
+              </div>
+              <div class="guide-app-chips">
+                <span class="chip">Hiking</span>
+                <span class="chip">Nature walks</span>
+                <span class="chip">Igbo</span>
+              </div>
+            </div>
+            <div class="guide-app-actions">
+              <span class="pill pill-verified">Verified</span>
+              <button class="btn btn-sm btn-outline">View</button>
+              <button class="btn btn-sm btn-danger">Revoke</button>
+            </div>
+          </div>
+
+          <div
+            class="guide-app-card"
+            data-group="status"
+            data-status="rejected"
+          >
+            <div
+              class="guide-av"
+              style="background: var(--danger-pale); color: var(--danger)"
+            >
+              TB
+            </div>
+            <div class="guide-app-info">
+              <div class="guide-app-name">Tunde Badmus</div>
+              <div class="guide-app-meta">
+                Lagos State · 1 year experience · Rejected 10 Apr 2025
+              </div>
+              <div class="guide-app-chips">
+                <span class="chip">Hiking</span>
+                <span class="chip">English</span>
+              </div>
+            </div>
+            <div class="guide-app-actions">
+              <span class="pill pill-rejected">Rejected</span>
+              <button class="btn btn-sm btn-outline">View</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

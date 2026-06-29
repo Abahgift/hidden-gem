@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hidden Gems — Admin Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green:       #2B5219;
+  --green-mid:   #3D6E2B;
+  --green-light: #5C9448;
+  --green-pale:  #EBF3E6;
+  --green-xpale: #F4F9F1;
+  --terra:       #B5581E;
+  --terra-light: #F5EDE4;
+  --terra-pale:  #FBF5EF;
+  --sand:        #F6F1E7;
+  --sand-dark:   #EDE5D4;
+  --dark:        #18221A;
+  --mid:         #3A4A3C;
+  --muted:       #7A8C7D;
+  --border:      #D6E0D0;
+  --white:       #FEFCF8;
+  --shadow:      0 2px 16px rgba(27,82,25,0.08);
+  --radius:      12px;
+  --sidebar-w:   260px;
+  --danger:      #DC2626;
+  --danger-pale: #FEF2F2;
+  --warning:     #D97706;
+  --warning-pale:#FFFBEB;
+  --info:        #0369A1;
+  --info-pale:   #E0F2FE;
+}
+
+html, body { height: 100%; background: var(--sand); color: var(--dark); font-family: 'Radio Canada Big', sans-serif; font-size: 15px; line-height: 1.6; }
+
+/* ── SCREEN SYSTEM ── */
+.screen { display: none; }
+.screen.active { display: flex; min-height: 100vh; }
+
+/* ══════════════════════════════════════════ */
+/*  LOGIN SCREEN                              */
+/* ══════════════════════════════════════════ */
+#login {
+  background: linear-gradient(145deg, #1A3012 0%, #2B5219 55%, #3D6E2B 100%);
+  align-items: center; justify-content: center; position: relative; overflow: hidden;
+}
+#login::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='0.8' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E") repeat;
+}
+.login-card {
+  background: var(--white);
+  border-radius: 20px;
+  width: 100%; max-width: 440px;
+  padding: 48px;
+  position: relative; z-index: 1;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.3);
+  animation: slideUp 0.5s ease;
+}
+@keyframes slideUp { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: translateY(0); } }
+.login-logo { font-family: 'Radio Canada Big', sans-serif; font-size: 22px; color: var(--green); margin-bottom: 6px; }
+.login-logo span { color: var(--terra); }
+.login-admin-tag { display: inline-block; background: var(--terra-light); color: var(--terra); font-size: 11px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; border-radius: 20px; padding: 3px 12px; margin-bottom: 28px; }
+.login-title { font-family: 'Radio Canada Big', sans-serif; font-size: 26px; color: var(--dark); margin-bottom: 6px; }
+.login-sub { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--mid); margin-bottom: 7px; }
+.form-group input { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'Radio Canada Big', sans-serif; font-size: 14px; color: var(--dark); background: var(--white); outline: none; transition: border-color 0.2s; }
+.form-group input:focus { border-color: var(--green-mid); }
+.btn-primary { background: var(--green); color: #fff; border: none; border-radius: 10px; padding: 13px 28px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'Radio Canada Big', sans-serif; transition: background 0.2s; width: 100%; margin-top: 8px; }
+.btn-primary:hover { background: var(--green-mid); }
+.login-hint { font-size: 12px; color: var(--muted); text-align: center; margin-top: 16px; }
+.login-hint span { color: var(--green); font-weight: 500; }
+
+/* ══════════════════════════════════════════ */
+/*  APP LAYOUT                                */
+/* ══════════════════════════════════════════ */
+#app { background: var(--sand); }
+.app-layout { display: flex; min-height: 100vh; }
+
+.sidebar {
+  width: var(--sidebar-w); background: var(--green); flex-shrink: 0;
+  display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 50;
+}
+.sidebar-brand { padding: 28px 24px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.brand-name { font-family: 'Radio Canada Big', sans-serif; font-size: 20px; color: #fff; line-height: 1; }
+.brand-name span { color: #A8D49C; }
+.brand-sub { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 1.8px; text-transform: uppercase; margin-top: 4px; }
+.sidebar-admin { padding: 14px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 10px; }
+.admin-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--terra); color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.admin-name { font-size: 13px; font-weight: 500; color: #fff; }
+.admin-role { font-size: 11px; color: rgba(255,255,255,0.45); }
+.sidebar-nav { padding: 16px 0; flex: 1; overflow-y: auto; }
+.nav-section { font-size: 10px; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(255,255,255,0.28); padding: 14px 24px 6px; }
+.nav-item {
+  display: flex; align-items: center; gap: 11px; padding: 10px 24px;
+  color: rgba(255,255,255,0.6); font-size: 13.5px; cursor: pointer;
+  border-left: 3px solid transparent; transition: all 0.15s;
+}
+.nav-item:hover { color: #fff; background: rgba(255,255,255,0.06); }
+.nav-item.active { color: #fff; background: rgba(255,255,255,0.1); border-left-color: #A8D49C; }
+.nav-icon { font-size: 16px; width: 20px; text-align: center; }
+.nav-badge { margin-left: auto; background: var(--terra); color: #fff; border-radius: 10px; padding: 2px 7px; font-size: 11px; font-weight: 600; }
+.nav-badge.green { background: var(--green-light); }
+
+.main-content { margin-left: var(--sidebar-w); flex: 1; padding: 36px 44px; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.page-header { margin-bottom: 30px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.page-title { font-family: 'Radio Canada Big', sans-serif; font-size: 28px; color: var(--dark); }
+.page-sub { color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+/* ── CARDS ── */
+.card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 24px; box-shadow: var(--shadow); }
+.card + .card { margin-top: 16px; }
+.card-title { font-size: 12px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+
+/* ── BUTTONS ── */
+.btn { border: none; border-radius: 8px; padding: 8px 18px; font-size: 13px; cursor: pointer; font-family: 'Radio Canada Big', sans-serif; font-weight: 500; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+.btn-green { background: var(--green); color: #fff; }
+.btn-green:hover { background: var(--green-mid); }
+.btn-terra { background: var(--terra); color: #fff; }
+.btn-terra:hover { background: #9B4818; }
+.btn-outline { background: transparent; color: var(--mid); border: 1.5px solid var(--border); }
+.btn-outline:hover { border-color: var(--green-mid); color: var(--green); background: var(--green-xpale); }
+.btn-danger { background: transparent; color: var(--danger); border: 1.5px solid #FCA5A5; }
+.btn-danger:hover { background: var(--danger-pale); }
+.btn-sm { padding: 6px 13px; font-size: 12px; }
+
+/* ── STATS ROW ── */
+.stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 28px; }
+.stat-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 20px 22px; }
+.stat-label { font-size: 12px; color: var(--muted); font-weight: 500; margin-bottom: 6px; }
+.stat-val { font-family: 'Radio Canada Big', sans-serif; font-size: 30px; color: var(--dark); line-height: 1; }
+.stat-sub { font-size: 12px; color: var(--green-light); margin-top: 4px; }
+.stat-sub.warn { color: var(--terra); }
+
+/* ── TABLES ── */
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th { font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); padding: 10px 14px; text-align: left; border-bottom: 1.5px solid var(--border); background: var(--sand); }
+.data-table th:first-child { border-radius: 8px 0 0 0; }
+.data-table th:last-child { border-radius: 0 8px 0 0; }
+.data-table td { padding: 14px; border-bottom: 1px solid var(--border); font-size: 13.5px; vertical-align: middle; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: var(--green-xpale); }
+.data-table .actions { display: flex; gap: 6px; }
+
+/* ── STATUS PILLS ── */
+.pill { border-radius: 20px; padding: 4px 12px; font-size: 11px; font-weight: 600; display: inline-block; white-space: nowrap; }
+.pill-pending { background: var(--warning-pale); color: var(--warning); }
+.pill-verified { background: var(--green-pale); color: var(--green); }
+.pill-rejected { background: var(--danger-pale); color: var(--danger); }
+.pill-confirmed { background: var(--green-pale); color: var(--green); }
+.pill-completed { background: var(--info-pale); color: var(--info); }
+.pill-cancelled { background: var(--danger-pale); color: var(--danger); }
+.pill-flagged { background: #FEF3C7; color: #92400E; }
+.pill-approved { background: var(--green-pale); color: var(--green); }
+.pill-easy { background: #DCFCE7; color: #166534; }
+.pill-moderate { background: #FEF9C3; color: #854D0E; }
+.pill-hard { background: #FEE2E2; color: #991B1B; }
+.pill-extreme { background: #EDE9FE; color: #5B21B6; }
+
+/* ── FILTER ROW ── */
+.filter-row { display: flex; gap: 10px; margin-bottom: 20px; align-items: center; flex-wrap: wrap; }
+.filter-btn { background: var(--white); border: 1.5px solid var(--border); border-radius: 20px; padding: 7px 16px; font-size: 13px; cursor: pointer; font-family: 'Radio Canada Big', sans-serif; color: var(--mid); transition: all 0.15s; }
+.filter-btn.active { background: var(--green-pale); border-color: var(--green-mid); color: var(--green); font-weight: 500; }
+.filter-btn:hover:not(.active) { border-color: var(--muted); }
+.search-input { border: 1.5px solid var(--border); border-radius: 20px; padding: 7px 16px 7px 36px; font-size: 13px; font-family: 'Radio Canada Big', sans-serif; outline: none; background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237A8C7D' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") 12px center / 14px no-repeat; transition: border-color 0.2s; min-width: 220px; }
+.search-input:focus { border-color: var(--green-mid); }
+.ml-auto { margin-left: auto; }
+
+/* ── GUIDE APPLICATION CARD ── */
+.guide-app-card {
+  background: var(--white); border-radius: var(--radius); border: 1px solid var(--border);
+  padding: 22px 26px; display: flex; align-items: flex-start; gap: 18px; margin-bottom: 14px;
+  box-shadow: var(--shadow); transition: box-shadow 0.2s;
+}
+.guide-app-card:hover { box-shadow: 0 4px 24px rgba(27,82,25,0.12); }
+.guide-av { width: 52px; height: 52px; border-radius: 50%; background: var(--green-pale); color: var(--green); font-weight: 700; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.guide-app-info { flex: 1; min-width: 0; }
+.guide-app-name { font-weight: 600; font-size: 15px; color: var(--dark); }
+.guide-app-meta { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.guide-app-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.chip { background: var(--sand); border-radius: 20px; padding: 3px 10px; font-size: 12px; color: var(--mid); }
+.guide-app-actions { display: flex; gap: 8px; align-items: flex-start; flex-shrink: 0; padding-top: 4px; }
+
+/* ── DESTINATION GRID ── */
+.dest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.dest-card {
+  background: var(--white); border-radius: var(--radius); border: 1px solid var(--border);
+  overflow: hidden; box-shadow: var(--shadow); transition: box-shadow 0.2s;
+}
+.dest-card:hover { box-shadow: 0 4px 24px rgba(27,82,25,0.12); }
+.dest-card-img { height: 120px; background: var(--green-pale); display: flex; align-items: center; justify-content: center; font-size: 48px; position: relative; }
+.dest-card-body { padding: 16px 18px; }
+.dest-card-name { font-weight: 600; font-size: 14.5px; color: var(--dark); }
+.dest-card-loc { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.dest-card-tags { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.dest-card-actions { display: flex; gap: 8px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+
+/* ── ANALYTICS ── */
+.charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.chart-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 24px; box-shadow: var(--shadow); }
+.chart-card.full { grid-column: 1 / -1; }
+.chart-title { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+.chart-sub { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
+.bar-chart { display: flex; align-items: flex-end; gap: 10px; height: 160px; border-bottom: 1.5px solid var(--border); padding-bottom: 4px; }
+.bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end; }
+.bar { width: 100%; border-radius: 6px 6px 0 0; transition: opacity 0.2s; cursor: pointer; position: relative; }
+.bar:hover { opacity: 0.85; }
+.bar-label { font-size: 11px; color: var(--muted); }
+.bar-val { font-size: 12px; font-weight: 600; color: var(--dark); }
+.bar-green { background: var(--green-light); }
+.bar-terra { background: var(--terra); }
+.donut-row { display: flex; align-items: center; gap: 28px; }
+.donut-legend { flex: 1; }
+.donut-legend-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; }
+.donut-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.donut-name { flex: 1; color: var(--mid); }
+.donut-val { font-weight: 600; color: var(--dark); }
+.donut-pct { font-size: 12px; color: var(--muted); }
+.top-list { }
+.top-list-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.top-list-item:last-child { border-bottom: none; }
+.top-rank { width: 24px; height: 24px; border-radius: 50%; background: var(--green-pale); color: var(--green); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.top-rank.gold { background: #FEF3C7; color: #92400E; }
+.top-rank.silver { background: #F1F5F9; color: #475569; }
+.top-rank.bronze { background: var(--terra-pale); color: var(--terra); }
+.top-dest-name { flex: 1; font-size: 13.5px; color: var(--dark); font-weight: 500; }
+.top-dest-bar-track { width: 80px; height: 6px; background: var(--border); border-radius: 3px; }
+.top-dest-bar-fill { height: 100%; background: var(--green-light); border-radius: 3px; }
+.top-dest-count { font-size: 13px; font-weight: 600; color: var(--dark); width: 32px; text-align: right; }
+
+/* ── REVIEW MODERATION ── */
+.review-mod-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 20px 24px; margin-bottom: 14px; }
+.review-mod-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+.reviewer-av { width: 36px; height: 36px; border-radius: 50%; background: var(--terra-light); color: var(--terra); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.reviewer-av.green { background: var(--green-pale); color: var(--green); }
+.review-mod-meta { flex: 1; }
+.review-mod-name { font-weight: 600; font-size: 14px; }
+.review-mod-sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
+.stars { display: flex; gap: 3px; }
+.star { color: #F59E0B; font-size: 13px; }
+.star.empty { color: var(--border); }
+.review-mod-body { font-size: 14px; color: var(--mid); line-height: 1.65; margin-bottom: 14px; }
+.review-mod-actions { display: flex; gap: 8px; align-items: center; }
+.flag-reason { font-size: 12px; color: var(--warning); background: var(--warning-pale); border-radius: 6px; padding: 4px 10px; display: inline-flex; align-items: center; gap: 5px; }
+
+/* ── MODAL ── */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--white); border-radius: 16px; padding: 36px; width: 100%; max-width: 560px; box-shadow: 0 32px 80px rgba(0,0,0,0.22); animation: slideUp 0.3s ease; max-height: 90vh; overflow-y: auto; }
+.modal-title { font-family: 'Radio Canada Big', sans-serif; font-size: 22px; margin-bottom: 6px; }
+.modal-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+.modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 24px; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--mid); margin-bottom: 7px; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'Radio Canada Big', sans-serif; font-size: 14px; color: var(--dark); background: var(--white); outline: none; transition: border-color 0.2s; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--green-mid); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+/* ── GUIDE DETAIL MODAL ── */
+.guide-detail-section { margin-bottom: 20px; }
+.guide-detail-section h4 { font-size: 12px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.guide-detail-chip { display: inline-block; background: var(--sand); border-radius: 20px; padding: 4px 12px; font-size: 13px; color: var(--mid); margin: 3px; }
+
+/* ── TOAST ── */
+.toast { position: fixed; bottom: 28px; right: 28px; background: var(--dark); color: #fff; border-radius: 10px; padding: 14px 20px; font-size: 14px; z-index: 999; transform: translateY(80px); opacity: 0; transition: all 0.35s ease; pointer-events: none; display: flex; align-items: center; gap: 10px; }
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast-icon { width: 20px; height: 20px; border-radius: 50%; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+.toast-icon.warn { background: var(--terra); }
+
+.empty-state { text-align: center; padding: 50px 20px; color: var(--muted); }
+.empty-state .es-icon { font-size: 40px; margin-bottom: 12px; }
+.empty-state h3 { font-size: 16px; color: var(--mid); margin-bottom: 6px; font-weight: 500; }
+.section-divider { height: 1px; background: var(--border); margin: 24px 0; }
+
+/* ── CONFIRM DIALOG ── */
+.confirm-dialog { background: var(--white); border-radius: 16px; padding: 32px; width: 100%; max-width: 400px; box-shadow: 0 32px 80px rgba(0,0,0,0.22); animation: slideUp 0.3s ease; text-align: center; }
+.confirm-dialog .confirm-icon { font-size: 38px; margin-bottom: 12px; }
+.confirm-dialog .confirm-title { font-family: 'Radio Canada Big', sans-serif; font-size: 20px; margin-bottom: 8px; }
+.confirm-dialog .confirm-body { font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
+.confirm-dialog .confirm-actions { display: flex; gap: 10px; justify-content: center; }
+
+@media (max-width: 1100px) { .stats-row { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px) {
+  .sidebar { width: 220px; }
+  .main-content { margin-left: 220px; padding: 24px; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .charts-grid { grid-template-columns: 1fr; }
+  .dest-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  LOGIN SCREEN                              -->
+<!-- ══════════════════════════════════════════ -->
+<div id="login" class="screen active">
+  <div class="login-card">
+    <div class="login-logo">Hidden <span>Gems</span></div>
+    <div class="login-admin-tag">Admin Back Office</div>
+    <div class="login-title">Welcome back</div>
+    <div class="login-sub">Sign in to manage the Hidden Gems platform.</div>
+    <div class="form-group">
+      <label>Email address</label>
+      <input type="email" value="admin@hiddengems.ng" id="login-email"/>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" value="••••••••" id="login-pass"/>
+    </div>
+    <button class="btn-primary" onclick="doLogin()">Sign in to dashboard</button>
+    <div class="login-hint">Hint: <span>admin@hiddengems.ng</span> / any password</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  MAIN APP                                  -->
+<!-- ══════════════════════════════════════════ -->
+<div id="app" class="screen">
+  <div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-name">Hidden <span>Gems</span></div>
+        <div class="brand-sub">Admin Dashboard</div>
+      </div>
+      <div class="sidebar-admin">
+        <div class="admin-avatar">SA</div>
+        <div>
+          <div class="admin-name">Super Admin</div>
+          <div class="admin-role">Platform Administrator</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">Overview</div>
+        <div class="nav-item active" onclick="switchTab('analytics', this)">Analytics</div>
+
+        <div class="nav-section">Guides</div>
+        <div class="nav-item" onclick="switchTab('applications', this)">Applications <span class="nav-badge" id="app-badge">4</span></div>
+        <div class="nav-item" onclick="switchTab('guides', this)">All Guides</div>
+
+        <div class="nav-section">Content</div>
+        <div class="nav-item" onclick="switchTab('destinations', this)">Destinations</div>
+        <div class="nav-item" onclick="switchTab('bookings', this)">All Bookings</div>
+        <div class="nav-item" onclick="switchTab('reviews', this)">Reviews <span class="nav-badge" id="review-badge">2</span></div>
+
+        <div class="nav-section">System</div>
+        <div class="nav-item" onclick="doLogout()">Sign out</div>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- ═══════════════════════════════════ -->
+      <!--  ANALYTICS TAB                       -->
+      <!-- ═══════════════════════════════════ -->
+      <div class="tab-panel active" id="tab-analytics">
+        <div class="page-header">
+          <div>
+            <div class="page-title">Platform Analytics</div>
+            <div class="page-sub">Overview of Hidden Gems activity across all portals.</div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <select style="border:1.5px solid var(--border);border-radius:8px;padding:8px 14px;font-family:'Radio Canada Big',sans-serif;font-size:13px;color:var(--mid);background:var(--white);outline:none;cursor:pointer;">
+              <option>Last 30 days</option>
+              <option>Last 3 months</option>
+              <option>Last 6 months</option>
+              <option>All time</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-label">Total destinations</div>
+            <div class="stat-val">18</div>
+            <div class="stat-sub">↑ 3 added this month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Verified guides</div>
+            <div class="stat-val">31</div>
+            <div class="stat-sub">↑ 6 this month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Total bookings</div>
+            <div class="stat-val">247</div>
+            <div class="stat-sub">↑ 38 this month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Pending reviews</div>
+            <div class="stat-val" style="color:var(--terra);">4</div>
+            <div class="stat-sub warn">Needs moderation</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Pending apps</div>
+            <div class="stat-val" style="color:var(--terra);">4</div>
+            <div class="stat-sub warn">Awaiting review</div>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <!-- Bookings Over Time -->
+          <div class="chart-card">
+            <div class="chart-title">Monthly Bookings</div>
+            <div class="chart-sub">Total bookings confirmed per month</div>
+            <div class="bar-chart" id="monthly-chart">
+              <!-- Rendered by JS -->
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-top:8px;" id="monthly-labels"></div>
+          </div>
+
+          <!-- Top Destinations -->
+          <div class="chart-card">
+            <div class="chart-title">Top Destinations by Bookings</div>
+            <div class="chart-sub">Most booked trails on the platform</div>
+            <div class="top-list">
+              <div class="top-list-item">
+                <div class="top-rank gold">1</div>
+                <span class="top-dest-name">Chappal Waddi Summit</span>
+                <div class="top-dest-bar-track"><div class="top-dest-bar-fill" style="width:100%"></div></div>
+                <span class="top-dest-count">68</span>
+              </div>
+              <div class="top-list-item">
+                <div class="top-rank silver">2</div>
+                <span class="top-dest-name">Idanre Hills</span>
+                <div class="top-dest-bar-track"><div class="top-dest-bar-fill" style="width:72%"></div></div>
+                <span class="top-dest-count">49</span>
+              </div>
+              <div class="top-list-item">
+                <div class="top-rank bronze">3</div>
+                <span class="top-dest-name">Gashaka-Gumti Forest</span>
+                <div class="top-dest-bar-track"><div class="top-dest-bar-fill" style="width:57%"></div></div>
+                <span class="top-dest-count">39</span>
+              </div>
+              <div class="top-list-item">
+                <div class="top-rank" style="background:var(--sand);color:var(--muted);">4</div>
+                <span class="top-dest-name">Erin Ijesha Waterfall</span>
+                <div class="top-dest-bar-track"><div class="top-dest-bar-fill" style="width:41%"></div></div>
+                <span class="top-dest-count">28</span>
+              </div>
+              <div class="top-list-item">
+                <div class="top-rank" style="background:var(--sand);color:var(--muted);">5</div>
+                <span class="top-dest-name">Mambilla Plateau</span>
+                <div class="top-dest-bar-track"><div class="top-dest-bar-fill" style="width:29%"></div></div>
+                <span class="top-dest-count">20</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Booking Status Breakdown + Guides by State -->
+          <div class="chart-card">
+            <div class="chart-title">Booking Status Breakdown</div>
+            <div class="chart-sub">Current status of all platform bookings</div>
+            <div class="donut-row">
+              <svg width="110" height="110" viewBox="0 0 110 110">
+                <circle cx="55" cy="55" r="40" fill="none" stroke="#E2E8DD" stroke-width="20"/>
+                <!-- Confirmed: 52% -->
+                <circle cx="55" cy="55" r="40" fill="none" stroke="#5C9448" stroke-width="20"
+                  stroke-dasharray="130.8 251.3" stroke-dashoffset="62.8" transform="rotate(-90 55 55)"/>
+                <!-- Pending: 18% -->
+                <circle cx="55" cy="55" r="40" fill="none" stroke="#D97706" stroke-width="20"
+                  stroke-dasharray="45.2 251.3" stroke-dashoffset="-68" transform="rotate(-90 55 55)"/>
+                <!-- Completed: 22% -->
+                <circle cx="55" cy="55" r="40" fill="none" stroke="#0EA5E9" stroke-width="20"
+                  stroke-dasharray="55.3 251.3" stroke-dashoffset="-113.2" transform="rotate(-90 55 55)"/>
+                <!-- Cancelled: 8% -->
+                <circle cx="55" cy="55" r="40" fill="none" stroke="#EF4444" stroke-width="20"
+                  stroke-dasharray="20.1 251.3" stroke-dashoffset="-168.5" transform="rotate(-90 55 55)"/>
+                <text x="55" y="50" text-anchor="middle" font-family="Radio Canada Big" font-size="18" fill="#18221A">247</text>
+                <text x="55" y="65" text-anchor="middle" font-family="Radio Canada Big" font-size="10" fill="#7A8C7D">bookings</text>
+              </svg>
+              <div class="donut-legend">
+                <div class="donut-legend-item"><div class="donut-dot" style="background:#5C9448"></div><span class="donut-name">Confirmed</span><span class="donut-val">128</span> <span class="donut-pct">52%</span></div>
+                <div class="donut-legend-item"><div class="donut-dot" style="background:#0EA5E9"></div><span class="donut-name">Completed</span><span class="donut-val">55</span> <span class="donut-pct">22%</span></div>
+                <div class="donut-legend-item"><div class="donut-dot" style="background:#D97706"></div><span class="donut-name">Pending</span><span class="donut-val">44</span> <span class="donut-pct">18%</span></div>
+                <div class="donut-legend-item"><div class="donut-dot" style="background:#EF4444"></div><span class="donut-name">Cancelled</span><span class="donut-val">20</span> <span class="donut-pct">8%</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guides by State -->
+          <div class="chart-card">
+            <div class="chart-title">Verified Guides by State</div>
+            <div class="chart-sub">Geographic distribution of active guides</div>
+            <div class="bar-chart" id="guide-state-chart"></div>
+            <div style="display:flex; justify-content:space-between; margin-top:8px;" id="guide-state-labels"></div>
+          </div>
+        </div>
+
+        <!-- Recent Activity Feed -->
+        <div class="card">
+          <div class="card-title">Recent platform activity</div>
+          <div id="activity-feed">
+            <div class="top-list-item"><div style="flex:1;"><span style="font-size:13.5px;color:var(--dark);">New booking: <strong>Adaeze Nwosu</strong> booked Chappal Waddi Summit</span><div style="font-size:12px;color:var(--muted);">2 minutes ago</div></div><span class="pill pill-confirmed">Confirmed</span></div>
+            <div class="top-list-item"><div style="flex:1;"><span style="font-size:13.5px;color:var(--dark);">New guide application: <strong>Afolabi Idowu</strong> from Ondo State</span><div style="font-size:12px;color:var(--muted);">14 minutes ago</div></div><span class="pill pill-pending">Pending</span></div>
+            <div class="top-list-item"><div style="flex:1;"><span style="font-size:13.5px;color:var(--dark);">New review flagged on <strong>Idanre Hills</strong> — needs moderation</span><div style="font-size:12px;color:var(--muted);">1 hour ago</div></div><span class="pill pill-flagged">Flagged</span></div>
+            <div class="top-list-item"><span style="font-size:18px;"></span><div style="flex:1;"><span style="font-size:13.5px;color:var(--dark);">Guide <strong>Emeka Okafor</strong> verified and listed</span><div style="font-size:12px;color:var(--muted);">3 hours ago</div></div><span class="pill pill-verified">Verified</span></div>
+            <div class="top-list-item"><div style="flex:1;"><span style="font-size:13.5px;color:var(--dark);">New destination added: <strong>Kajuru Castle, Kaduna</strong></span><div style="font-size:12px;color:var(--muted);">Yesterday</div></div><span class="pill pill-approved">Added</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════ -->
+      <!--  GUIDE APPLICATIONS TAB             -->
+      <!-- ═══════════════════════════════════ -->
+      <div class="tab-panel" id="tab-applications">
+        <div class="page-header">
+          <div>
+            <div class="page-title">Guide Applications</div>
+            <div class="page-sub">Review and verify guide applications before they go live on the platform.</div>
+          </div>
+        </div>
+
+        <div class="filter-row">
+          <button class="filter-btn active" onclick="filterApps('all', this)">All (9)</button>
+          <button class="filter-btn" onclick="filterApps('pending', this)">Pending (4)</button>
+          <button class="filter-btn" onclick="filterApps('verified', this)">Verified (4)</button>
+          <button class="filter-btn" onclick="filterApps('rejected', this)">Rejected (1)</button>
+          <input class="search-input ml-auto" type="text" placeholder="Search guides…" oninput="searchApps(this.value)"/>
+        </div>
+
+        <div id="apps-list">
+          <!-- PENDING -->
+          <div class="guide-app-card" data-status="pending" data-name="Emeka Okafor">
+            <div class="guide-av">EO</div>
+            <div class="guide-app-info">
+              <div class="guide-app-name">Emeka Okafor</div>
+              <div class="guide-app-meta">Taraba State &nbsp;·&nbsp; 12 yrs experience &nbsp;·&nbsp; ₦25,000/day &nbsp;·&nbsp; Applied 3 May 2025</div>
+              <div class="guide-app-chips">
+                <span class="chip">Hiking</span>
+                <span class="chip">Camping</span>
+                <span class="chip">Nature Walks</span>
+                <span class="chip">🇬🇧 English</span>
+                <span class="chip">🇳🇬 Hausa</span>
+              </div>
+            </div>
+            <div class="guide-app-actions">
+              <span class="pill pill-pending">Pending</span>
+              <button class="btn btn-sm btn-outline" onclick="viewGuideApp(this)">View</button>
+              <button class="btn btn-sm btn-green" onclick="verifyGuide(this)"> Verify</button>
+              <button class="btn btn-sm btn-danger" onclick="rejectGuide(this)"> Reject</button>
+            </div>
+          </div>
+
+          <div class="guide-app-card" data-status="pending" data-name="Afolabi Idowu">
+            <div class="guide-av" style="background:#F5EDE4;color:var(--terra);">AI</div>
+            <div class="guide-app-info">
+              <div class="guide-app-name">Afolabi Idowu</div>
+              <div class="guide-app-meta">Ondo State &nbsp;·&nbsp; 7 yrs experience &nbsp;·&nbsp; ₦18,000/day &nbsp;·&nbsp; Applied 3 May 2025</div>
+              <div class="guide-app-chips">
+                <span class="chip">Scenic Walks</span>
+                <span class="chip">Photography Tours</span>
+                <span class="chip">🇬🇧 English</span>
+                <span class="chip">🇳🇬 Yoruba</span>
+              </div>
+            </div>
+            <div class="guide-app-actions">
+              <span class="pill pill-pending">Pending</span>
+              <button class="btn btn-sm btn-outline" onclick="viewGuideApp(this)">View</button>
+              <button class="btn btn-sm btn-green" onclick="verifyGuide(this)"> Verify</button>
+              <button class="btn btn-sm btn-danger" onclick="rejectGuide(this)"> Reject</button>
+            </div>
+          </div>
+
+          <div class="guide-app-card" data-status="pending" data-name="Ngozi Okonkwo">
+            <div class="guide-av" style="background:var(--green-pale);color:var(--green);">NO</div>
+            <div class="guide-app-info">
+              <div class="guide-app-name">Ngozi Okonkwo</div>
+              <div class="guide-app-meta">Cross River State &nbsp;·&nbsp; 5 yrs experience &nbsp;·&nbsp; ₦20,000/day &nbsp;·&nbsp; Applied 2 May 2025</div>
+              <div class="guide-app-chips">
+                <span class="chip">Nature Walks</span>
+                <span class="chip">Bird Watching</span>
+                <span class="chip">Camping</span>
+                <span class="chip">🇬🇧 English</span>
+                <span class="chip">🇳🇬 Igbo</span>
+              </div>
+            </div>
+            <div class="guide-app-actions">
+              <span class="pill pill-pending">Pending</span>
+              <button class="btn btn-sm btn-outline" onclick="viewGuideApp(this)">View</button>
+              <button class="btn btn-sm btn-green" onclick="verifyGuide(this)"> Verify</button>
+              <button class="btn btn-sm btn-danger" onclick="rejectGuide(this)"> Reject</button>
+            </div>
+          </div>
+
+          <div class="guide-app-card" data-status="pending" data-name="Ibrahim Musa">
+            <div class="guide-av" style="background:#F5EDE4;color:var(--terra);">IM</div>
+            <div class="guide-app-info">
+              <div class="guide-app-name">Ibrahim Musa</div>
+              <div class="guide-app-meta">Kaduna State &nbsp;·&nbsp; 9 yrs experience &nbsp;·&nbsp; ₦22,000/day &nbsp;·&nbsp; Applied 1 May 2025</div>
+              <div class="guide-app-chips">
+                <span class="chip">Hiking</span>
+                <span class="chip">Rock Climbing</span>
+                <span class="chip">🇬🇧 English</span>
+                <span class="chip">🇳🇬 Hausa</span>
+                <span class="chip">Fulfulde</span>
+              </div>
+            </div>
+            <div class="guide-app-actions">
+              <span class="pill pill-pending">Pending</span>
+              <button class="btn btn-sm btn-outline" onclick="viewGuideApp(this)">View</button>
+              <button class="btn btn-sm btn-green" onclick="verifyGuide(this)"> Verify</button>
+              <button class="btn btn-sm btn-danger" onclick="rejectGuide(this)"> Reject</button>
+            </div>
+          </div>
+
+          <!-- VERIFIED -->
+          <div class="guide-app-card" data-status="verified" data-name="Chukwuemeka Eze">
+            <div class="guide-av">CE</div>
+            <div class="guide-app-info">
+              <div class="guide-app-name">Chukwuemeka Eze</div>
+              <div class="guide-app-meta">Anambra State &nbsp;·&nbsp; 8 yrs experience &nbsp;·&nbsp; ₦20,000/day &nbsp;·&nbsp; Verified 28 Apr 2025</div>
+              <div class="guide-app-chips"><span class="chip">Hiking</span><span class="chip">Nature Walks</span><span class="chip">English</span><span class="chip">Igbo</span></div>
+            </div>
+            <div class="guide-app-actions">
+              <span class="pill pill-verified">Verified</span>
+              <button class="btn btn-sm btn-outline" onclick="viewGuideApp(this)">View</button>
+              <button class="btn btn-sm btn-danger" onclick="revokeGuide(this)">Revoke</button>
+            </div>
+          </div>
+
+          <div class="guide-app-card" data-status="verified" data-name="Fatima Aliyu">
+            <div class="guide-av" style="background:var(--green-pale);color:var(--green);">FA</div>
+            <div class="guide-app-info">
+              <div class="guide-app-name">Fatima Aliyu</div>
+              <div class="guide-app-meta">Adamawa State &nbsp;·&nbsp; 6 yrs experience &nbsp;·&nbsp; ₦15,000/day &nbsp;·&nbsp; Verified 25 Apr 2025</div>
+              <div class="guide-app-chips"><span class="chip">River Kayaking</span><span class="chip">Photography</span><span class="chip">English</span><span class="chip">Fulfulde</span></div>
+            </div>
+            <div class="guide-app-actions">
+              <span class="pill pill-verified">Verified</span>
+              <button class="btn btn-sm btn-outline" onclick="viewGuideApp(this)">View</button>
+              <button class="btn btn-sm btn-danger" onclick="revokeGuide(this)">Revoke</button>
+            </div>
+          </div>
+
+          <div class="guide-app-card" data-status="verified" data-name="Samuel Obi">
+            <div class="guide-av">SO</div>
+            <div class="guide-app-info">
+              <div class="guide-app-name">Samuel Obi</div>
+              <div class="guide-app-meta">Ondo State &nbsp;·&nbsp; 10 yrs experience &nbsp;·&nbsp; ₦30,000/day &nbsp;·&nbsp; Verified 20 Apr 2025</div>
+              <div class="guide-app-chips"><span class="chip">Hiking</span><span class="chip">Camping</span><span class="chip">Scenic</span><span class="chip">English</span><span class="chip">Yoruba</span></div>
+            </div>
+            <div class="guide-app-actions">
+              <span class="pill pill-verified">Verified</span>
+              <button class="btn btn-sm btn-outline" onclick="viewGuideApp(this)">View</button>
+              <button class="btn btn-sm btn-danger" onclick="revokeGuide(this)">Revoke</button>
+            </div>
+          </div>
+
+          <div class="guide-app-card" data-status="verified" data-name="Kemi Adeyemi">
+            <div class="guide-av" style="background:var(--green-pale);color:var(--green);">KA</div>
+            <div class="guide-app-info">
+              <div class="guide-app-name">Kemi Adeyemi</div>
+              <div class="guide-app-meta">Ogun State &nbsp;·&nbsp; 4 yrs experience &nbsp;·&nbsp; ₦12,000/day &nbsp;·&nbsp; Verified 15 Apr 2025</div>
+              <div class="guide-app-chips"><span class="chip">Nature Walks</span><span class="chip">Bird Watching</span><span class="chip">English</span><span class="chip">Yoruba</span></div>
+            </div>
+            <div class="guide-app-actions">
+              <span class="pill pill-verified">Verified</span>
+              <button class="btn btn-sm btn-outline" onclick="viewGuideApp(this)">View</button>
+              <button class="btn btn-sm btn-danger" onclick="revokeGuide(this)">Revoke</button>
+            </div>
+          </div>
+
+          <!-- REJECTED -->
+          <div class="guide-app-card" data-status="rejected" data-name="Tunde Badmus" style="opacity:0.65;">
+            <div class="guide-av" style="background:var(--danger-pale);color:var(--danger);">TB</div>
+            <div class="guide-app-info">
+              <div class="guide-app-name">Tunde Badmus</div>
+              <div class="guide-app-meta">Lagos State &nbsp;·&nbsp; 1 yr experience &nbsp;·&nbsp; Rejected 10 Apr 2025</div>
+              <div class="guide-app-chips"><span class="chip">Hiking</span><span class="chip">English</span></div>
+            </div>
+            <div class="guide-app-actions">
+              <span class="pill pill-rejected">Rejected</span>
+              <button class="btn btn-sm btn-outline" onclick="viewGuideApp(this)">View</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════ -->
+      <!--  ALL GUIDES TAB                      -->
+      <!-- ═══════════════════════════════════ -->
+      <div class="tab-panel" id="tab-guides">
+        <div class="page-header">
+          <div>
+            <div class="page-title">All Guides</div>
+            <div class="page-sub">All registered guides on the platform — verified and otherwise.</div>
+          </div>
+        </div>
+
+        <div class="filter-row">
+          <input class="search-input" type="text" placeholder="Search guides…"/>
+          <select style="border:1.5px solid var(--border);border-radius:20px;padding:7px 14px;font-family:'Radio Canada Big',sans-serif;font-size:13px;color:var(--mid);background:var(--white);outline:none;cursor:pointer;">
+            <option>All states</option>
+            <option>Taraba</option>
+            <option>Ondo</option>
+            <option>Cross River</option>
+            <option>Adamawa</option>
+          </select>
+        </div>
+
+        <div class="card" style="padding:0;overflow:hidden;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Guide</th>
+                <th>State</th>
+                <th>Expertise</th>
+                <th>Rate/day</th>
+                <th>Bookings</th>
+                <th>Rating</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div style="display:flex;align-items:center;gap:10px;"><div class="guide-av" style="width:34px;height:34px;font-size:12px;">EO</div><div><div style="font-weight:600;">Emeka Okafor</div><div style="font-size:12px;color:var(--muted);">emeka.okafor@gmail.com</div></div></div></td>
+                <td>Taraba</td>
+                <td><span class="chip">Hiking</span> <span class="chip">Camping</span></td>
+                <td>₦25,000</td>
+                <td>24</td>
+                <td>4.8</td>
+                <td><span class="pill pill-pending">Pending</span></td>
+                <td><div class="actions"><button class="btn btn-sm btn-green" onclick="verifyGuideRow(this)"> Verify</button><button class="btn btn-sm btn-danger" onclick="removeGuideRow(this)">Remove</button></div></td>
+              </tr>
+              <tr>
+                <td><div style="display:flex;align-items:center;gap:10px;"><div class="guide-av" style="width:34px;height:34px;font-size:12px;background:var(--green-pale);color:var(--green);">CE</div><div><div style="font-weight:600;">Chukwuemeka Eze</div><div style="font-size:12px;color:var(--muted);">chukwu.eze@email.com</div></div></div></td>
+                <td>Anambra</td>
+                <td><span class="chip">Hiking</span> <span class="chip">Nature</span></td>
+                <td>₦20,000</td>
+                <td>18</td>
+                <td>4.6</td>
+                <td><span class="pill pill-verified">Verified</span></td>
+                <td><div class="actions"><button class="btn btn-sm btn-outline">View</button><button class="btn btn-sm btn-danger" onclick="removeGuideRow(this)">Remove</button></div></td>
+              </tr>
+              <tr>
+                <td><div style="display:flex;align-items:center;gap:10px;"><div class="guide-av" style="width:34px;height:34px;font-size:12px;background:var(--green-pale);color:var(--green);">FA</div><div><div style="font-weight:600;">Fatima Aliyu</div><div style="font-size:12px;color:var(--muted);">fatima.aliyu@email.com</div></div></div></td>
+                <td>Adamawa</td>
+                <td><span class="chip">Kayaking</span> <span class="chip">Photography</span></td>
+                <td>₦15,000</td>
+                <td>11</td>
+                <td>4.7</td>
+                <td><span class="pill pill-verified">Verified</span></td>
+                <td><div class="actions"><button class="btn btn-sm btn-outline">View</button><button class="btn btn-sm btn-danger" onclick="removeGuideRow(this)">Remove</button></div></td>
+              </tr>
+              <tr>
+                <td><div style="display:flex;align-items:center;gap:10px;"><div class="guide-av" style="width:34px;height:34px;font-size:12px;">SO</div><div><div style="font-weight:600;">Samuel Obi</div><div style="font-size:12px;color:var(--muted);">samuel.obi@email.com</div></div></div></td>
+                <td>Ondo</td>
+                <td><span class="chip">Hiking</span> <span class="chip">Camping</span></td>
+                <td>₦30,000</td>
+                <td>32</td>
+                <td>4.9</td>
+                <td><span class="pill pill-verified">Verified</span></td>
+                <td><div class="actions"><button class="btn btn-sm btn-outline">View</button><button class="btn btn-sm btn-danger" onclick="removeGuideRow(this)">Remove</button></div></td>
+              </tr>
+              <tr>
+                <td><div style="display:flex;align-items:center;gap:10px;"><div class="guide-av" style="width:34px;height:34px;font-size:12px;background:var(--danger-pale);color:var(--danger);">TB</div><div><div style="font-weight:600;">Tunde Badmus</div><div style="font-size:12px;color:var(--muted);">tunde.b@email.com</div></div></div></td>
+                <td>Lagos</td>
+                <td><span class="chip">Hiking</span></td>
+                <td>₦10,000</td>
+                <td>0</td>
+                <td>— </td>
+                <td><span class="pill pill-rejected">Rejected</span></td>
+                <td><div class="actions"><button class="btn btn-sm btn-outline">View</button></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════ -->
+      <!--  DESTINATIONS TAB                   -->
+      <!-- ═══════════════════════════════════ -->
+      <div class="tab-panel" id="tab-destinations">
+        <div class="page-header">
+          <div>
+            <div class="page-title">Destinations</div>
+            <div class="page-sub">Manage all trail and nature destinations listed on the platform.</div>
+          </div>
+          <button class="btn btn-green" onclick="openAddDestModal()">+ Add destination</button>
+        </div>
+
+        <div class="filter-row">
+          <button class="filter-btn active" onclick="filterDests('all',this)">All (7)</button>
+          <button class="filter-btn" onclick="filterDests('easy',this)">Easy</button>
+          <button class="filter-btn" onclick="filterDests('moderate',this)">Moderate</button>
+          <button class="filter-btn" onclick="filterDests('hard',this)">Hard</button>
+          <button class="filter-btn" onclick="filterDests('extreme',this)">Extreme</button>
+          <input class="search-input ml-auto" type="text" placeholder="Search destinations…" oninput="searchDests(this.value)"/>
+        </div>
+
+        <div class="dest-grid" id="destinations-grid">
+          <div class="dest-card" data-diff="extreme" data-name="Chappal Waddi Summit">
+            <div class="dest-card-img">Mountain</div>
+            <div class="dest-card-body">
+              <div class="dest-card-name">Chappal Waddi Summit</div>
+              <div class="dest-card-loc"> Taraba State</div>
+              <div class="dest-card-tags"><span class="pill pill-extreme">Extreme</span><span class="chip">Trekking</span><span class="chip">Camping</span></div>
+              <div class="dest-card-actions">
+                <button class="btn btn-sm btn-outline" onclick="openEditDestModal(this)"> Edit</button>
+                <button class="btn btn-sm btn-danger" onclick="confirmDeleteDest(this)"> Delete</button>
+              </div>
+            </div>
+          </div>
+          <div class="dest-card" data-diff="hard" data-name="Gashaka-Gumti Forest">
+            <div class="dest-card-img">Forest</div>
+            <div class="dest-card-body">
+              <div class="dest-card-name">Gashaka-Gumti Forest Trail</div>
+              <div class="dest-card-loc">Taraba / Adamawa</div>
+              <div class="dest-card-tags"><span class="pill pill-hard">Hard</span><span class="chip">Forest</span><span class="chip">Wildlife</span></div>
+              <div class="dest-card-actions">
+                <button class="btn btn-sm btn-outline" onclick="openEditDestModal(this)"> Edit</button>
+                <button class="btn btn-sm btn-danger" onclick="confirmDeleteDest(this)"> Delete</button>
+              </div>
+            </div>
+          </div>
+          <div class="dest-card" data-diff="moderate" data-name="Idanre Hills">
+            <div class="dest-card-img">Hills</div>
+            <div class="dest-card-body">
+              <div class="dest-card-name">Idanre Hills</div>
+              <div class="dest-card-loc">Ondo State</div>
+              <div class="dest-card-tags"><span class="pill pill-moderate">Moderate</span><span class="chip">Scenic</span><span class="chip">Cultural</span></div>
+              <div class="dest-card-actions">
+                <button class="btn btn-sm btn-outline" onclick="openEditDestModal(this)"> Edit</button>
+                <button class="btn btn-sm btn-danger" onclick="confirmDeleteDest(this)"> Delete</button>
+              </div>
+            </div>
+          </div>
+          <div class="dest-card" data-diff="easy" data-name="Erin Ijesha Waterfall">
+            <div class="dest-card-img">River</div>
+            <div class="dest-card-body">
+              <div class="dest-card-name">Erin Ijesha Waterfall</div>
+              <div class="dest-card-loc">Osun State</div>
+              <div class="dest-card-tags"><span class="pill pill-easy">Easy</span><span class="chip">Waterfall</span><span class="chip">Swimming</span></div>
+              <div class="dest-card-actions">
+                <button class="btn btn-sm btn-outline" onclick="openEditDestModal(this)"> Edit</button>
+                <button class="btn btn-sm btn-danger" onclick="confirmDeleteDest(this)"> Delete</button>
+              </div>
+            </div>
+          </div>
+          <div class="dest-card" data-diff="easy" data-name="Mambilla Plateau">
+            <div class="dest-card-img">Camp</div>
+            <div class="dest-card-body">
+              <div class="dest-card-name">Mambilla Plateau</div>
+              <div class="dest-card-loc"> Taraba State</div>
+              <div class="dest-card-tags"><span class="pill pill-easy">Easy</span><span class="chip">Scenic</span><span class="chip">Grassland</span></div>
+              <div class="dest-card-actions">
+                <button class="btn btn-sm btn-outline" onclick="openEditDestModal(this)"> Edit</button>
+                <button class="btn btn-sm btn-danger" onclick="confirmDeleteDest(this)"> Delete</button>
+              </div>
+            </div>
+          </div>
+          <div class="dest-card" data-diff="moderate" data-name="Ngel Nyaki Forest Reserve">
+            <div class="dest-card-img">Forest</div>
+            <div class="dest-card-body">
+              <div class="dest-card-name">Ngel Nyaki Forest Reserve</div>
+              <div class="dest-card-loc"> Taraba State</div>
+              <div class="dest-card-tags"><span class="pill pill-moderate">Moderate</span><span class="chip">Wildlife</span><span class="chip">Bird Watching</span></div>
+              <div class="dest-card-actions">
+                <button class="btn btn-sm btn-outline" onclick="openEditDestModal(this)"> Edit</button>
+                <button class="btn btn-sm btn-danger" onclick="confirmDeleteDest(this)"> Delete</button>
+              </div>
+            </div>
+          </div>
+          <div class="dest-card" data-diff="moderate" data-name="Kajuru Castle">
+            <div class="dest-card-img">Castle</div>
+            <div class="dest-card-body">
+              <div class="dest-card-name">Kajuru Castle</div>
+              <div class="dest-card-loc">Kaduna State</div>
+              <div class="dest-card-tags"><span class="pill pill-moderate">Moderate</span><span class="chip">Historical</span><span class="chip">Scenic</span></div>
+              <div class="dest-card-actions">
+                <button class="btn btn-sm btn-outline" onclick="openEditDestModal(this)"> Edit</button>
+                <button class="btn btn-sm btn-danger" onclick="confirmDeleteDest(this)"> Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════ -->
+      <!--  ALL BOOKINGS TAB                   -->
+      <!-- ═══════════════════════════════════ -->
+      <div class="tab-panel" id="tab-bookings">
+        <div class="page-header">
+          <div>
+            <div class="page-title">All Bookings</div>
+            <div class="page-sub">Platform-wide view of all traveler bookings.</div>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <select style="border:1.5px solid var(--border);border-radius:8px;padding:8px 14px;font-family:'Radio Canada Big',sans-serif;font-size:13px;color:var(--mid);background:var(--white);outline:none;cursor:pointer;">
+              <option>All time</option>
+              <option>Last 30 days</option>
+              <option>Last 7 days</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="filter-row">
+          <button class="filter-btn active" onclick="filterBookings('all',this)">All (7)</button>
+          <button class="filter-btn" onclick="filterBookings('pending',this)">Pending</button>
+          <button class="filter-btn" onclick="filterBookings('confirmed',this)">Confirmed</button>
+          <button class="filter-btn" onclick="filterBookings('completed',this)">Completed</button>
+          <button class="filter-btn" onclick="filterBookings('cancelled',this)">Cancelled</button>
+          <input class="search-input ml-auto" type="text" placeholder="Search traveler or destination…" oninput="searchBookings(this.value)"/>
+        </div>
+
+        <div class="card" style="padding:0;overflow:hidden;">
+          <table class="data-table" id="bookings-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Traveler</th>
+                <th>Destination</th>
+                <th>Guide</th>
+                <th>Date</th>
+                <th>Duration</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="bookings-tbody">
+              <tr data-status="confirmed">
+                <td style="color:var(--muted);font-size:12px;">#001</td>
+                <td><strong>Adaeze Nwosu</strong></td>
+                <td>Chappal Waddi Summit</td>
+                <td>Emeka Okafor</td>
+                <td>18 May 2025</td>
+                <td>3 days</td>
+                <td>₦75,000</td>
+                <td><span class="pill pill-confirmed">Confirmed</span></td>
+                <td><button class="btn btn-sm btn-outline">Details</button></td>
+              </tr>
+              <tr data-status="confirmed">
+                <td style="color:var(--muted);font-size:12px;">#002</td>
+                <td><strong>Kola Fashola</strong></td>
+                <td>Gashaka-Gumti Forest</td>
+                <td>Emeka Okafor</td>
+                <td>22 May 2025</td>
+                <td>1 day</td>
+                <td>₦25,000</td>
+                <td><span class="pill pill-confirmed">Confirmed</span></td>
+                <td><button class="btn btn-sm btn-outline">Details</button></td>
+              </tr>
+              <tr data-status="pending">
+                <td style="color:var(--muted);font-size:12px;">#003</td>
+                <td><strong>Seun Akinola</strong></td>
+                <td>Chappal Waddi Summit</td>
+                <td>Emeka Okafor</td>
+                <td>2 Jun 2025</td>
+                <td>4 days</td>
+                <td>₦100,000</td>
+                <td><span class="pill pill-pending">Pending</span></td>
+                <td><button class="btn btn-sm btn-outline">Details</button></td>
+              </tr>
+              <tr data-status="pending">
+                <td style="color:var(--muted);font-size:12px;">#004</td>
+                <td><strong>Yewande Balogun</strong></td>
+                <td>Mambilla Plateau</td>
+                <td>Emeka Okafor</td>
+                <td>5 Jun 2025</td>
+                <td>1 day</td>
+                <td>₦25,000</td>
+                <td><span class="pill pill-pending">Pending</span></td>
+                <td><button class="btn btn-sm btn-outline">Details</button></td>
+              </tr>
+              <tr data-status="completed">
+                <td style="color:var(--muted);font-size:12px;">#005</td>
+                <td><strong>Fatima Bello</strong></td>
+                <td>Ngel Nyaki Forest</td>
+                <td>Chukwuemeka Eze</td>
+                <td>3 May 2025</td>
+                <td>2 days</td>
+                <td>₦40,000</td>
+                <td><span class="pill pill-completed">Completed</span></td>
+                <td><button class="btn btn-sm btn-outline">Details</button></td>
+              </tr>
+              <tr data-status="completed">
+                <td style="color:var(--muted);font-size:12px;">#006</td>
+                <td><strong>Tolu Adeyemi</strong></td>
+                <td>Idanre Hills</td>
+                <td>Samuel Obi</td>
+                <td>28 Apr 2025</td>
+                <td>1 day</td>
+                <td>₦30,000</td>
+                <td><span class="pill pill-completed">Completed</span></td>
+                <td><button class="btn btn-sm btn-outline">Details</button></td>
+              </tr>
+              <tr data-status="cancelled">
+                <td style="color:var(--muted);font-size:12px;">#007</td>
+                <td><strong>Emeka Chukwu</strong></td>
+                <td>Mambilla Plateau</td>
+                <td>Emeka Okafor</td>
+                <td>12 Apr 2025</td>
+                <td>1 day</td>
+                <td>₦25,000</td>
+                <td><span class="pill pill-cancelled">Cancelled</span></td>
+                <td><button class="btn btn-sm btn-outline">Details</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════ -->
+      <!--  REVIEWS MODERATION TAB             -->
+      <!-- ═══════════════════════════════════ -->
+      <div class="tab-panel" id="tab-reviews">
+        <div class="page-header">
+          <div>
+            <div class="page-title">Review Moderation</div>
+            <div class="page-sub">Monitor and moderate traveler reviews across all destinations and guides.</div>
+          </div>
+        </div>
+
+        <div class="filter-row">
+          <button class="filter-btn active" onclick="filterReviews('all',this)">All (6)</button>
+          <button class="filter-btn" onclick="filterReviews('flagged',this)">Flagged (2)</button>
+          <button class="filter-btn" onclick="filterReviews('approved',this)">Approved (4)</button>
+          <input class="search-input ml-auto" type="text" placeholder="Search reviews…"/>
+        </div>
+
+        <div id="reviews-list">
+          <!-- FLAGGED 1 -->
+          <div class="review-mod-card" data-status="flagged">
+            <div class="review-mod-header">
+              <div class="reviewer-av">TB</div>
+              <div class="review-mod-meta">
+                <div class="review-mod-name">Tunde Adeyemi <span style="font-weight:400;color:var(--muted);font-size:12px;">reviewed</span> Chappal Waddi Summit</div>
+                <div class="review-mod-sub">Traveler review &nbsp;·&nbsp; 1 May 2025 &nbsp;·&nbsp; <span class="flag-reason">Auto-flagged: possible spam</span></div>
+              </div>
+              <div class="stars">
+                <span class="star"></span><span class="star"></span><span class="star empty"></span><span class="star empty"></span><span class="star empty"></span>
+              </div>
+            </div>
+            <div class="review-mod-body">Visit this place it is very good and amazing very amazing. Go there now. Amazing amazing best place ever amazing go now you should go.</div>
+            <div class="review-mod-actions">
+              <button class="btn btn-sm btn-green" onclick="approveReview(this)"> Approve</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteReview(this)"> Delete</button>
+              <span style="font-size:12px;color:var(--muted);margin-left:4px;">Flag reason: Repetitive/low-quality content</span>
+            </div>
+          </div>
+
+          <!-- FLAGGED 2 -->
+          <div class="review-mod-card" data-status="flagged">
+            <div class="review-mod-header">
+              <div class="reviewer-av">AK</div>
+              <div class="review-mod-meta">
+                <div class="review-mod-name">Amara Kalu <span style="font-weight:400;color:var(--muted);font-size:12px;">reviewed guide</span> Emeka Okafor</div>
+                <div class="review-mod-sub">Guide review &nbsp;·&nbsp; 29 Apr 2025 &nbsp;·&nbsp; <span class="flag-reason">Reported by guide</span></div>
+              </div>
+              <div class="stars">
+                <span class="star"></span><span class="star empty"></span><span class="star empty"></span><span class="star empty"></span><span class="star empty"></span>
+              </div>
+            </div>
+            <div class="review-mod-body">This guide is a complete scammer and took our money and didn't show up. Do not book this person, they are fraudulent thieves who will cheat you out of your money.</div>
+            <div class="review-mod-actions">
+              <button class="btn btn-sm btn-green" onclick="approveReview(this)"> Approve</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteReview(this)"> Delete</button>
+              <span style="font-size:12px;color:var(--muted);margin-left:4px;">Flag reason: Reported by reviewed party</span>
+            </div>
+          </div>
+
+          <!-- APPROVED -->
+          <div class="review-mod-card" data-status="approved">
+            <div class="review-mod-header">
+              <div class="reviewer-av green">AN</div>
+              <div class="review-mod-meta">
+                <div class="review-mod-name">Adaeze Nwosu <span style="font-weight:400;color:var(--muted);font-size:12px;">reviewed guide</span> Emeka Okafor</div>
+                <div class="review-mod-sub">Guide review &nbsp;·&nbsp; 3 May 2025</div>
+              </div>
+              <div class="stars">
+                <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
+              </div>
+            </div>
+            <div class="review-mod-body">Emeka is an exceptional guide. He knew every path, every safe camp spot, and kept our group safe through serious elevation. His knowledge of local flora was incredible.</div>
+            <div class="review-mod-actions">
+              <span class="pill pill-approved" style="margin-right:6px;"> Approved</span>
+              <button class="btn btn-sm btn-danger" onclick="deleteReview(this)"> Delete</button>
+            </div>
+          </div>
+
+          <div class="review-mod-card" data-status="approved">
+            <div class="review-mod-header">
+              <div class="reviewer-av green">KF</div>
+              <div class="review-mod-meta">
+                <div class="review-mod-name">Kola Fashola <span style="font-weight:400;color:var(--muted);font-size:12px;">reviewed</span> Gashaka-Gumti Forest</div>
+                <div class="review-mod-sub">Destination review &nbsp;·&nbsp; 22 Apr 2025</div>
+              </div>
+              <div class="stars">
+                <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
+              </div>
+            </div>
+            <div class="review-mod-body">I honestly didn't know Nigeria had places like this. Navigation in the dense forest sections was brilliant. Highly recommend for anyone who wants to experience Gashaka properly.</div>
+            <div class="review-mod-actions">
+              <span class="pill pill-approved" style="margin-right:6px;"> Approved</span>
+              <button class="btn btn-sm btn-danger" onclick="deleteReview(this)"> Delete</button>
+            </div>
+          </div>
+
+          <div class="review-mod-card" data-status="approved">
+            <div class="review-mod-header">
+              <div class="reviewer-av green">FB</div>
+              <div class="review-mod-meta">
+                <div class="review-mod-name">Fatima Bello <span style="font-weight:400;color:var(--muted);font-size:12px;">reviewed guide</span> Emeka Okafor</div>
+                <div class="review-mod-sub">Guide review &nbsp;·&nbsp; 5 Apr 2025</div>
+              </div>
+              <div class="stars">
+                <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star empty"></span>
+              </div>
+            </div>
+            <div class="review-mod-body">Great experience overall. Emeka is knowledgeable and patient with beginners. I'd suggest better communication on the packing list — we came underprepared for the cold at night.</div>
+            <div class="review-mod-actions">
+              <span class="pill pill-approved" style="margin-right:6px;"> Approved</span>
+              <button class="btn btn-sm btn-danger" onclick="deleteReview(this)"> Delete</button>
+            </div>
+          </div>
+
+          <div class="review-mod-card" data-status="approved">
+            <div class="review-mod-header">
+              <div class="reviewer-av green">TA</div>
+              <div class="review-mod-meta">
+                <div class="review-mod-name">Tolu Adeyemi <span style="font-weight:400;color:var(--muted);font-size:12px;">reviewed</span> Idanre Hills</div>
+                <div class="review-mod-sub">Destination review &nbsp;·&nbsp; 28 Apr 2025</div>
+              </div>
+              <div class="stars">
+                <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
+              </div>
+            </div>
+            <div class="review-mod-body">Absolutely breathtaking. The 640 steps up are worth every single one. Arrived at sunrise and it was completely magical. Nigeria is so underrated — this needs to be a bucket list destination.</div>
+            <div class="review-mod-actions">
+              <span class="pill pill-approved" style="margin-right:6px;"> Approved</span>
+              <button class="btn btn-sm btn-danger" onclick="deleteReview(this)"> Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- ═══════════════════ MODALS ════════════════════ -->
+
+<!-- Guide Application Detail Modal -->
+<div class="modal-overlay" id="guide-detail-modal">
+  <div class="modal">
+    <div class="modal-title" id="gd-name">Emeka Okafor</div>
+    <div class="modal-sub" id="gd-meta">Taraba State · Applied 3 May 2025</div>
+    <div class="guide-detail-section">
+      <h4>Bio</h4>
+      <p id="gd-bio" style="font-size:14px;color:var(--mid);line-height:1.65;">Born and raised in Taraba State, I've spent 12 years guiding hikers across Chappal Waddi and the Gashaka-Gumti forests. I speak Hausa, English, and basic French.</p>
+    </div>
+    <div class="guide-detail-section">
+      <h4>Expertise</h4>
+      <div id="gd-expertise">
+        <span class="guide-detail-chip">Hiking & Trekking</span>
+        <span class="guide-detail-chip">Camping</span>
+        <span class="guide-detail-chip">Nature Walks</span>
+      </div>
+    </div>
+    <div class="guide-detail-section">
+      <h4>Languages</h4>
+      <div id="gd-languages">
+        <span class="guide-detail-chip">🇬🇧 English</span>
+        <span class="guide-detail-chip">🇳🇬 Hausa</span>
+        <span class="guide-detail-chip">🇫🇷 French (basic)</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:4px;">
+      <div style="background:var(--sand);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:4px;">Rate/day</div>
+        <div style="font-weight:600;color:var(--dark);">₦25,000</div>
+      </div>
+      <div style="background:var(--sand);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:4px;">Experience</div>
+        <div style="font-weight:600;color:var(--dark);">12 years</div>
+      </div>
+      <div style="background:var(--sand);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:4px;">Max group</div>
+        <div style="font-weight:600;color:var(--dark);">Up to 10</div>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeModal('guide-detail-modal')">Close</button>
+      <button class="btn btn-danger" onclick="closeModal('guide-detail-modal');showToast('Guide rejected.','warn')"> Reject</button>
+      <button class="btn btn-green" onclick="closeModal('guide-detail-modal');showToast('Guide verified and listed ')"> Verify guide</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Destination Modal -->
+<div class="modal-overlay" id="add-dest-modal">
+  <div class="modal">
+    <div class="modal-title">Add a new destination</div>
+    <div class="modal-sub">This destination will be visible to travelers once saved.</div>
+    <div class="form-group"><label>Destination name</label><input type="text" placeholder="e.g. Ikogosi Warm Springs"/></div>
+    <div class="form-row">
+      <div class="form-group"><label>State</label>
+        <select>
+          <option>Abuja (FCT)</option><option>Adamawa</option><option>Cross River</option>
+          <option>Ekiti</option><option>Imo</option><option>Kaduna</option><option>Kwara</option>
+          <option>Lagos</option><option>Ondo</option><option>Osun</option><option>Oyo</option><option>Taraba</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Difficulty</label>
+        <select>
+          <option>Easy</option><option>Moderate</option><option>Hard</option><option>Extreme</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group"><label>Activity type(s)</label><input type="text" placeholder="e.g. Hiking, Camping, Scenic"/></div>
+    <div class="form-group"><label>Description</label><textarea placeholder="What makes this place special What should travelers expect"></textarea></div>
+    <div class="form-group"><label>Safety notes</label><textarea style="min-height:60px;" placeholder="Any safety considerations travelers should know…"></textarea></div>
+    <div class="form-group"><label>Icon</label><input type="text" placeholder="Mountain" maxlength="20"/></div>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeModal('add-dest-modal')">Cancel</button>
+      <button class="btn btn-green" onclick="saveNewDest()">Save destination</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Destination Modal -->
+<div class="modal-overlay" id="edit-dest-modal">
+  <div class="modal">
+    <div class="modal-title">Edit destination</div>
+    <div class="modal-sub">Changes will be reflected immediately on the platform.</div>
+    <div class="form-group"><label>Destination name</label><input type="text" id="edit-dest-name"/></div>
+    <div class="form-row">
+      <div class="form-group"><label>State</label><input type="text" id="edit-dest-loc"/></div>
+      <div class="form-group"><label>Difficulty</label>
+        <select id="edit-dest-diff">
+          <option>Easy</option><option>Moderate</option><option>Hard</option><option>Extreme</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group"><label>Description</label><textarea id="edit-dest-desc" style="min-height:80px;"></textarea></div>
+    <div class="form-group"><label>Safety notes</label><textarea style="min-height:60px;" placeholder="Any safety considerations…"></textarea></div>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeModal('edit-dest-modal')">Cancel</button>
+      <button class="btn btn-green" onclick="saveEditDest()">Save changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Delete Modal -->
+<div class="modal-overlay" id="confirm-modal">
+  <div class="confirm-dialog">
+    <div class="confirm-icon" id="confirm-icon">!</div>
+    <div class="confirm-title" id="confirm-title">Delete destination</div>
+    <div class="confirm-body" id="confirm-body">This action cannot be undone. The destination will be removed from the platform and all associated guide listings.</div>
+    <div class="confirm-actions">
+      <button class="btn btn-outline" onclick="closeModal('confirm-modal')">Cancel</button>
+      <button class="btn btn-terra" id="confirm-action-btn" onclick="confirmAction()">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <div class="toast-icon" id="toast-icon"></div>
+  <span id="toast-msg">Done!</span>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════ */
+/*  AUTH                                          */
+/* ══════════════════════════════════════════════ */
+function doLogin() {
+  showScreen('app');
+  showToast('Welcome back, Admin ');
+  renderCharts();
+}
+function doLogout() {
+  showScreen('login');
+}
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+/* ══════════════════════════════════════════════ */
+/*  NAVIGATION                                    */
+/* ══════════════════════════════════════════════ */
+function switchTab(name, el) {
+  document.querySelectorAll('.tab-panel').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  if (el) el.classList.add('active');
+}
+
+/* ══════════════════════════════════════════════ */
+/*  CHARTS                                        */
+/* ══════════════════════════════════════════════ */
+function renderCharts() {
+  // Monthly bookings bar chart
+  const months = ['Nov','Dec','Jan','Feb','Mar','Apr','May'];
+  const values = [14, 19, 22, 28, 34, 41, 38];
+  const max = Math.max(...values);
+  const chart = document.getElementById('monthly-chart');
+  const labels = document.getElementById('monthly-labels');
+  chart.innerHTML = '';
+  labels.innerHTML = '';
+  months.forEach((m, i) => {
+    const pct = (values[i] / max) * 100;
+    const isLast = i === months.length - 1;
+    chart.innerHTML += `
+      <div class="bar-col">
+        <div class="bar-val" style="font-size:11px;">${values[i]}</div>
+        <div class="bar ${isLast  'bar-terra' : 'bar-green'}" style="height:${pct}%;min-height:8px;" title="${values[i]} bookings"></div>
+      </div>`;
+    labels.innerHTML += `<span style="font-size:11px;color:var(--muted);flex:1;text-align:center;">${m}</span>`;
+  });
+
+  // Guides by state
+  const states = ['Taraba','Ondo','Adamawa','Cross R.','Kaduna','Lagos'];
+  const guideCounts = [9, 6, 5, 4, 4, 3];
+  const maxG = Math.max(...guideCounts);
+  const gChart = document.getElementById('guide-state-chart');
+  const gLabels = document.getElementById('guide-state-labels');
+  gChart.innerHTML = '';
+  gLabels.innerHTML = '';
+  states.forEach((s, i) => {
+    const pct = (guideCounts[i] / maxG) * 100;
+    gChart.innerHTML += `
+      <div class="bar-col">
+        <div class="bar-val" style="font-size:11px;">${guideCounts[i]}</div>
+        <div class="bar bar-green" style="height:${pct}%;min-height:8px;"></div>
+      </div>`;
+    gLabels.innerHTML += `<span style="font-size:10px;color:var(--muted);flex:1;text-align:center;">${s}</span>`;
+  });
+}
+
+/* ══════════════════════════════════════════════ */
+/*  GUIDE APPLICATIONS                            */
+/* ══════════════════════════════════════════════ */
+function filterApps(status, btn) {
+  document.querySelectorAll('.filter-row .filter-btn').forEach(b => { if(b.closest('#tab-applications')) b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('#apps-list .guide-app-card').forEach(c => {
+    c.style.display = (status === 'all' || c.dataset.status === status)  'flex' : 'none';
+  });
+}
+function searchApps(q) {
+  const term = q.toLowerCase();
+  document.querySelectorAll('#apps-list .guide-app-card').forEach(c => {
+    c.style.display = c.dataset.name.toLowerCase().includes(term)  'flex' : 'none';
+  });
+}
+function viewGuideApp(btn) {
+  document.getElementById('guide-detail-modal').classList.add('open');
+}
+function verifyGuide(btn) {
+  const card = btn.closest('.guide-app-card');
+  card.dataset.status = 'verified';
+  const pill = card.querySelector('.pill');
+  pill.className = 'pill pill-verified'; pill.textContent = 'Verified';
+  const actDiv = card.querySelector('.guide-app-actions');
+  actDiv.innerHTML = `<span class="pill pill-verified">Verified</span>
+    <button class="btn btn-sm btn-outline" onclick="viewGuideApp(this)">View</button>
+    <button class="btn btn-sm btn-danger" onclick="revokeGuide(this)">Revoke</button>`;
+  updateAppBadge();
+  showToast('Guide verified and listed on the platform ');
+}
+function rejectGuide(btn) {
+  const card = btn.closest('.guide-app-card');
+  card.dataset.status = 'rejected';
+  const pill = card.querySelector('.pill');
+  pill.className = 'pill pill-rejected'; pill.textContent = 'Rejected';
+  card.style.opacity = '0.65';
+  const actDiv = card.querySelector('.guide-app-actions');
+  actDiv.innerHTML = `<span class="pill pill-rejected">Rejected</span>
+    <button class="btn btn-sm btn-outline" onclick="viewGuideApp(this)">View</button>`;
+  updateAppBadge();
+  showToast('Guide application rejected.', 'warn');
+}
+function revokeGuide(btn) {
+  const card = btn.closest('.guide-app-card');
+  card.dataset.status = 'rejected';
+  const pill = card.querySelector('.pill');
+  pill.className = 'pill pill-rejected'; pill.textContent = 'Rejected';
+  card.style.opacity = '0.65';
+  const actDiv = card.querySelector('.guide-app-actions');
+  actDiv.innerHTML = `<span class="pill pill-rejected">Revoked</span><button class="btn btn-sm btn-outline" onclick="viewGuideApp(this)">View</button>`;
+  showToast('Guide verification revoked.', 'warn');
+}
+function updateAppBadge() {
+  const pending = document.querySelectorAll('#apps-list .guide-app-card[data-status="pending"]').length;
+  const badge = document.getElementById('app-badge');
+  badge.textContent = pending;
+  badge.style.display = pending === 0  'none' : '';
+}
+
+/* ══════════════════════════════════════════════ */
+/*  ALL GUIDES TABLE                              */
+/* ══════════════════════════════════════════════ */
+function verifyGuideRow(btn) {
+  const row = btn.closest('tr');
+  row.querySelector('.pill').className = 'pill pill-verified';
+  row.querySelector('.pill').textContent = 'Verified';
+  btn.closest('td').innerHTML = `<div class="actions"><button class="btn btn-sm btn-outline">View</button><button class="btn btn-sm btn-danger" onclick="removeGuideRow(this)">Remove</button></div>`;
+  showToast('Guide verified ');
+}
+function removeGuideRow(btn) {
+  const row = btn.closest('tr');
+  row.style.transition = 'opacity 0.3s';
+  row.style.opacity = '0';
+  setTimeout(() => row.remove(), 300);
+  showToast('Guide removed from platform.', 'warn');
+}
+
+/* ══════════════════════════════════════════════ */
+/*  DESTINATIONS                                  */
+/* ══════════════════════════════════════════════ */
+function filterDests(diff, btn) {
+  document.querySelectorAll('#tab-destinations .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#destinations-grid .dest-card').forEach(c => {
+    c.style.display = (diff === 'all' || c.dataset.diff === diff)  'block' : 'none';
+  });
+}
+function searchDests(q) {
+  const term = q.toLowerCase();
+  document.querySelectorAll('#destinations-grid .dest-card').forEach(c => {
+    c.style.display = c.dataset.name.toLowerCase().includes(term)  'block' : 'none';
+  });
+}
+function openAddDestModal() {
+  document.getElementById('add-dest-modal').classList.add('open');
+}
+function openEditDestModal(btn) {
+  const card = btn.closest('.dest-card');
+  document.getElementById('edit-dest-name').value = card.dataset.name;
+  document.getElementById('edit-dest-loc').value = card.querySelector('.dest-card-loc').textContent.replace(' ','');
+  document.getElementById('edit-dest-desc').value = 'A breathtaking natural destination in ' + card.querySelector('.dest-card-loc').textContent.replace(' ','') + '.';
+  document.getElementById('edit-dest-modal').classList.add('open');
+}
+let _pendingDeleteCard = null;
+function confirmDeleteDest(btn) {
+  _pendingDeleteCard = btn.closest('.dest-card');
+  document.getElementById('confirm-title').textContent = 'Delete ' + _pendingDeleteCard.dataset.name + '';
+  document.getElementById('confirm-modal').classList.add('open');
+}
+function confirmAction() {
+  if (_pendingDeleteCard) {
+    _pendingDeleteCard.style.transition = 'all 0.3s';
+    _pendingDeleteCard.style.opacity = '0';
+    _pendingDeleteCard.style.transform = 'scale(0.9)';
+    setTimeout(() => { _pendingDeleteCard.remove(); _pendingDeleteCard = null; }, 300);
+  }
+  closeModal('confirm-modal');
+  showToast('Destination deleted.', 'warn');
+}
+function saveNewDest() {
+  closeModal('add-dest-modal');
+  showToast('New destination added to the platform ');
+}
+function saveEditDest() {
+  closeModal('edit-dest-modal');
+  showToast('Destination updated ');
+}
+
+/* ══════════════════════════════════════════════ */
+/*  BOOKINGS                                      */
+/* ══════════════════════════════════════════════ */
+function filterBookings(status, btn) {
+  document.querySelectorAll('#tab-bookings .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#bookings-tbody tr').forEach(r => {
+    r.style.display = (status === 'all' || r.dataset.status === status)  '' : 'none';
+  });
+}
+function searchBookings(q) {
+  const term = q.toLowerCase();
+  document.querySelectorAll('#bookings-tbody tr').forEach(r => {
+    r.style.display = r.textContent.toLowerCase().includes(term)  '' : 'none';
+  });
+}
+
+/* ══════════════════════════════════════════════ */
+/*  REVIEWS                                       */
+/* ══════════════════════════════════════════════ */
+function filterReviews(status, btn) {
+  document.querySelectorAll('#tab-reviews .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#reviews-list .review-mod-card').forEach(c => {
+    c.style.display = (status === 'all' || c.dataset.status === status)  'block' : 'none';
+  });
+}
+function approveReview(btn) {
+  const card = btn.closest('.review-mod-card');
+  card.dataset.status = 'approved';
+  const actDiv = card.querySelector('.review-mod-actions');
+  actDiv.innerHTML = `<span class="pill pill-approved" style="margin-right:6px;"> Approved</span>
+    <button class="btn btn-sm btn-danger" onclick="deleteReview(this)"> Delete</button>`;
+  const flagBadge = card.querySelector('.flag-reason');
+  if (flagBadge) flagBadge.remove();
+  updateReviewBadge();
+  showToast('Review approved and published ');
+}
+function deleteReview(btn) {
+  const card = btn.closest('.review-mod-card');
+  const wasFlagged = card.dataset.status === 'flagged';
+  card.style.transition = 'all 0.3s';
+  card.style.opacity = '0'; card.style.transform = 'translateY(-8px)';
+  setTimeout(() => card.remove(), 300);
+  if (wasFlagged) updateReviewBadge();
+  showToast('Review removed from platform.', 'warn');
+}
+function updateReviewBadge() {
+  const flagged = document.querySelectorAll('#reviews-list .review-mod-card[data-status="flagged"]').length;
+  const badge = document.getElementById('review-badge');
+  badge.textContent = flagged;
+  badge.style.display = flagged === 0  'none' : '';
+}
+
+/* ══════════════════════════════════════════════ */
+/*  MODALS                                        */
+/* ══════════════════════════════════════════════ */
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('open');
+  });
+});
+
+/* ══════════════════════════════════════════════ */
+/*  TOAST                                         */
+/* ══════════════════════════════════════════════ */
+function showToast(msg, type) {
+  const t = document.getElementById('toast');
+  const icon = document.getElementById('toast-icon');
+  document.getElementById('toast-msg').textContent = msg;
+  icon.className = 'toast-icon' + (type === 'warn'  ' warn' : '');
+  icon.textContent = type === 'warn'  '!' : '';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+</script>
+</body>
+</html>

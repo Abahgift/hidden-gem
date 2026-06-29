@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hidden Gems — All Guides</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="brand-name">Hidden <span>Gems</span></div>
+          <div class="brand-sub">Admin Dashboard</div>
+        </div>
+        <div class="sidebar-admin">
+          <div class="admin-avatar">SA</div>
+          <div>
+            <div class="admin-name">Super Admin</div>
+            <div class="admin-role">Platform Administrator</div>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <div class="nav-section">Pages</div>
+          <!-- <a class="nav-item" href="admin-dashboard.html">Overview</a> -->
+          <a class="nav-item" href="analytics.html">Analytics</a>
+          <a class="nav-item" href="applications.html">Applications</a>
+          <a class="nav-item active" href="all-guides.html">All guides</a>
+          <a class="nav-item" href="destinations.html">Destinations</a>
+          <a class="nav-item" href="all-bookings.html">All bookings</a>
+          <a class="nav-item" href="reviews.html">Reviews</a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <div class="page-header">
+          <div>
+            <div class="page-title">All guides</div>
+            <div class="page-sub">
+              Manage verified and pending guide profiles.
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-row">
+          <input
+            class="search-input"
+            type="text"
+            placeholder="Search guides"
+            data-search="guide"
+          />
+          <select
+            class="btn btn-outline"
+            style="padding: 7px 14px; border-radius: 20px"
+          >
+            <option>All states</option>
+            <option>Taraba</option>
+            <option>Ondo</option>
+            <option>Adamawa</option>
+          </select>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Guide</th>
+                <th>State</th>
+                <th>Expertise</th>
+                <th>Rate</th>
+                <th>Bookings</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-group="guide">
+                <td>
+                  <div style="display: flex; align-items: center; gap: 10px">
+                    <div
+                      class="guide-av"
+                      style="width: 34px; height: 34px; font-size: 12px"
+                    >
+                      EO
+                    </div>
+                    <div>
+                      <div style="font-weight: 600">Emeka Okafor</div>
+                      <div class="muted" style="font-size: 12px">
+                        emeka.okafor@email.com
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>Taraba</td>
+                <td>
+                  <span class="chip">Hiking</span>
+                  <span class="chip">Camping</span>
+                </td>
+                <td>₦25,000</td>
+                <td>24</td>
+                <td><span class="pill pill-pending">Pending</span></td>
+                <td>
+                  <div class="guide-app-actions">
+                    <button class="btn btn-sm btn-outline">View</button
+                    ><button class="btn btn-sm btn-green">Verify</button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-group="guide">
+                <td>
+                  <div style="display: flex; align-items: center; gap: 10px">
+                    <div
+                      class="guide-av"
+                      style="
+                        width: 34px;
+                        height: 34px;
+                        font-size: 12px;
+                        background: var(--green-pale);
+                        color: var(--green);
+                      "
+                    >
+                      CE
+                    </div>
+                    <div>
+                      <div style="font-weight: 600">Chukwuemeka Eze</div>
+                      <div class="muted" style="font-size: 12px">
+                        chukwu.eze@email.com
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>Anambra</td>
+                <td>
+                  <span class="chip">Hiking</span>
+                  <span class="chip">Nature</span>
+                </td>
+                <td>₦20,000</td>
+                <td>18</td>
+                <td><span class="pill pill-verified">Verified</span></td>
+                <td>
+                  <div class="guide-app-actions">
+                    <button class="btn btn-sm btn-outline">View</button
+                    ><button class="btn btn-sm btn-danger">Remove</button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-group="guide">
+                <td>
+                  <div style="display: flex; align-items: center; gap: 10px">
+                    <div
+                      class="guide-av"
+                      style="
+                        width: 34px;
+                        height: 34px;
+                        font-size: 12px;
+                        background: var(--green-pale);
+                        color: var(--green);
+                      "
+                    >
+                      FA
+                    </div>
+                    <div>
+                      <div style="font-weight: 600">Fatima Aliyu</div>
+                      <div class="muted" style="font-size: 12px">
+                        fatima.aliyu@email.com
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>Adamawa</td>
+                <td>
+                  <span class="chip">Kayaking</span>
+                  <span class="chip">Photography</span>
+                </td>
+                <td>₦15,000</td>
+                <td>11</td>
+                <td><span class="pill pill-verified">Verified</span></td>
+                <td>
+                  <div class="guide-app-actions">
+                    <button class="btn btn-sm btn-outline">View</button
+                    ><button class="btn btn-sm btn-danger">Remove</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

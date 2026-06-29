@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hidden Gems — Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="brand-name">Hidden <span>Gems</span></div>
+          <div class="brand-sub">Admin Dashboard</div>
+        </div>
+        <div class="sidebar-admin">
+          <div class="admin-avatar">SA</div>
+          <div>
+            <div class="admin-name">Super Admin</div>
+            <div class="admin-role">Platform Administrator</div>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <div class="nav-section">Pages</div>
+          <!-- <a class="nav-item" href="admin-dashboard.html">Overview</a> -->
+          <a class="nav-item active" href="analytics.html">Analytics</a>
+          <a class="nav-item" href="applications.html">Applications</a>
+          <a class="nav-item" href="all-guides.html">All guides</a>
+          <a class="nav-item" href="destinations.html">Destinations</a>
+          <a class="nav-item" href="all-bookings.html">All bookings</a>
+          <a class="nav-item" href="reviews.html">Reviews</a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <div class="page-header">
+          <div>
+            <div class="page-title">Platform analytics</div>
+            <div class="page-sub">
+              Track platform performance and management priorities.
+            </div>
+          </div>
+          <div class="btn btn-outline">Last 30 days</div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-label">Total destinations</div>
+            <div class="stat-val">18</div>
+            <div class="stat-sub">3 new this month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Verified guides</div>
+            <div class="stat-val">31</div>
+            <div class="stat-sub">6 added this month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Bookings</div>
+            <div class="stat-val">247</div>
+            <div class="stat-sub">38 more this month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Pending reviews</div>
+            <div class="stat-val" style="color: var(--terra)">4</div>
+            <div class="stat-sub warn">Needs moderation</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Pending applications</div>
+            <div class="stat-val" style="color: var(--terra)">4</div>
+            <div class="stat-sub warn">Awaiting review</div>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="chart-card">
+            <div class="chart-title">Monthly bookings</div>
+            <div class="chart-sub">
+              Confirmed bookings across the recent period
+            </div>
+            <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-val">14</div>
+                <div class="bar bar-green" style="height: 35%"></div>
+                <div class="bar-label">Nov</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-val">19</div>
+                <div class="bar bar-green" style="height: 46%"></div>
+                <div class="bar-label">Dec</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-val">22</div>
+                <div class="bar bar-green" style="height: 53%"></div>
+                <div class="bar-label">Jan</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-val">28</div>
+                <div class="bar bar-green" style="height: 68%"></div>
+                <div class="bar-label">Feb</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-val">34</div>
+                <div class="bar bar-terra" style="height: 83%"></div>
+                <div class="bar-label">Mar</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-val">41</div>
+                <div class="bar bar-terra" style="height: 100%"></div>
+                <div class="bar-label">Apr</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-val">38</div>
+                <div class="bar bar-green" style="height: 92%"></div>
+                <div class="bar-label">May</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-title">Top destinations</div>
+            <div class="chart-sub">Most requested experiences by travelers</div>
+            <div
+              class="card"
+              style="padding: 0; border: none; box-shadow: none"
+            >
+              <div
+                class="top-list-item"
+                style="
+                  padding: 10px 0;
+                  border-bottom: 1px solid var(--border);
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                "
+              >
+                <div
+                  class="top-rank gold"
+                  style="
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    background: #fef3c7;
+                    color: #92400e;
+                    display: grid;
+                    place-items: center;
+                    font-size: 11px;
+                    font-weight: 700;
+                  "
+                >
+                  1
+                </div>
+                <div class="flex-grow-1">Chappal Waddi Summit</div>
+                <div class="text-muted">68</div>
+              </div>
+              <div
+                class="top-list-item"
+                style="
+                  padding: 10px 0;
+                  border-bottom: 1px solid var(--border);
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                "
+              >
+                <div
+                  class="top-rank silver"
+                  style="
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    background: #f1f5f9;
+                    color: #475569;
+                    display: grid;
+                    place-items: center;
+                    font-size: 11px;
+                    font-weight: 700;
+                  "
+                >
+                  2
+                </div>
+                <div class="flex-grow-1">Idanre Hills</div>
+                <div class="text-muted">49</div>
+              </div>
+              <div
+                class="top-list-item"
+                style="
+                  padding: 10px 0;
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                "
+              >
+                <div
+                  class="top-rank bronze"
+                  style="
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    background: var(--terra-pale);
+                    color: var(--terra);
+                    display: grid;
+                    place-items: center;
+                    font-size: 11px;
+                    font-weight: 700;
+                  "
+                >
+                  3
+                </div>
+                <div class="flex-grow-1">Gashaka-Gumti Forest</div>
+                <div class="text-muted">39</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Recent platform activity</div>
+          <div
+            class="review-card"
+            style="padding: 0; box-shadow: none; border: none"
+          >
+            <div class="review-header">
+              <div class="reviewer-av green">AN</div>
+              <div class="review-meta">
+                <div class="review-name">
+                  Adaeze Nwosu booked Chappal Waddi Summit
+                </div>
+                <div class="review-sub">2 minutes ago</div>
+              </div>
+              <span class="pill pill-confirmed">Confirmed</span>
+            </div>
+            <div class="review-header">
+              <div class="reviewer-av">AI</div>
+              <div class="review-meta">
+                <div class="review-name">
+                  Afolabi Idowu submitted a guide application
+                </div>
+                <div class="review-sub">14 minutes ago</div>
+              </div>
+              <span class="pill pill-pending">Pending</span>
+            </div>
+            <div class="review-header">
+              <div class="reviewer-av">TR</div>
+              <div class="review-meta">
+                <div class="review-name">A new review needs moderation</div>
+                <div class="review-sub">1 hour ago</div>
+              </div>
+              <span class="pill pill-flagged">Flagged</span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>
