@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .container-fluid {
   padding: 0 !important;
   margin: 0 !important;

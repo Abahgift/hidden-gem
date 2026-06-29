@@ -5,9 +5,9 @@
        ============================================ -->
   <head>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="static/traveler/css/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='traveler/css/bootstrap/css/bootstrap.css') }}" />
     <!-- Style CSS -->
-    <link rel="stylesheet" href="static/traveler/css/homePage.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='traveler/css/homePage.css') }}" />
 
     <!-- Custom Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -40,9 +40,9 @@
           <nav class="navbar navbar-expand-lg bg-body-tertiary custom-navbar">
             <div class="nav_content_wrapper">
               <!-- Logo -->
-              <a class="navbar-brand" href="#"
+              <a class="navbar-brand" href="/"
                 ><img
-                  src="static/traveler/assets/hidden_gem_logo.svg"
+                  src="{{ url_for('static', filename='traveler/assets/hidden_gem_logo.svg') }}"
                   alt="Logo"
                   width="auto"
                   height="30"
@@ -67,28 +67,28 @@
                 <div class="menu_item_wrapper">
                   <ul class="navbar-nav">
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#"
+                      <a class="nav-link active" aria-current="page" href="#section_two"
                         >Explore</a
                       >
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Guides</a>
+                      <a class="nav-link" href="#guides_section">Guides</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">About</a>
+                      <a class="nav-link" href="#about_section">About</a>
                     </li>
                   </ul>
 
                   <!-- sign up button and Arrow Icon -->
                   <div class="navbar-cta">
-                    <a href="signUp.html"
+                    <a href="/signup/"
                       ><button type="button" class="btn btn-primary">
                         Get Started
                       </button></a
                     >
                     <img
                       class="border-10000"
-                      src="static/traveler/assets/arrow.svg"
+                      src="{{ url_for('static', filename='traveler/assets/arrow.svg') }}"
                       alt="Arrow Icon"
                       width="40px"
                       height="auto"
@@ -114,27 +114,27 @@
               <a href="#"
                 ><span class="pill my-1"
                   >Chappal Waddi, Taraba
-                  <img src="static/traveler/assets/arrow-black.svg" alt="arrow" /></span
+                  <img src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}" alt="arrow" /></span
               ></a>
               <a href="#"
                 ><span class="pill"
                   >Idanre Hills, Ondo
-                  <img src="static/traveler/assets/arrow-black.svg" alt="arrow" /></span
+                  <img src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}" alt="arrow" /></span
               ></a>
               <a href="#"
                 ><span class="pill"
                   >Erin Ijesha, Osun
-                  <img src="static/traveler/assets/arrow-black.svg" alt="arrow" /></span
+                  <img src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}" alt="arrow" /></span
               ></a>
               <a href="#"
                 ><span class="pill"
                   >Ogunta Lake, Imo
-                  <img src="static/traveler/assets/arrow-black.svg" alt="arrow" /></span
+                  <img src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}" alt="arrow" /></span
               ></a>
               <a href="#"
                 ><span class="pill"
                   >lots more
-                  <img src="static/traveler/assets/arrow-black.svg" alt="arrow" /></span
+                  <img src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}" alt="arrow" /></span
               ></a>
             </div>
           </div>
@@ -148,12 +148,12 @@
           <div class="hero-button-wrapper">
             <div>
               <!-- Button and Icon Alone -->
-              <a href="signUp.html"><button type="button" class="btn btn-primary hero-button col-10">
+              <a href="/signup/"><button type="button" class="btn btn-primary hero-button col-10">
                 Explore Now
               </button></a>
               <img
                 class="border-10000-hero col-1"
-                src="static/traveler/assets/arrow-black.svg"
+                src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}"
                 alt="Arrow Icon"
                 width="auto"
                 height="auto"
@@ -171,12 +171,12 @@
         <div class="col-md-12">
           <div class="divider"></div>
           <div class="title-and-icon">
-            <h2 class="section-two-title">
+            <h2 class="section-two-title" id="section_two">
               Nigeria has waterfalls, mountains, and ancient hills. <br />Nobody
               told you.
             </h2>
             <img
-              src="static/traveler/assets/section-2-logo.svg"
+              src="{{ url_for('static', filename='traveler/assets/section-2-logo.svg') }}"
               alt="hidden gems eye icon"
             />
           </div>
@@ -233,7 +233,7 @@
           <!-- Slide 1 - Obudu-->
           <div class="carousel-item active">
             <img
-              src="static/traveler/assets/images/obudu-ranch.webp"
+              src="{{ url_for('static', filename='traveler/assets/images/obudu-ranch.webp') }}"
               class="d-block w-100 carousel-bg-img"
               alt="Obudu Cattle Ranch"
             />
@@ -252,7 +252,7 @@
                   data-bs-slide="prev"
                   aria-label="Previous"
                 >
-                  <img src="static/traveler/assets/left-arrow.svg" alt="" />
+                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}" alt="" />
                 </button>
               </div>
 
@@ -268,7 +268,7 @@
                       <span class="pill">Resort</span>
                       <span class="pill">Cattle Ranch</span>
                     </div>
-                    <a href="signUp.html"><button class="btn btn-primary">Join next group</button></a>
+                    <a href="/signup/"><button class="btn btn-primary">Join next group</button></a>
                   </div>
                 </div>
               </div>
@@ -283,7 +283,7 @@
                   data-bs-slide="next"
                   aria-label="Next"
                 >
-                  <img src="static/traveler/assets/right-arrow.svg" alt="" />
+                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}" alt="" />
                 </button>
               </div>
             </div>
@@ -292,7 +292,7 @@
           <!-- Slide 2 - Chappal Waddi -->
           <div class="carousel-item">
             <img
-              src="static/traveler/assets/images/chappal_waddi_hidden_gem.webp"
+              src="{{ url_for('static', filename='traveler/assets/images/chappal_waddi_hidden_gem.webp') }}"
               class="d-block w-100 carousel-bg-img"
               alt="Chappal Waddi"
             />
@@ -307,7 +307,7 @@
                   data-bs-target="#hiddenGemsCarousel"
                   data-bs-slide="prev"
                 >
-                  <img src="static/traveler/assets/left-arrow.svg" alt="" />
+                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}" alt="" />
                 </button>
               </div>
               <div
@@ -321,7 +321,7 @@
                       <span class="pill">Hiking</span>
                       <span class="pill">High Altitude</span>
                     </div>
-                    <a href="signUp.html"><button class="btn btn-primary">Join next group</button></a>
+                    <a href="/signup/"><button class="btn btn-primary">Join next group</button></a>
                   </div>
                 </div>
               </div>
@@ -335,7 +335,7 @@
                   data-bs-target="#hiddenGemsCarousel"
                   data-bs-slide="next"
                 >
-                  <img src="static/traveler/assets/right-arrow.svg" alt="" />
+                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}" alt="" />
                 </button>
               </div>
             </div>
@@ -344,7 +344,7 @@
           <!-- Slide 3 - Erin Ijesha -->
           <div class="carousel-item">
             <img
-              src="static/traveler/assets/images/Erin Ijesha.webp"
+              src="{{ url_for('static', filename='traveler/assets/images/Erin Ijesha.webp') }}"
               class="d-block w-100 carousel-bg-img"
               alt="Slide 3"
             />
@@ -359,7 +359,7 @@
                   data-bs-target="#hiddenGemsCarousel"
                   data-bs-slide="prev"
                 >
-                  <img src="static/traveler/assets/left-arrow.svg" alt="" />
+                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}" alt="" />
                 </button>
               </div>
               <div
@@ -373,7 +373,7 @@
                       <span class="pill">Waterfalls</span>
                       <span class="pill">Scenic</span>
                     </div>
-                    <a href="signUp.html"><button class="btn btn-primary">Join next group</button></a>
+                    <a href="/signup/"><button class="btn btn-primary">Join next group</button></a>
                   </div>
                 </div>
               </div>
@@ -386,7 +386,7 @@
                   data-bs-target="#hiddenGemsCarousel"
                   data-bs-slide="next"
                 >
-                  <img src="static/traveler/assets/right-arrow.svg" alt="" />
+                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}" alt="" />
                 </button>
               </div>
             </div>
@@ -395,7 +395,7 @@
           <!-- Slide 4 - Gashaka-Gumti National Park -->
           <div class="carousel-item">
             <img
-              src="static/traveler/assets/images/Gashaka-Gumti.webp"
+              src="{{ url_for('static', filename='traveler/assets/images/Gashaka-Gumti.webp') }}"
               class="d-block w-100 carousel-bg-img"
               alt="Slide 3"
             />
@@ -410,7 +410,7 @@
                   data-bs-target="#hiddenGemsCarousel"
                   data-bs-slide="prev"
                 >
-                  <img src="static/traveler/assets/left-arrow.svg" alt="" />
+                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}" alt="" />
                 </button>
               </div>
               <div
@@ -424,7 +424,7 @@
                       <span class="pill">Wildlife</span>
                       <span class="pill">Park</span>
                     </div>
-                    <a href="signUp.html"><button class="btn btn-primary">Join next group</button></a>
+                    <a href="/signup/"><button class="btn btn-primary">Join next group</button></a>
                   </div>
                 </div>
               </div>
@@ -437,7 +437,7 @@
                   data-bs-target="#hiddenGemsCarousel"
                   data-bs-slide="next"
                 >
-                  <img src="static/traveler/assets/right-arrow.svg" alt="" />
+                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}" alt="" />
                 </button>
               </div>
             </div>
@@ -446,7 +446,7 @@
           <!-- Slide 5 - Oguta Lake -->
           <div class="carousel-item">
             <img
-              src="static/traveler/assets/images/Oguta Lake.webp"
+              src="{{ url_for('static', filename='traveler/assets/images/Oguta Lake.webp') }}"
               class="d-block w-100 carousel-bg-img"
               alt="Slide 3"
             />
@@ -461,7 +461,7 @@
                   data-bs-target="#hiddenGemsCarousel"
                   data-bs-slide="prev"
                 >
-                  <img src="static/traveler/assets/left-arrow.svg" alt="" />
+                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}" alt="" />
                 </button>
               </div>
               <div
@@ -475,7 +475,7 @@
                       <span class="pill">Lake</span>
                       <span class="pill">Scenic</span>
                     </div>
-                    <a href="signUp.html"><button class="btn btn-primary">Join next group</button></a>
+                    <a href="/signup/"><button class="btn btn-primary">Join next group</button></a>
                   </div>
                 </div>
               </div>
@@ -488,7 +488,7 @@
                   data-bs-target="#hiddenGemsCarousel"
                   data-bs-slide="next"
                 >
-                  <img src="static/traveler/assets/right-arrow.svg" alt="" />
+                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}" alt="" />
                 </button>
               </div>
             </div>
@@ -497,7 +497,7 @@
           <!-- Slide 6 - Idanre Hills -->
           <div class="carousel-item">
             <img
-              src="static/traveler/assets/images/Idanre Hills.webp"
+              src="{{ url_for('static', filename='traveler/assets/images/Idanre Hills.webp') }}"
               class="d-block w-100 carousel-bg-img"
               alt="Slide 3"
             />
@@ -512,7 +512,7 @@
                   data-bs-target="#hiddenGemsCarousel"
                   data-bs-slide="prev"
                 >
-                  <img src="static/traveler/assets/left-arrow.svg" alt="" />
+                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}" alt="" />
                 </button>
               </div>
               <div
@@ -526,7 +526,7 @@
                       <span class="pill">Hiking</span>
                       <span class="pill">High Altitude</span>
                     </div>
-                    <a href="signUp.html"><button class="btn btn-primary">Join next group</button></a>
+                    <a href="/signup/"><button class="btn btn-primary">Join next group</button></a>
                   </div>
                 </div>
               </div>
@@ -539,7 +539,7 @@
                   data-bs-target="#hiddenGemsCarousel"
                   data-bs-slide="next"
                 >
-                  <img src="static/traveler/assets/right-arrow.svg" alt="" />
+                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}" alt="" />
                 </button>
               </div>
             </div>
@@ -559,7 +559,7 @@
         </div>
       </div>
 
-      <div class="row offering-wrapper mb-5 pb-5">
+      <div class="row offering-wrapper mb-5 pb-5" id="about_section">
         <!-- Offering 1 -->
         <div class="col-md-4 offering-cols">
           <div class="offerring-heading">
@@ -575,7 +575,7 @@
 
           <div class="offering-img-wrapper">
             <img
-              src="static/traveler/assets/images/obudu_mini.webp"
+              src="{{ url_for('static', filename='traveler/assets/images/obudu_mini.webp') }}"
               alt=""
               class="offering-img"
             />
@@ -596,7 +596,7 @@
           </div>
           <div class="offering-img">
             <img
-              src="static/traveler/assets/images/guide.webp"
+              src="{{ url_for('static', filename='traveler/assets/images/guide.webp') }}"
               alt=""
               class="offering-img"
             />
@@ -616,7 +616,7 @@
           </div>
           <div class="offering-img">
             <img
-              src="static/traveler/assets/images/safety_info.png"
+              src="{{ url_for('static', filename='traveler/assets/images/safety_info.png') }}"
               alt=""
               class="offering-img"
             />
@@ -632,7 +632,7 @@
         <div class="col-md-3"></div>
 
         <!-- Guide Info -->
-        <div class="col-md-4">
+        <div class="col-md-4" id="guides_section">
           <div class="guide-section">
             <p class="hg-difficulty">FOR GUIDES</p>
             <h3 class="guide-title">
@@ -667,7 +667,7 @@
               </a>
               <img
                 class="border-10000-hero col-1"
-                src="static/traveler/assets/arrow-black.svg"
+                src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}"
                 alt="Arrow Icon"
                 width="auto"
                 height="auto"
@@ -714,7 +714,7 @@
       <div class="row section-five ms-auto align-items-center">
         <div class="col-md-5 col-12">
           <img
-            src="static/traveler/assets/images/chidima.webp"
+            src="{{ url_for('static', filename='traveler/assets/images/chidima.webp') }}"
             alt="Chidima"
             class="testimonial-image img-fluid"
           />
@@ -732,7 +732,7 @@
               Traveler from Lagos. Visited Ikogosi Warm Spring
             </p>
             <p class="testimonial-para">
-              <img src="static/traveler/assets/rating.svg" alt="rating-star" /> 4.8
+              <img src="{{ url_for('static', filename='traveler/assets/rating.svg') }}" alt="rating-star" /> 4.8
             </p>
           </div>
         </div>
@@ -758,7 +758,7 @@
          ============================================ -->
       <div class="row footer d-flex justify-content-between align-items-center px-5 py-3">
         <div class="col-md-4 mb-3">
-        <img src="static/traveler/assets/footer-logo.svg" alt="logo" width="120px" height="auto"/>
+        <img src="{{ url_for('static', filename='traveler/assets/footer-logo.svg') }}" alt="logo" width="120px" height="auto"/>
         </div>
 
         <div class="col-md-4 mx-auto my-auto text-center align-middle">
@@ -766,9 +766,9 @@
         </div>
         
         <div class="social-media-icons col-md-4 mt-3 d-flex justify-content-start justify-content-md-end">
-          <img src="static/traveler/assets/Instagram.svg" alt="IG">
-          <img src="static/traveler/assets/linkedin.svg" alt="LinkedIn">
-          <img src="static/traveler/assets/X.svg" alt="X">
+          <a href="#"><img src="{{ url_for('static', filename='traveler/assets/Instagram.svg') }}" alt="IG"></a>
+          <a href="#"><img src="{{ url_for('static', filename='traveler/assets/linkedin.svg') }}" alt="LinkedIn"></a>
+          <a href="#"><img src="{{ url_for('static', filename='traveler/assets/X.svg') }}" alt="X"></a>
         </div>
       </div>
 
@@ -776,8 +776,8 @@
     <!-- ============================================
          JAVASCRIPT SECTIONS
          ============================================ -->
-    <script src="static/traveler/css/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="static/traveler/js/jquery-3.7.1.min.js"></script>
-    <script src="static/traveler/js/homePage.js"></script>
+    <script src="{{ url_for('static', filename='traveler/css/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='traveler/js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='traveler/js/homePage.js') }}"></script>
   </body>
 </html>

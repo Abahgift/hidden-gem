@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+:root {
+  --white: #ffffff;
+  --white-grey: #f2f4f3;
+
+  --green-light-1: #e9f9d7;
+  --green-light-2: #d7f4b8;
+
+  --green-accent-1: #b4eb7a;
+  --green-accent-2: #b5eb79;
+
+  --green-primary: #64e47e;
+  --green-primary-dark: #1fcb60;
+
+  --green-dark-1: #042e1c;
+  --green-dark-2: #042f1c;
+  --green-dark-3: #032e1c;
+
+  --black: #000000;
+
+  --stroke: #d0ddd0;
+  --placeholder: #7c8e7b;
+  --button-inactive: #8ce4a9;
+  --text-grey: #3e4631;
+
+  --error: #b40101;
+
+  /* ----------- */
+  /* TYPOGRAPHY */
+  /* ----------- */
+  --bs-body-font-family: "Radio Canada Big", sans-serif;
+
+  /* BOOTSTRAP MODIFICATIONS */
+  --bs-primary: var(--sharp-green-2) !important;
+  --bs-primary-rgb: 31, 203, 96 !important;
+
+  /* BORDER RADII */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+  --border-radius-xl: 1rem;
+  --border-radius-pill: 625rem;
+}
+
+/* ---------------------------------------------------------- */
+/* STYLING STARTS HERE */
+/* ---------------------------------------------------------- */
+.bg-img {
+  background-image: url("../assets/signUp/bg-img.webp");
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+}
+
+.user-type {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.icon {
+  margin-left: 2rem;
+}
+
+.names-wrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--green-primary-dark);
+  color: var(--green-dark-3);
+  border: none;
+  border-radius: var(--border-radius-md);
+  transition: transform 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 1rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--green-primary);
+  color: var(--green-dark-3);
+  border: none;
+  transform: scale(1.01);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background-color: var(--green-light-2);
+  color: var(--green-dark-3);
+  border: none;
+  border-radius: var(--border-radius-md);
+  transition: transform 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+}
+
+.btn-secondary:hover {
+  background-color: var(--green-primary);
+  color: var(--green-dark-3);
+  border: none;
+  transform: scale(1.01);
+}
+
+.form-control {
+  padding: 0.5rem;
+}
+
+.form-check-input {
+  color: var(--green-primary-dark) !important;
+}
+
+.create-account {
+  padding-bottom: 2rem;
+  padding-bottom: 1rem;
+}
+
+.login {
+  color: var(--green-primary-dark);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-account,
+.create-account {
+  margin-top: 1rem;
+}

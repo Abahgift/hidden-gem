@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <!-- -------------------------------------------
+       HEAD SECTION
+       =------------------------------------------- -->
+  <head>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='traveler/css/bootstrap/css/bootstrap.css') }}"
+    />
+    <!-- Style CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='traveler/css/login.css') }}"
+    />
+
+    <!-- Custom Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Responsiveness -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Optimizations -->
+    <title>Hidden Gems | Login</title>
+    <meta
+      name="description"
+      content="Explore hidden travel destinations across Nigeria. Discover culture, nature, and unforgettable experiences."
+    />
+  </head>
+
+  <!-- --------------------------------------------
+       BODY SECTION
+       ------------------------------------------- -->
+  <body>
+    <div class="container-fluid min-vh-100">
+      <div
+        class="row bg-img d-flex justify-content-center align-items-center vh-100"
+      >
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <!-- header -->
+          <div class="header col-md-12">
+            <a href="/"
+              ><img
+                src="{{ url_for('static', filename='traveler/assets/hidden_gem_logo.svg') }}"
+                alt="logo"
+            /></a>
+            <a href="/signup/"
+              ><button type="button" class="btn btn-secondary">
+                Sign up, instead
+              </button></a
+            >
+          </div>
+
+          <!-- title -->
+          <div>
+            <h1>Login</h1>
+            <p>Login with your email address</p>
+          </div>
+
+          <!-- Login form -->
+          <form action="/dashboard/" method="POST">
+            <!-- email -->
+            <div class="mb-3">
+              <label for="Email" class="form-label">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="Email"
+                placeholder="john.doe@example.com"
+                aria-describedby="emailHelp"
+              />
+              <div id="emailHelp" class="form-text">
+                <p>We'll never share your email with anyone else.</p>
+              </div>
+            </div>
+
+            <!-- password -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="••••••••"
+              />
+            </div>
+
+            <!-- Login Button -->
+            <button type="submit" class="btn btn-primary col-12 create-account">
+              Login
+            </button>
+
+            <p class="login-account text-center">
+              Don't have an account?
+              <a href="/signup/"><span class="login">Sign Up</span></a>
+            </p>
+          </form>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+    <!-- ----------------------------------------------
+         JAVASCRIPT SECTIONS
+         ------------------------------------------- -->
+    <script src="{{ url_for('static', filename='traveler/css/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='traveler/js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='traveler/js/login.js') }}"></script>
+  </body>
+</html>
