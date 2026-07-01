@@ -5,9 +5,15 @@
        =------------------------------------------- -->
   <head>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap/css/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='traveler/css/bootstrap/css/bootstrap.css') }}"
+    />
     <!-- Style CSS -->
-    <link rel="stylesheet" href="../css/bookings_cancelled.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='traveler/css/bookings_cancelled.css') }}"
+    />
 
     <!-- Custom Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,7 +28,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- SEO Optimizations -->
-    <title>Hidden Gems | Dashboard</title>
+    <title>Hidden Gems | {{ title }}</title>
     <meta
       name="description"
       content="Explore hidden travel destinations across Nigeria. Discover culture, nature, and unforgettable experiences."
@@ -37,32 +43,41 @@
       <div class="row">
         <!--  HEADER IS HERE -->
         <div
-          class="db_header py-2 px-5 col-md-12 d-flex justify-space-between align-items-center"
+          class="db_header py-2 px-5 col-12 col-md-12 d-flex justify-space-between align-items-center"
         >
-          <div class="col-md-4">
-            <img src="/assets/hidden_gem_logo.svg" alt="hiddenGem logo" />
+          <!-- Logo -->
+          <div class="col-8 col-md-4">
+            <img
+              src="{{ url_for('static', filename='traveler/assets/hidden_gem_logo.svg') }}"
+              alt="hiddenGem logo"
+            />
           </div>
+
+          <!-- Caption -->
           <div
             class="col-md-4 text-center d-flex align-items-center justify-content-center"
           >
-            <p class="my-auto caption">Explore</p>
+            <p class="my-auto caption">My Bookings</p>
           </div>
+
+          <!-- Notification and Avatar -->
           <div
             class="col-md-4 d-flex justify-content-end align-items-center align-end"
           >
             <!--Notification -->
-            <div
-              class="notif_wrapper d-flex justify-content-center align-items-center me-2"
-            >
-              <img
-                src="/assets/dashboard/notif_icon.svg"
-                alt="notification icon"
-              />
-            </div>
+            <a href="/notifications/"
+              ><div
+                class="notif_wrapper d-none d-md-flex justify-content-center align-items-center me-2"
+              >
+                <img
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/notif_icon.svg') }}"
+                  alt="notification icon"
+                /></div
+            ></a>
             <!--Avatar Icon -->
             <div class="d-flex align-items-center">
               <img
-                src="/assets/dashboard/Avatar.svg"
+                src="{{ url_for('static', filename='traveler/assets/dashboard/Avatar.svg') }}"
                 alt="avatar icon"
                 width="32px"
                 height="32px"
@@ -73,52 +88,60 @@
           </div>
         </div>
 
-        <!-- NAVBAR -->
-        <div class="row mt-2 mb-4 d-flex justify-content-center">
+        <<!-- NAVBAR -->
+        <div class="row my-2 d-flex justify-content-center px-3 px-md-0">
           <div
-            class="col-md-6 db_navbar d-flex justify-content-between align-items-center rounded-2"
+            class="col-12 col-md-6 db_navbar d-flex justify-content-between align-items-center rounded-2"
           >
             <!-- NavBar Items -->
 
             <!-- Explore -->
-            <div class="navbar_item d-flex align-items-center">
-              <img
-                src="/assets/dashboard/explore_inactive.svg"
-                alt="explore-icon"
-                class="me-2"
-              />
-              <p class="nav_text my-auto">Explore</p>
-            </div>
+            <a href="/dashboard/"
+              ><div class="navbar_item d-flex align-items-center">
+                <img
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/explore_inactive.svg') }}"
+                  alt="explore-icon"
+                  class="me-2"
+                />
+                <p class="nav_text_active my-auto">Explore</p>
+              </div></a
+            >
 
             <!-- Guides -->
-            <div class="navbar_item d-flex align-items-center">
-              <img
-                src="/assets/dashboard/guides_inactive.svg"
-                alt="guides-icon"
-                class="me-2"
-              />
-              <p class="nav_text my-auto">Guides</p>
-            </div>
+            <a href="/guides/"
+              ><div class="navbar_item d-flex align-items-center">
+                <img
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/guides_inactive.svg') }}"
+                  alt="guides-icon"
+                  class="me-2"
+                />
+                <p class="nav_text_active my-auto">Guides</p>
+              </div></a
+            >
 
             <!-- Bookings -->
-            <div class="navbar_item_active d-flex align-items-center">
-              <img
-                src="/assets/dashboard/booking_active.svg"
-                alt="bookings-icon"
-                class="me-2"
-              />
-              <p class="nav_text_active my-auto">Bookings</p>
-            </div>
+            <a href="/bookings/"
+              ><div class="navbar_item_active d-flex align-items-center">
+                <img
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/booking_active.svg') }}"
+                  alt="bookings-icon"
+                  class="me-2"
+                />
+                <p class="nav_text_active my-auto">Bookings</p>
+              </div></a
+            >
 
-            <!-- Profile -->
-            <div class="navbar_item d-flex align-items-center">
-              <img
-                src="/assets/dashboard/profile_inactive.svg"
-                alt="myprofile-icon"
-                class="me-2"
-              />
-              <p class="nav_text my-auto">My Profile</p>
-            </div>
+            <!-- My Profile -->
+            <a href="/profile/"
+              ><div class="navbar_item d-flex align-items-center">
+                <img
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/profile_inactive.svg') }}"
+                  alt="myprofile-icon"
+                  class="me-2"
+                />
+                <p class="nav_text_active my-auto">My Profile</p>
+              </div></a
+            >
           </div>
         </div>
 
@@ -132,10 +155,18 @@
             </div>
           </div>
           <!-- filter pills -->
-          <div class="filter_pill_wrapper mb-3 px-3 px-md-5">
-            <span class="filter_pill">Upcoming (2)</span>
-            <span class="filter_pill">Past (3)</span>
-            <span class="filter_pill_active fw-medium">Cancelled (3)</span>
+          <div class="filter_pill_wrapper mb-5 px-3 px-md-5">
+            <a href="/bookings/"
+              ><span class="filter_pill">Upcoming (2)</span></a
+            >
+            <a href="/bookings/past/"
+              ><span class="filter_pill">Past (3)</span></a
+            >
+            <a href="/bookings/cancelled/"
+              ><span class="filter_pill_active fw-medium"
+                >Cancelled (3)</span
+              ></a
+            >
           </div>
         </div>
 
@@ -147,7 +178,7 @@
               <!-- image -->
               <div class="image_wrapper me-0 me-md-4 mb-3 mb-md-0">
                 <img
-                  src="/assets/dashboard/cancelled_image.jpg"
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/cancelled_image.jpg') }}"
                   alt="location image"
                 />
               </div>
@@ -177,7 +208,7 @@
               <!-- image -->
               <div class="image_wrapper me-0 me-md-4 mb-3 mb-md-0">
                 <img
-                  src="/assets/dashboard/cancelled_image_2.jpg"
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/cancelled_image_2.jpg') }}"
                   alt="location image"
                 />
               </div>
@@ -207,7 +238,7 @@
               <!-- image -->
               <div class="image_wrapper me-0 me-md-4 mb-3 mb-md-0">
                 <img
-                  src="/assets/dashboard/cancelled_image_3.jpg"
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/cancelled_image_3.jpg') }}"
                   alt="location image"
                 />
               </div>
