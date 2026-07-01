@@ -44,7 +44,7 @@ def guide_details():
 
 @app.route("/bookings/")
 def bookings():     # I should be able to return a booking empty state here if the user has no bookings
-    return render_template("traveler/bookings.html", title="Bookings") #attach actual dashboard-bookings page
+    return render_template("traveler/bookings_upcoming.html", title="Bookings") #attach actual dashboard-bookings page
 
 # ===============================
 # TEMP ROUTE FOR BOOKING EMPTY STATE (PLEASE DELETE LATER)
@@ -53,7 +53,18 @@ def bed():
     return render_template("traveler/bookings_empty_state.html", title="Bookings") 
 # ================================
 
+@app.route("/bookings/past/")
+def past_bookings():  # New route for past bookings
+    return render_template("traveler/bookings_past.html", title="Past Bookings")
 
+
+@app.route("/bookings/cancelled/")
+def cancelled_bookings():  # New route for past bookings
+    return render_template("traveler/bookings_cancelled.html", title="Cancelled Bookings")
+
+
+
+# PROFILE STARTS HERE
 @app.route("/profile/")
 def profile():
     return render_template("traveler/profile.html", title="Profile") #attach actual dashboard-profile page
