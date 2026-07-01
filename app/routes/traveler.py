@@ -70,6 +70,24 @@ def profile():
     return render_template("traveler/profile.html", title="Profile") #attach actual dashboard-profile page
 
 
+@app.route("/profile/saved-destinations/")
+def saved_destinations():
+    return render_template("traveler/profile_saved_destinations.html", title="Saved Destinations")
+
+
+@app.route("/profile/preference/")
+def preference():
+    return render_template("traveler/profile_preference.html", title="Preference")
+
+
+@app.route("/profile/recent-activity/")
+def recent_activity():
+    return render_template("traveler/profile_recent_activity.html", title="Recent Activity")
+
+# PROFILE ENDS HERE
+# ===============================
+
+
 @app.route("/notifications/")
 def notifications():
     return render_template("traveler/notification.html", title="Notifications") #attach actual notification page
