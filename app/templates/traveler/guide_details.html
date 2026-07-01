@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+  <!-- -------------------------------------------
+       HEAD SECTION
+       =------------------------------------------- -->
+  <head>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='traveler/css/bootstrap/css/bootstrap.css') }}"
+    />
+    <!-- Style CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='traveler/css/guide_details.css') }}"
+    />
+
+    <!-- Custom Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Responsiveness -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Optimizations -->
+    <title>Hidden Gems | {{ title }}</title>
+    <meta
+      name="description"
+      content="Explore hidden travel destinations across Nigeria. Discover culture, nature, and unforgettable experiences."
+    />
+  </head>
+
+  <!-- --------------------------------------------
+       BODY SECTION
+       ------------------------------------------- -->
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <!--  HEADER IS HERE -->
+        <div
+          class="db_header py-2 px-5 col-12 col-md-12 d-flex justify-space-between align-items-center"
+        >
+          <!-- Logo -->
+          <div class="col-8 col-md-4">
+            <img
+              src="{{ url_for('static', filename='traveler/assets/hidden_gem_logo.svg') }}"
+              alt="hiddenGem logo"
+            />
+          </div>
+
+          <!-- Caption -->
+          <div
+            class="col-md-4 text-center d-flex align-items-center justify-content-center"
+          >
+            <p class="my-auto caption">
+              Guides / <span class="name_of_guide">Aliyu Jibrin</span>
+            </p>
+          </div>
+
+          <!-- Notification and Avatar -->
+          <div
+            class="col-md-4 d-flex justify-content-end align-items-center align-end"
+          >
+            <!--Notification -->
+            <a href="/notifications/"
+              ><div
+                class="notif_wrapper d-none d-md-flex justify-content-center align-items-center me-2"
+              >
+                <img
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/notif_icon.svg') }}"
+                  alt="notification icon"
+                /></div
+            ></a>
+            <!--Avatar Icon -->
+            <div class="d-flex align-items-center">
+              <img
+                src="{{ url_for('static', filename='traveler/assets/dashboard/Avatar.svg') }}"
+                alt="avatar icon"
+                width="32px"
+                height="32px"
+                class="me-1"
+              />
+            </div>
+            <p class="username my-auto">GiftOfGod</p>
+          </div>
+        </div>
+
+        <!-- NAVBAR -->
+        <div class="row my-2 d-flex justify-content-center px-3 px-md-0">
+          <div
+            class="col-12 col-md-6 db_navbar d-flex justify-content-between align-items-center rounded-2"
+          >
+            <!-- NavBar Items -->
+
+            <!-- Explore -->
+            <a href="/dashboard/"
+              ><div class="navbar_item d-flex align-items-center">
+                <img
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/explore_inactive.svg') }}"
+                  alt="explore-icon"
+                  class="me-2"
+                />
+                <p class="nav_text_active my-auto">Explore</p>
+              </div></a
+            >
+
+            <!-- Guides -->
+            <a href="/guides/"
+              ><div class="navbar_item_active d-flex align-items-center">
+                <img
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/guide_active.svg') }}"
+                  alt="guides-icon"
+                  class="me-2"
+                />
+                <p class="nav_text_active my-auto">Guides</p>
+              </div></a
+            >
+
+            <!-- Bookings -->
+            <a href="/bookings/"
+              ><div class="navbar_item d-flex align-items-center">
+                <img
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/bookings_inactive.svg') }}"
+                  alt="bookings-icon"
+                  class="me-2"
+                />
+                <p class="nav_text_active my-auto">Bookings</p>
+              </div></a
+            >
+
+            <!-- My Profile -->
+            <a href="/profile/"
+              ><div class="navbar_item d-flex align-items-center">
+                <img
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/profile_inactive.svg') }}"
+                  alt="myprofile-icon"
+                  class="me-2"
+                />
+                <p class="nav_text_active my-auto">My Profile</p>
+              </div></a
+            >
+          </div>
+        </div>
+
+        <!-- MAIN CONTENT - GUIDE DETAILS -->
+        <!-- Back Arrow-->
+        <div class="row">
+          <div class="col-md-12 go_back px-5 mb-3 d-flex align-items-center">
+            <img
+              src="{{ url_for('static', filename='traveler/assets/dashboard/back-arrow.svg') }}"
+              alt="Back-arrow"
+              class="arrow_wrapper me-2"
+            />
+            <p class="my-auto">Back to Guides</p>
+          </div>
+        </div>
+        <!-- Details -->
+        <div class="row px-3 px-md-5">
+          <div
+            class="col-12 d-flex flex-column flex-lg-row align-items-start justify-content-between gap-4 wrapper"
+          >
+            <!--Left Sidebar for Guides Details Summary-->
+            <div class="col-12 col-lg-4 rounded-3 mb-5">
+              <div class="side p-4 rounded-3">
+                <!-- Upper Details wrapper -->
+                <div class="wrapper d-flex align-items-start mb-4">
+                  <img
+                    src="{{ url_for('static', filename='traveler/assets/dashboard/Avatars_reviews.svg') }}"
+                    alt="guide-avatar"
+                    class="me-4 col-2"
+                  />
+                  <div class="about_only col-9">
+                    <h3 class="">Aliyi Jibrin</h3>
+                    <p class="subtext mb-2">
+                      Mountain trek specialist · Taraba State
+                    </p>
+                    <div class="metrics_wrapper d-flex justify-content-between">
+                      <h6 class="the_metric">4.9<br /><span>Rating</span></h6>
+                      <h6 class="the_metric">8<br /><span>Yrs exp.</span></h6>
+                      <h6 class="the_metric">127<br /><span>Trips</span></h6>
+                      <h6 class="the_metric">₦25k<br /><span>Per day</span></h6>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Language, Availability and Destinations -->
+                <div class="wrapper_2 rounded-3">
+                  <!-- Language -->
+                  <div class="language">
+                    <h6 class="mb-3">Languages</h6>
+                    <div class="languages_wrapper mb-5">
+                      <span class="filter_pill_active">English</span>
+                      <span class="filter_pill_active">Hausa</span>
+                      <span class="filter_pill_active">Fulfulde</span>
+                    </div>
+                  </div>
+
+                  <!-- Availability -->
+                  <div class="availablity">
+                    <h6 class="mb-3">Availability</h6>
+                    <div class="availability_wrapper mb-5">
+                      <span class="filter_pill_active">Mon - Fri</span>
+                      <span class="filter_pill_active">Weekends</span>
+                      <span class="filter_pill_active">Holidays</span>
+                    </div>
+                  </div>
+
+                  <!-- Destinations Covered -->
+                  <div class="destinations">
+                    <h6 class="mb-3">Destinations Covered</h6>
+                    <div class="each_destination mb-2">
+                      <h6>Chappal Waddi</h6>
+                      <p class="subtext m-0 p-0">Taraba State</p>
+                    </div>
+                    <div class="each_destination">
+                      <h6>Gashaka-Gumti</h6>
+                      <p class="subtext m-0 p-0">Taraba State</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Button -->
+                <div class="button_wrapper mt-4">
+                  <button class="col-12 btn btn-primary">
+                    Book Aliyu · ₦25,000/day
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!--Main div for guide details-->
+            <div class="col-12 col-lg-7 main">
+              <!-- About Guide -->
+              <div class="row d-flex justify-content-center">
+                <!-- About destination -->
+                <div class="row">
+                  <div class="about_guide col-md-12 mb-4 p-4 rounded-3">
+                    <h5>About Aliyu</h5>
+                    <p class="subtext">
+                      Chappal Waddi — meaning "Mountain of Death" in Fulani — is
+                      Nigeria's highest peak at 2,419 metres. Located in Taraba
+                      State near the Cameroon border, within the Gashaka-Gumti
+                      National Park. The summit offers sweeping panoramic views
+                      of the Cameroon Highlands and the valley below. Rarely
+                      visited, almost never photographed. A true hidden gem.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- recent reviews -->
+                <div class="row">
+                  <div class="col-md-12 reviews mt-4">
+                    <h5>Recent reviews (42)</h5>
+                    <div class="row reviews_wrapper g-3">
+                      <div class="each_review col-12 col-lg-6 mb-2">
+                        <div
+                          class="col-12 name-image-date mb-3 d-flex justify-content-between"
+                        >
+                          <!-- name and image -->
+                          <div
+                            class="col-auto name-image d-flex align-items-start"
+                          >
+                            <img
+                              src="{{ url_for('static', filename='traveler/assets/dashboard/Avatars_reviews.svg') }}"
+                              alt="avatar"
+                              class="me-3"
+                              width="56px"
+                              height="56px"
+                            />
+
+                            <!-- name only -->
+                            <div class="name_only">
+                              <h6 class="mb-1">Tunde Nwachukwu</h6>
+                              <p>
+                                <span
+                                  ><img
+                                    src="{{ url_for('static', filename='traveler/assets/dashboard/rating_icon.svg') }}"
+                                    alt="rating-icon"
+                                  />4.9 (42)</span
+                                >
+                              </p>
+                            </div>
+                          </div>
+
+                          <!-- date only -->
+                          <div class="col-auto date_only">
+                            <p class="date">Mar 2026</p>
+                          </div>
+                        </div>
+
+                        <!-- review text -->
+                        <div class="review_text">
+                          <p class="subtext_review">
+                            Life-changing. I had no idea Nigeria had a mountain
+                            like this. The view from the top is unlike anything
+                            in West Africa.
+                          </p>
+                        </div>
+                      </div>
+
+                      <!-- Review 2 starts here -->
+                      <div class="each_review col-12 col-lg-6 mb-2">
+                        <div
+                          class="col-12 name-image-date mb-3 d-flex justify-content-between"
+                        >
+                          <!-- name and image -->
+                          <div
+                            class="col-auto name-image d-flex align-items-start"
+                          >
+                            <img
+                              src="{{ url_for('static', filename='traveler/assets/dashboard/Avatars_reviews.svg') }}"
+                              alt="avatar"
+                              class="me-3"
+                              width="56px"
+                              height="56px"
+                            />
+
+                            <!-- name only -->
+                            <div class="name_only">
+                              <h6 class="mb-1">Tunde Nwachukwu</h6>
+                              <p>
+                                <span
+                                  ><img
+                                    src="{{ url_for('static', filename='traveler/assets/dashboard/rating_icon.svg') }}"
+                                    alt="rating-icon"
+                                  />4.9 (42)</span
+                                >
+                              </p>
+                            </div>
+                          </div>
+
+                          <!-- date only -->
+                          <div class="col-auto date_only">
+                            <p class="date">Mar 2026</p>
+                          </div>
+                        </div>
+
+                        <!-- review text -->
+                        <div class="review_text">
+                          <p class="subtext_review">
+                            Life-changing. I had no idea Nigeria had a mountain
+                            like this. The view from the top is unlike anything
+                            in West Africa.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row reviews_wrapper g-3">
+                      <div class="each_review col-12 col-lg-6">
+                        <div
+                          class="col-12 name-image-date mb-3 d-flex justify-content-between"
+                        >
+                          <!-- name and image -->
+                          <div
+                            class="col-auto name-image d-flex align-items-start"
+                          >
+                            <img
+                              src="{{ url_for('static', filename='traveler/assets/dashboard/Avatars_reviews.svg') }}"
+                              alt="avatar"
+                              class="me-3"
+                              width="56px"
+                              height="56px"
+                            />
+
+                            <!-- name only -->
+                            <div class="name_only">
+                              <h6 class="mb-1">Tunde Nwachukwu</h6>
+                              <p>
+                                <span
+                                  ><img
+                                    src="{{ url_for('static', filename='traveler/assets/dashboard/rating_icon.svg') }}"
+                                    alt="rating-icon"
+                                  />4.9 (42)</span
+                                >
+                              </p>
+                            </div>
+                          </div>
+
+                          <!-- date only -->
+                          <div class="col-auto date_only">
+                            <p class="date">Mar 2026</p>
+                          </div>
+                        </div>
+
+                        <!-- review text -->
+                        <div class="review_text">
+                          <p class="subtext_review">
+                            Life-changing. I had no idea Nigeria had a mountain
+                            like this. The view from the top is unlike anything
+                            in West Africa.
+                          </p>
+                        </div>
+                      </div>
+
+                      <!-- Review 2 starts here -->
+                      <div class="each_review col-12 col-lg-6">
+                        <div
+                          class="col-12 name-image-date mb-3 d-flex justify-content-between"
+                        >
+                          <!-- name and image -->
+                          <div
+                            class="col-auto name-image d-flex align-items-start"
+                          >
+                            <img
+                              src="{{ url_for('static', filename='traveler/assets/dashboard/Avatars_reviews.svg') }}"
+                              alt="avatar"
+                              class="me-3"
+                              width="56px"
+                              height="56px"
+                            />
+
+                            <!-- name only -->
+                            <div class="name_only">
+                              <h6 class="mb-1">Tunde Nwachukwu</h6>
+                              <p>
+                                <span
+                                  ><img
+                                    src="{{ url_for('static', filename='traveler/assets/dashboard/rating_icon.svg') }}"
+                                    alt="rating-icon"
+                                  />4.9 (42)</span
+                                >
+                              </p>
+                            </div>
+                          </div>
+
+                          <!-- date only -->
+                          <div class="col-auto date_only">
+                            <p class="date">Mar 2026</p>
+                          </div>
+                        </div>
+
+                        <!-- review text -->
+                        <div class="review_text">
+                          <p class="subtext_review">
+                            Life-changing. I had no idea Nigeria had a mountain
+                            like this. The view from the top is unlike anything
+                            in West Africa.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ----------------------------------------------
+         JAVASCRIPT SECTIONS
+         ------------------------------------------- -->
+    <script src="{{ url_for('static', filename='traveler/css/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='traveler/js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='traveler/js/dashboard.js') }}"></script>
+  </body>
+</html>

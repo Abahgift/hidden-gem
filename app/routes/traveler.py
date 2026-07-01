@@ -37,6 +37,10 @@ def destination():
 def guides():
     return render_template("traveler/guides.html", title="Guides") #attach actual dashboard-guides page
 
+@app.route("/guide-details/")
+def guide_details():
+    return render_template("traveler/guide_details.html", title="Guide Details")
+
 
 @app.route("/bookings/")
 def bookings():     # I should be able to return a booking empty state here if the user has no bookings
