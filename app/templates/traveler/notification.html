@@ -5,9 +5,15 @@
        =------------------------------------------- -->
   <head>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap/css/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='traveler/css/bootstrap/css/bootstrap.css') }}"
+    />
     <!-- Style CSS -->
-    <link rel="stylesheet" href="../css/notification.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='traveler/css/notification.css') }}"
+    />
 
     <!-- Custom Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,7 +28,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- SEO Optimizations -->
-    <title>Hidden Gems | Dashboard</title>
+    <title>Hidden Gems | {{ title }}</title>
     <meta
       name="description"
       content="Explore hidden travel destinations across Nigeria. Discover culture, nature, and unforgettable experiences."
@@ -37,32 +43,41 @@
       <div class="row">
         <!--  HEADER IS HERE -->
         <div
-          class="db_header py-2 px-5 col-md-12 d-flex justify-space-between align-items-center"
+          class="db_header py-2 px-5 col-12 col-md-12 d-flex justify-space-between align-items-center"
         >
-          <div class="col-md-4">
-            <img src="/assets/hidden_gem_logo.svg" alt="hiddenGem logo" />
+          <!-- Logo -->
+          <div class="col-8 col-md-4">
+            <img
+              src="{{ url_for('static', filename='traveler/assets/hidden_gem_logo.svg') }}"
+              alt="hiddenGem logo"
+            />
           </div>
+
+          <!-- Caption -->
           <div
             class="col-md-4 text-center d-flex align-items-center justify-content-center"
           >
-            <p class="my-auto caption">Explore</p>
+            <p class="my-auto caption">{{ title }}</p>
           </div>
+
+          <!-- Notification and Avatar -->
           <div
             class="col-md-4 d-flex justify-content-end align-items-center align-end"
           >
             <!--Notification -->
-            <div
-              class="notif_wrapper d-flex justify-content-center align-items-center me-2"
-            >
-              <img
-                src="/assets/dashboard/notif_icon.svg"
-                alt="notification icon"
-              />
-            </div>
+            <a href="/notifications/"
+              ><div
+                class="notif_wrapper d-none d-md-flex justify-content-center align-items-center me-2"
+              >
+                <img
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/notif_icon.svg') }}"
+                  alt="notification icon"
+                /></div
+            ></a>
             <!--Avatar Icon -->
             <div class="d-flex align-items-center">
               <img
-                src="/assets/dashboard/Avatar.svg"
+                src="{{ url_for('static', filename='traveler/assets/dashboard/Avatar.svg') }}"
                 alt="avatar icon"
                 width="32px"
                 height="32px"
@@ -91,7 +106,7 @@
               <!-- Each Notif Card -->
               <div class="each_card pt-3 pb-2 d-flex">
                 <img
-                  src="/assets/dashboard/booking_confirmation.svg"
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/booking_confirmation.svg') }}"
                   alt=""
                   class="icon me-3"
                 />
@@ -104,7 +119,7 @@
               <!-- Each Notif Card -->
               <div class="each_card pt-3 pb-2 d-flex">
                 <img
-                  src="/assets/dashboard/booking_confirmation.svg"
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/booking_confirmation.svg') }}"
                   alt=""
                   class="icon me-3"
                 />
@@ -117,7 +132,7 @@
               <!-- Each Notif Card -->
               <div class="each_card pt-3 pb-2 d-flex">
                 <img
-                  src="/assets/dashboard/booking_confirmation.svg"
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/booking_confirmation.svg') }}"
                   alt=""
                   class="icon me-3"
                 />
@@ -130,7 +145,7 @@
               <!-- Each Notif Card -->
               <div class="each_card pt-3 pb-2 d-flex">
                 <img
-                  src="/assets/dashboard/booking_confirmation.svg"
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/booking_confirmation.svg') }}"
                   alt=""
                   class="icon me-3"
                 />
@@ -143,7 +158,7 @@
               <!-- Each Notif Card -->
               <div class="each_card pt-3 pb-2 d-flex">
                 <img
-                  src="/assets/dashboard/booking_confirmation.svg"
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/booking_confirmation.svg') }}"
                   alt=""
                   class="icon me-3"
                 />
@@ -156,7 +171,7 @@
               <!-- Each Notif Card -->
               <div class="each_card pt-3 pb-2 d-flex">
                 <img
-                  src="/assets/dashboard/booking_confirmation.svg"
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/booking_confirmation.svg') }}"
                   alt=""
                   class="icon me-3"
                 />
@@ -173,8 +188,8 @@
     <!-- ----------------------------------------------
          JAVASCRIPT SECTIONS
          ------------------------------------------- -->
-    <script src="../css/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/jquery-3.7.1.min.js"></script>
-    <script src="../js/dashboard.js"></script>
+    <script src="{{ url_for('static', filename='traveler/css/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='traveler/js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='traveler/js/notification.js') }}"></script>
   </body>
 </html>

@@ -63,7 +63,7 @@ def cancelled_bookings():  # New route for past bookings
     return render_template("traveler/bookings_cancelled.html", title="Cancelled Bookings")
 
 
-
+# ===============================
 # PROFILE STARTS HERE
 @app.route("/profile/")
 def profile():
@@ -72,7 +72,7 @@ def profile():
 
 @app.route("/notifications/")
 def notifications():
-    return render_template("traveler/notifications.html", title="Notifications") #attach actual notification page
+    return render_template("traveler/notification.html", title="Notifications") #attach actual notification page
 
 
 @app.route("/filter/")
