@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <!-- -------------------------------------------
+       HEAD SECTION
+       =------------------------------------------- -->
+  <head>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='traveler/css/bootstrap/css/bootstrap.css') }}"
+    />
+    <!-- Style CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='traveler/css/booking_confirmation.css') }}"
+    />
+
+    <!-- Custom Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Responsiveness -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Optimizations -->
+    <title>Hidden Gems | Book a Guide</title>
+    <meta
+      name="description"
+      content="Explore hidden travel destinations across Nigeria. Discover culture, nature, and unforgettable experiences."
+    />
+  </head>
+
+  <!-- --------------------------------------------
+       BODY SECTION
+       ------------------------------------------- -->
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <!--  HEADER IS HERE -->
+        <div
+          class="db_header py-2 px-5 col-12 col-md-12 d-flex justify-space-between align-items-center"
+        >
+          <!-- Logo -->
+          <div class="col-8 col-md-4">
+            <img
+              src="{{ url_for('static', filename='traveler/assets/hidden_gem_logo.svg') }}"
+              alt="hiddenGem logo"
+            />
+          </div>
+
+          <!-- Caption -->
+          <div
+            class="col-md-4 text-center d-flex align-items-center justify-content-center"
+          >
+            <p class="my-auto caption">
+              Explore / <span class="location-tag">Chappal Waddi / </span>Book a
+              Guide
+            </p>
+          </div>
+
+          <!-- Notification and Avatar -->
+          <div
+            class="col-md-4 d-flex justify-content-end align-items-center align-end"
+          >
+            <!--Notification -->
+            <a href="/notifications/"
+              ><div
+                class="notif_wrapper d-none d-md-flex justify-content-center align-items-center me-2"
+              >
+                <img
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/notif_icon.svg') }}"
+                  alt="notification icon"
+                /></div
+            ></a>
+            <!--Avatar Icon -->
+            <div class="d-flex align-items-center">
+              <img
+                src="{{ url_for('static', filename='traveler/assets/dashboard/Avatar.svg') }}"
+                alt="avatar icon"
+                width="32px"
+                height="32px"
+                class="me-1"
+              />
+            </div>
+            <p class="username my-auto">GiftOfGod</p>
+          </div>
+        </div>
+
+        <!-- Entire Body Wrapper -->
+        <div class="db_body_wrapper col-md-12 d-flex justify-content-center">
+          <!-- heading -->
+          <div class="row mt-5">
+            <div class="col-12 col-md-8 px-3 px-md-5 ms-auto me-auto">
+              <div class="confirmation_wrapper d-flex justify-content-center">
+                <img
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/booking_confirmation.svg') }}"
+                  alt="confirmation icon"
+                  class="confirmation_icon mb-3"
+                />
+              </div>
+              <h3 class="text-center">Booking request sent!</h3>
+              <p class="subtext text-center">
+                Aliyu Jibrin has received your booking request and will confirm
+                within 24 hours. You'll be notified by email once confirmed.
+              </p>
+
+              <!-- Trip Summary -->
+              <div class="trip_summary_wrapper side p-3 mt-3 rounded-3">
+                <h6 class="mb-3">Trip Summary</h6>
+                <div class="each_ts_wrapper">
+                  <p class="subtext">Destination</p>
+                  <p class="subtext destination">Chappal Waddi</p>
+                </div>
+                <div class="each_ts_wrapper">
+                  <p class="subtext">Guide</p>
+                  <p class="subtext guide">Aliyu Ibrahim</p>
+                </div>
+                <div class="each_ts_wrapper">
+                  <p class="subtext">Start date</p>
+                  <p class="subtext start_date_grab">10 May 2025</p>
+                </div>
+                <div class="each_ts_wrapper">
+                  <p class="subtext">End date</p>
+                  <p class="subtext end_date_grab">13 May 2025</p>
+                </div>
+                <div class="each_ts_wrapper">
+                  <p class="subtext">Duration</p>
+                  <p class="subtext duration">3 days</p>
+                </div>
+                <div class="each_ts_wrapper">
+                  <p class="subtext">Total Amount Paid</p>
+                  <p class="subtext total">
+                    ₦<span class="amount_paid">77,500</span>
+                  </p>
+                </div>
+                <div class="each_ts_wrapper">
+                  <p class="subtext">Status</p>
+                  <p class="subtext trip_status">Pending</p>
+                </div>
+              </div>
+
+              <!-- Buttons -->
+              <div class="row mb-5">
+                <div class="button_wrapper col-md-12 mb-3">
+                  <a href="/bookings/"
+                    ><button class="btn btn-secondary col-12 my-2">
+                      View My Bookings
+                    </button></a
+                  >
+                  <a href="/dashboard/"
+                    ><button class="btn btn-primary col-12">
+                      See More Locations
+                    </button></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ----------------------------------------------
+         JAVASCRIPT SECTIONS
+         ------------------------------------------- -->
+    <script src="../css/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/dashboard.js"></script>
+  </body>
+</html>

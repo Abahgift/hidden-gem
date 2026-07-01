@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <!-- -------------------------------------------
+       HEAD SECTION
+       ------------------------------------------- -->
+  <head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap/css/bootstrap.css" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="../css/filter.css" />
+
+    <!-- Custom Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Responsiveness -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Optimizations -->
+    <title>Hidden Gems | Book a Guide</title>
+    <meta
+      name="description"
+      content="Explore hidden travel destinations across Nigeria. Discover culture, nature, and unforgettable experiences."
+    />
+  </head>
+
+  <!-- --------------------------------------------
+       BODY SECTION
+       ------------------------------------------- -->
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <!--  HEADER IS HERE -->
+        <div
+          class="db_header py-2 px-5 col-md-12 d-flex justify-content-between align-items-center"
+        >
+          <div class="col-md-4">
+            <img src="/assets/hidden_gem_logo.svg" alt="hiddenGem logo" />
+          </div>
+          <div
+            class="col-md-4 text-center d-flex align-items-center justify-content-center"
+          >
+            <p class="my-auto caption">Explore</p>
+          </div>
+          <div
+            class="col-md-4 d-flex justify-content-end align-items-center align-end"
+          >
+            <!--Notification -->
+            <div
+              class="notif_wrapper d-flex justify-content-center align-items-center me-2"
+            >
+              <img
+                src="/assets/dashboard/notif_icon.svg"
+                alt="notification icon"
+              />
+            </div>
+            <!--Avatar Icon -->
+            <div class="d-flex align-items-center">
+              <img
+                src="/assets/dashboard/Avatar.svg"
+                alt="avatar icon"
+                width="32px"
+                height="32px"
+                class="me-1"
+              />
+            </div>
+            <p class="username my-auto">GiftOfGod</p>
+          </div>
+        </div>
+
+        <!-- heading -->
+        <div class="row mt-5 px-0 mx-0">
+          <div
+            class="heading_wrapper px-3 px-md-5 m-0 col-md-12 d-block d-md-flex justify-content-between align-items-center"
+          >
+            <div class="">
+              <h2>Filter Destinations</h2>
+              <p class="subtext">
+                Narrow down by state, activity, or difficulty
+              </p>
+            </div>
+
+            <div class="button_wrapper">
+              <button class="btn btn-secondary me-2">Clear all filters</button>
+              <button class="btn btn-primary">Apply filters</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- FILTER OPTIONS -->
+        <div class="container-fluid px-3 px-md-5 py-4 rounded">
+          <div class="row gx-4 gy-4">
+            <!-- STATES COLUMN -->
+            <div class="col-md-4">
+              <!-- Inner white card containing content -->
+              <div class="filter_wrapper p-3 p-md-4 rounded-3 h-100">
+                <h6 class="mb-3">States</h6>
+                <div class="options_wrapper d-flex flex-wrap gap-2">
+                  <span class="pill active">All states</span>
+                  <span class="pill">Taraba</span>
+                  <span class="pill">Osun</span>
+                  <span class="pill">Ondo</span>
+                  <span class="pill">Imo</span>
+                  <span class="pill">Enugu</span>
+                  <span class="pill">Plateau</span>
+                  <span class="pill">Adamawa</span>
+                  <span class="pill">Crossriver</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ACTIVITY COLUMN -->
+            <div class="col-md-4">
+              <div class="filter_wrapper p-3 p-md-4 rounded-3 h-100">
+                <h6 class="mb-3">Activity</h6>
+                <div class="options_wrapper d-flex flex-wrap gap-2">
+                  <span class="pill active">All activities</span>
+                  <span class="pill">Hikings</span>
+                  <span class="pill">Waterfalls</span>
+                  <span class="pill">Lakes</span>
+                  <span class="pill">Wildlife safaris</span>
+                  <span class="pill">Trekking</span>
+                  <span class="pill">Camping</span>
+                  <span class="pill">Rock climbing</span>
+                  <span class="pill">Forest walks</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- DIFFICULTY & DURATION COLUMN -->
+            <div class="col-md-4">
+              <div
+                class="filter_wrapper p-3 p-md-4 rounded-3 h-100 d-flex flex-column gap-4"
+              >
+                <div>
+                  <h6 class="mb-3">Difficulty level</h6>
+                  <div class="options_wrapper d-flex flex-wrap gap-2">
+                    <span class="pill">Easy</span>
+                    <span class="pill">Moderate</span>
+                    <span class="pill">Hard</span>
+                  </div>
+                </div>
+                <div>
+                  <h6 class="mb-3">Duration</h6>
+                  <div class="options_wrapper d-flex flex-wrap gap-2">
+                    <span class="pill">Day trip</span>
+                    <span class="pill">2 days</span>
+                    <span class="pill">3 days+</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ----------------------------------------------
+         JAVASCRIPT SECTIONS
+         ------------------------------------------- -->
+    <script src="../css/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/dashboard.js"></script>
+  </body>
+</html>

@@ -27,8 +27,8 @@ def dashboard():
     return render_template("traveler/dashboard.html")
 
 
-@app.route("/explore/<name>/")
-def destination(name):
+@app.route("/explore/")
+def destination():
     '''check out passing parameters through the url'''
     return render_template("traveler/dashboard_explore.html") # I think this should take a paramter of the actual "destination name" e.g. Chappal Waddi
 
@@ -39,8 +39,15 @@ def guides():
 
 
 @app.route("/bookings/")
-def bookings():
+def bookings():     # I should be able to return a booking empty state here if the user has no bookings
     return render_template("traveler/bookings.html") #attach actual dashboard-bookings page
+
+# ===============================
+# TEMP ROUTE FOR BOOKING EMPTY STATE (PLEASE DELETE LATER)
+@app.route("/bes/")
+def bed():
+    return render_template("traveler/bookings_empty_state.html")
+# ================================
 
 
 @app.route("/profile/")
@@ -56,3 +63,13 @@ def notifications():
 @app.route("/filter/")
 def filter():
     return render_template("traveler/filter.html")
+
+
+@app.route("/book-guide/")
+def book_guide():
+    return render_template("traveler/dashboard_bookGuide.html")
+
+
+@app.route("/booking-confirmation/")
+def booking_confirmation():
+    return render_template("traveler/booking_confirmation.html")

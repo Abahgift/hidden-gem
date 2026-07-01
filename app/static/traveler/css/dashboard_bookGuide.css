@@ -1,0 +1,218 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+:root {
+  --white: #ffffff;
+  --white-grey: #f2f4f3;
+
+  --header-bg: #f8fdf2;
+  --green-light-1: #e9f9d7;
+  --green-light-2: #d7f4b8;
+
+  --green-accent-1: #b4eb7a;
+  --green-accent-2: #b5eb79;
+
+  --green-primary: #64e47e;
+  --green-primary-dark: #1fcb60;
+
+  --green-dark-1: #042e1c;
+  --green-dark-2: #042f1c;
+  --green-dark-3: #032e1c;
+
+  --black: #000000;
+
+  --stroke: #d0ddd0;
+  --placeholder: #7c8e7b;
+  --button-inactive: #8ce4a9;
+  --text-grey: #3e4631;
+
+  --error: #b40101;
+
+  --difficulty-easy: #d7f4b8;
+  --difficulty-moderate: #fee3bd;
+  --difficulty-hard: #ffd5d5;
+
+  /* ----------- */ /* TYPOGRAPHY */ /* ----------- */
+  --bs-body-font-family: "Radio Canada Big", sans-serif;
+
+  /* BOOTSTRAP MODIFICATIONS */
+  --bs-primary: var(--sharp-green-2) !important;
+  --bs-primary-rgb: 31, 203, 96 !important;
+
+  /* BORDER RADII */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+  --border-radius-xl: 1rem;
+  --border-radius-pill: 625rem;
+}
+
+.btn-primary {
+  background-color: var(--green-primary-dark);
+  color: var(--green-dark-3);
+  border: none;
+  border-radius: var(--border-radius-md);
+  transition: transform 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--green-primary);
+  color: var(--green-dark-3);
+  border: none;
+  transform: scale(1.01);
+}
+
+.btn-secondary {
+  background-color: var(--green-light-2);
+  color: var(--green-dark-3);
+  border: none;
+  border-radius: var(--border-radius-md);
+  transition: transform 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.btn-secondary:hover {
+  background-color: var(--green-light-1);
+  color: var(--green-dark-3);
+  border: none;
+  transform: scale(1.01);
+}
+
+/* ---------------------------------------------------------- */
+/* STYLING STARTS HERE */
+/* ---------------------------------------------------------- */
+
+h1 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.db_header {
+  background-color: var(--header-bg);
+}
+
+.username {
+  font-size: 0.875rem;
+}
+
+.notif_wrapper {
+  background-color: var(--green-primary);
+  padding: 0.5rem;
+  border-radius: var(--border-radius-pill);
+  width: 2rem;
+  height: 2rem;
+}
+
+/* BOOKING DETAILS START HERE */
+.arrow_wrapper {
+  padding: 0.5rem;
+  border-radius: var(--border-radius-pill);
+  background-color: var(--white-grey);
+}
+
+.activity {
+  border-radius: var(--border-radius-pill);
+  background-color: var(--white);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.difficulty_hard {
+  border-radius: var(--border-radius-pill);
+  background-color: var(--difficulty-hard);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.location_image {
+  height: 350px;
+  background-image: url("/assets/images/chappal_waddi_hidden_gem.webp");
+  border-radius: var(--border-radius-md);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.subtext {
+  color: var(--text-grey);
+  font-size: 0.925rem;
+}
+
+.calendar_wrapper {
+  background-color: var(--white-grey);
+}
+
+.calendar,
+.trip_container {
+  background-color: var(--white);
+}
+
+.minus,
+.plus {
+  background-color: var(--green-accent-1);
+  border-radius: var(--border-radius-pill);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start_date {
+  border-right: 1px solid;
+  border-color: lightgrey;
+}
+
+.days {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.side {
+  background-color: var(--white-grey);
+}
+
+.each_hiw_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subtext-difficulty {
+  color: var(--error);
+  font-weight: 600;
+}
+
+.caption {
+  font-size: 0.813rem;
+}
+
+.fees_breakdown {
+  background-color: var(--white);
+}
+
+.each_fee {
+  display: flex;
+  justify-content: space-between;
+}

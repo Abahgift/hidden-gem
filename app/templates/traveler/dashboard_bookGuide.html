@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <!-- -------------------------------------------
+       HEAD SECTION
+       =------------------------------------------- -->
+  <head>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='traveler/css/bootstrap/css/bootstrap.css') }}"
+    />
+    <!-- Style CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='traveler/css/dashboard_bookGuide.css') }}"
+    />
+
+    <!-- Custom Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Responsiveness -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Optimizations -->
+    <title>Hidden Gems | Book a Guide</title>
+    <meta
+      name="description"
+      content="Explore hidden travel destinations across Nigeria. Discover culture, nature, and unforgettable experiences."
+    />
+  </head>
+
+  <!-- --------------------------------------------
+       BODY SECTION
+       ------------------------------------------- -->
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <!--  HEADER IS HERE -->
+        <div
+          class="db_header py-2 px-5 col-12 col-md-12 d-flex justify-space-between align-items-center"
+        >
+          <!-- Logo -->
+          <div class="col-8 col-md-4">
+            <img
+              src="{{ url_for('static', filename='traveler/assets/hidden_gem_logo.svg') }}"
+              alt="hiddenGem logo"
+            />
+          </div>
+
+          <!-- Caption -->
+          <div
+            class="col-md-4 text-center d-flex align-items-center justify-content-center"
+          >
+            <p class="my-auto caption">
+              Explore / <span class="location-tag">Chappal Waddi / </span>Book a
+              Guide
+            </p>
+          </div>
+
+          <!-- Notification and Avatar -->
+          <div
+            class="col-md-4 d-flex justify-content-end align-items-center align-end"
+          >
+            <!--Notification -->
+            <a href="/notifications/"
+              ><div
+                class="notif_wrapper d-none d-md-flex justify-content-center align-items-center me-2"
+              >
+                <img
+                  src="{{ url_for('static', filename='traveler/assets/dashboard/notif_icon.svg') }}"
+                  alt="notification icon"
+                /></div
+            ></a>
+            <!--Avatar Icon -->
+            <div class="d-flex align-items-center">
+              <img
+                src="{{ url_for('static', filename='traveler/assets/dashboard/Avatar.svg') }}"
+                alt="avatar icon"
+                width="32px"
+                height="32px"
+                class="me-1"
+              />
+            </div>
+            <p class="username my-auto">GiftOfGod</p>
+          </div>
+        </div>
+
+        <!-- heading -->
+        <div class="row mt-5">
+          <div class="col-md-12 px-5">
+            <h5>Book a Guide</h5>
+            <p class="subtext">Chappal Waddi · Aliyu Jibrin</p>
+          </div>
+        </div>
+
+        <!-- BOOKING DETAILS -->
+        <div class="row d-flex align-items-start justify-content-between">
+          <div class="col-md-7 px-5">
+            <!-- MAIN COLUMN -->
+            <div class="col-md-12 main">
+              <!-- Date Selection -->
+              <div class="row">
+                <div class="calendar_wrapper col-md-12 mb-4 p-4 rounded-3">
+                  <h6>Select your start date</h6>
+                  <div class="calendar p-3 rounded-2">CALENDER GOES HERE</div>
+                </div>
+              </div>
+
+              <!-- Trip Duration -->
+              <div class="row">
+                <div class="calendar_wrapper col-md-12 my-4 p-4 rounded-3">
+                  <h6 class="text-center">Trip Duration</h6>
+
+                  <!-- Minus, Days Number, Plus -->
+                  <div
+                    class="trip_container_1 px-3 py-2 mb-2 rounded-2 d-flex justify-content-between"
+                  >
+                    <div class="minus">
+                      <img
+                        src="{{ url_for('static', filename='traveler/assets/dashboard/minus.svg') }}"
+                        alt="minus"
+                      />
+                    </div>
+                    <p class="days my-auto">
+                      <span class="number_of_days">3 </span>days
+                    </p>
+                    <div class="plus">
+                      <img
+                        src="{{ url_for('static', filename='traveler/assets/dashboard/plus.svg') }}"
+                        alt="plus"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Start Date and End Date -->
+                  <div
+                    class="date_wrapper trip_container col-md-12 d-flex rounded-2"
+                  >
+                    <div class="start_date px-3 py-2 col-md-6">
+                      <p class="caption py-0 my-0">Start date</p>
+                      <p>24 Mar 2026</p>
+                    </div>
+                    <div class="end_date px-3 py-2 col-md-6">
+                      <p class="caption py-0 my-0">End date</p>
+                      <p>24 Mar 2026</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Special Requests -->
+              <div class="row">
+                <div class="calendar_wrapper col-md-12 my-4 p-4 rounded-3">
+                  <h6 class="mb-3">
+                    Special requests <span class="caption">(optional)</span>
+                  </h6>
+                  <textarea
+                    class="col-12 p-3 rounded-2"
+                    name="special_request"
+                    id="special_request"
+                    placeholder="Dietary needs, group size, accessibility requirements, or anything else Aliyu should know."
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Sidebar for Fees Breakdown-->
+          <div class="col-md-5 rounded-3">
+            <!-- Booking Fee - Top Sidebar -->
+            <div class="side p-4 rounded-3">
+              <h6 class="mb-5">Chappal Waddi</h6>
+              <div class="d-flex justify-content-between">
+                <p>Guide: <span class="selected_guide">Aliyu Jibrin</span></p>
+                <div class="stats d-flex">
+                  <span class="d-flex me-3"
+                    ><img
+                      src="{{ url_for('static', filename='traveler/assets/dashboard/verified.svg') }}"
+                      alt="verified"
+                      width="24px"
+                      height="24px"
+                      class="me-2"
+                    />
+                    <p class="caption">Verified</p></span
+                  >
+                  <span class="caption d-flex"
+                    ><img
+                      src="{{ url_for('static', filename='traveler/assets/dashboard/rating_icon.svg') }}"
+                      alt="rating-icon"
+                      width="24px"
+                      height="24px"
+                      class="me-2"
+                    />4.9 (42)</span
+                  >
+                </div>
+              </div>
+              <p>₦<span class="price">25000</span>/day</p>
+
+              <!-- Divider -->
+              <hr />
+              <!-- Fees Breakdown wrapper -->
+
+              <div class="fees_breakdown px-4 pt-3 pb-2 rounded-2">
+                <div class="each_fee">
+                  <p>Guide fee</p>
+                  <p>₦25,000 × 3 days</p>
+                </div>
+                <div class="each_fee">
+                  <p>Platform fee</p>
+                  <p>₦2,500</p>
+                </div>
+
+                <hr />
+                <div class="each_fee">
+                  <p>Total</p>
+                  <p>₦77,500</p>
+                </div>
+              </div>
+
+              <div class="button_wrapper mt-4 mb-2">
+                <a href="/booking-confirmation/"
+                  ><button class="col-12 btn btn-primary">
+                    Confirm Booking Request
+                  </button></a
+                >
+              </div>
+            </div>
+
+            <!-- How it works - Bottom Sidebar -->
+            <div class="hiw_wrapper side p-4 mt-3 rounded-3">
+              <h5 class="mb-3">Quick facts</h5>
+              <ol>
+                <li class="subtext">You submit your request</li>
+                <li class="subtext">Aliyu confirms within 24 hours</li>
+                <li class="subtext">You receive a confirmation email</li>
+                <li class="subtext">Meet your guide at the destination</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ----------------------------------------------
+         JAVASCRIPT SECTIONS
+         ------------------------------------------- -->
+    <script src="../css/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/dashboard.js"></script>
+  </body>
+</html>
