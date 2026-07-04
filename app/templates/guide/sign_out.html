@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="guide_portal.css"/>
+<title>Hidden Gems — Sign Out</title>
+</head>
+<body>
+<div id="onboarding" class="screen active">
+  <div class="ob-card">
+    <div class="ob-logo">Hidden <span>Gems</span> · Guide Portal</div>
+    <div class="ob-step-bar" id="ob-steps">
+      <div class="active"></div><div></div><div></div>
+    </div>
+
+    <!-- Step 1: Basic Info -->
+    <div class="ob-step" id="ob-step-1">
+      <div class="ob-label">Step 1 of 3</div>
+      <div class="ob-title">Create your guide profile</div>
+      <div class="ob-sub">Tell travelers who you are and what makes you the right guide for them.</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First name</label>
+          <input type="text" placeholder="Emeka" value="Emeka"/>
+        </div>
+        <div class="form-group">
+          <label>Last name</label>
+          <input type="text" placeholder="Okafor" value="Okafor"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email address</label>
+        <input type="email" placeholder="emeka@email.com" value="emeka.okafor@gmail.com"/>
+      </div>
+      <div class="form-group">
+        <label>Phone number</label>
+        <input type="tel" placeholder="+234 800 000 0000" value="+234 803 456 7890"/>
+      </div>
+      <div class="form-group">
+        <label>Short bio</label>
+        <textarea placeholder="Tell travelers about yourself…">Born and raised in Taraba State, I've spent 12 years guiding hikers across Chappal Waddi and the Gashaka-Gumti forests. I speak Hausa, English, and basic French.</textarea>
+      </div>
+      <div class="ob-actions">
+        <span></span>
+        <button class="btn-primary" onclick="obNext(1)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Expertise & Pricing -->
+    <div class="ob-step" id="ob-step-2" style="display:none">
+      <div class="ob-label">Step 2 of 3</div>
+      <div class="ob-title">Your expertise & pricing</div>
+      <div class="ob-sub">What activities do you guide, and what languages do you speak?</div>
+      <div class="form-group">
+        <label>Activity expertise (select all that apply)</label>
+        <div class="tag-grid">
+          <div class="tag-chip selected" onclick="toggleTag(this)">Hiking & Trekking</div>
+          <div class="tag-chip selected" onclick="toggleTag(this)">Camping</div>
+          <div class="tag-chip" onclick="toggleTag(this)">Rock Climbing</div>
+          <div class="tag-chip selected" onclick="toggleTag(this)">Nature Walks</div>
+          <div class="tag-chip" onclick="toggleTag(this)">River Kayaking</div>
+          <div class="tag-chip" onclick="toggleTag(this)">Bird Watching</div>
+          <div class="tag-chip" onclick="toggleTag(this)">Photography Tours</div>
+          <div class="tag-chip" onclick="toggleTag(this)">Waterfall Tours</div>
+        </div>
+      </div>
+      <div class="form-group" style="margin-top:18px;">
+        <label>Languages spoken</label>
+        <div class="tag-grid">
+          <div class="tag-chip selected" onclick="toggleTag(this)">English</div>
+          <div class="tag-chip selected" onclick="toggleTag(this)">Hausa</div>
+          <div class="tag-chip" onclick="toggleTag(this)">Yoruba</div>
+          <div class="tag-chip" onclick="toggleTag(this)">Igbo</div>
+          <div class="tag-chip" onclick="toggleTag(this)">French</div>
+          <div class="tag-chip" onclick="toggleTag(this)">Fulfulde</div>
+        </div>
+      </div>
+      <div class="form-row" style="margin-top:18px;">
+        <div class="form-group">
+          <label>Price per day (₦)</label>
+          <input type="number" placeholder="15000" value="25000"/>
+        </div>
+        <div class="form-group">
+          <label>Years of experience</label>
+          <input type="number" placeholder="5" value="12"/>
+        </div>
+      </div>
+      <div class="ob-actions">
+        <button class="btn-back" onclick="obBack(2)">← Back</button>
+        <button class="btn-primary" onclick="obNext(2)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Availability -->
+    <div class="ob-step" id="ob-step-3" style="display:none">
+      <div class="ob-label">Step 3 of 3</div>
+      <div class="ob-title">Set your availability</div>
+      <div class="ob-sub">When are you available to guide? Travelers will only see you on these days.</div>
+      <div class="form-group">
+        <label>Available days</label>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <div class="day-chip" onclick="toggleDay(this)">M</div>
+          <div class="day-chip selected" onclick="toggleDay(this)">T</div>
+          <div class="day-chip selected" onclick="toggleDay(this)">W</div>
+          <div class="day-chip selected" onclick="toggleDay(this)">T</div>
+          <div class="day-chip selected" onclick="toggleDay(this)">F</div>
+          <div class="day-chip selected" onclick="toggleDay(this)">S</div>
+          <div class="day-chip" onclick="toggleDay(this)">S</div>
+        </div>
+      </div>
+      <div class="form-group" style="margin-top:16px;">
+        <label>Earliest start time</label>
+        <select>
+          <option>5:00 AM</option>
+          <option>6:00 AM</option>
+          <option selected>7:00 AM</option>
+          <option>8:00 AM</option>
+          <option>9:00 AM</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Maximum group size</label>
+        <select>
+          <option>1 – Solo only</option>
+          <option>2 – Pairs</option>
+          <option>Up to 5</option>
+          <option selected>Up to 10</option>
+          <option>Up to 20</option>
+          <option>Any size</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>State / region you operate in</label>
+        <select>
+          <option>Abuja (FCT)</option>
+          <option>Anambra</option>
+          <option>Cross River</option>
+          <option>Imo</option>
+          <option>Kwara</option>
+          <option>Lagos</option>
+          <option>Ondo</option>
+          <option>Oyo</option>
+          <option selected>Taraba</option>
+        </select>
+      </div>
+      <div class="ob-actions">
+        <button class="btn-back" onclick="obBack(3)">← Back</button>
+        <button class="btn-primary" onclick="goApp()">Submit for Review</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast">
+  <div class="toast-icon"><i class="bi bi-check-lg text-white"></i></div>
+  <span id="toast-msg">Done!</span>
+</div>
+<script src="guide_portal.js"></script>
+</body>
+</html>

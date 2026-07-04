@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="guide_portal.css"/>
+<title>Hidden Gems — Reviews</title>
+</head>
+<body>
+<div id="app" class="screen active">
+  <div class="app-layout">
+<aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-name">Hidden <span>Gems</span></div>
+        <div class="brand-sub">Guide Portal</div>
+      </div>
+      <div class="sidebar-guide">
+        <div class="guide-avatar">EO</div>
+        <div class="guide-info">
+          <div class="guide-name">Emeka Okafor</div>
+          <div class="guide-status" id="sidebar-status"><i class="bi bi-clock-history"></i> Pending review</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">Overview</div>
+        <div class="nav-item" onclick="switchTab('dashboard', this)"><span class="nav-icon"><i class="bi bi-grid-1x2-fill"></i></span> Dashboard</div>
+        <div class="nav-section">Manage</div>
+        <div class="nav-item" onclick="switchTab('bookings', this)"><span class="nav-icon"><i class="bi bi-calendar-event-fill"></i></span> Bookings <span class="nav-badge" id="booking-badge">3</span></div>
+        <div class="nav-item" onclick="switchTab('trails', this)"><span class="nav-icon"><i class="bi bi-map-fill"></i></span> My Trails</div>
+        <div class="nav-item active" onclick="switchTab('reviews', this)"><span class="nav-icon"><i class="bi bi-star-fill"></i></span> Reviews</div>
+        <div class="nav-section">Account</div>
+        <div class="nav-item" onclick="switchTab('profile', this)"><span class="nav-icon"><i class="bi bi-person-fill"></i></span> My Profile</div>
+        <div class="nav-item" onclick="showScreen('onboarding')"><span class="nav-icon"><i class="bi bi-box-arrow-left"></i></span> Sign out</div>
+      </nav>
+    </aside>
+    <main class="main-content">
+<div class="tab-panel active" id="tab-reviews">
+        <div class="page-header">
+          <div class="page-title">My Reviews</div>
+          <div class="page-sub">Ratings and feedback from your travelers.</div>
+        </div>
+
+        <div class="card">
+          <div class="rating-summary">
+            <div>
+              <div class="rating-big">4.8</div>
+              <div class="stars" style="margin-top:6px;">
+                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              </div>
+              <div style="font-size:12px;color:var(--muted);margin-top:6px;">17 reviews</div>
+            </div>
+            <div class="rating-detail">
+              <div class="rating-bar-row">
+                <span class="rating-bar-label">5 ★</span>
+                <div class="rating-bar-track"><div class="rating-bar-fill" style="width:75%"></div></div>
+                <span class="rating-count">13</span>
+              </div>
+              <div class="rating-bar-row">
+                <span class="rating-bar-label">4 ★</span>
+                <div class="rating-bar-track"><div class="rating-bar-fill" style="width:18%"></div></div>
+                <span class="rating-count">3</span>
+              </div>
+              <div class="rating-bar-row">
+                <span class="rating-bar-label">3 ★</span>
+                <div class="rating-bar-track"><div class="rating-bar-fill" style="width:6%"></div></div>
+                <span class="rating-count">1</span>
+              </div>
+              <div class="rating-bar-row">
+                <span class="rating-bar-label">2 ★</span>
+                <div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%"></div></div>
+                <span class="rating-count">0</span>
+              </div>
+              <div class="rating-bar-row">
+                <span class="rating-bar-label">1 ★</span>
+                <div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%"></div></div>
+                <span class="rating-count">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card" style="margin-top:16px;">
+          <div class="review-header">
+            <div class="reviewer-av">AN</div>
+            <div>
+              <div class="reviewer-name">Adaeze Nwosu</div>
+              <div class="review-dest">Chappal Waddi Summit</div>
+            </div>
+            <div class="stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+          </div>
+          <div class="review-body">Emeka is an exceptional guide. He knew every path, every safe camp spot, and kept our group safe through some serious elevation. His knowledge of local flora and his stories about the mountain made the entire experience unforgettable. Will absolutely book again.</div>
+          <div class="review-date">3 May 2025</div>
+          <div class="review-reply">
+            <div class="review-reply-label">Your reply</div>
+            <p>Thank you so much, Adaeze! It was a pleasure guiding you and your friends to the summit. The views on day 3 were truly special. Hope to see you on another trail soon!</p>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-av">KF</div>
+            <div>
+              <div class="reviewer-name">Kola Fashola</div>
+              <div class="review-dest">Gashaka-Gumti Forest Trail</div>
+            </div>
+            <div class="stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+          </div>
+          <div class="review-body">Honestly didn't know Nigeria had places like this. Emeka made us feel safe the whole time. His navigation in the dense forest sections was brilliant — no GPS, just reading the land. Highly recommend for anyone who wants to experience Gashaka properly.</div>
+          <div class="review-date">22 April 2025</div>
+          <div class="reply-input-area">
+            <textarea placeholder="Write a reply to this review…"></textarea>
+            <button class="btn-reply" onclick="postReply(this)">Post reply</button>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-av">FB</div>
+            <div>
+              <div class="reviewer-name">Fatima Bello</div>
+              <div class="review-dest">Ngel Nyaki Forest Reserve</div>
+            </div>
+            <div class="stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span>
+            </div>
+          </div>
+          <div class="review-body">Great experience overall. Emeka is knowledgeable and patient with beginners in our group. I'd suggest slightly better communication on the packing list before the trip — we came underprepared for the cold at night. But the guide work itself was excellent.</div>
+          <div class="review-date">5 April 2025</div>
+          <div class="reply-input-area">
+            <textarea placeholder="Write a reply to this review…"></textarea>
+            <button class="btn-reply" onclick="postReply(this)">Post reply</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PROFILE ── -->
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast">
+  <div class="toast-icon"><i class="bi bi-check-lg text-white"></i></div>
+  <span id="toast-msg">Done!</span>
+</div>
+<script src="guide_portal.js"></script>
+</body>
+</html>
