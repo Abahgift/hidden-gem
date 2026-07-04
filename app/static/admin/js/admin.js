@@ -1,8 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const currentPath = window.location.pathname.split('/').pop();
+  const normalizePath = (value = '') => {
+    const path = value.split('?')[0].split('#')[0];
+    const trimmed = path.replace(/\\/+$|\\/g, '');
+    return trimmed ? `/${trimmed}` : '/';
+  };
+
+  const currentPath = normalizePath(window.location.pathname);
+
   document.querySelectorAll('.nav-item').forEach(link => {
+    link.classList.remove('active');
+
     const href = link.getAttribute('href') || '';
-    if (href && href.split('/').pop() === currentPath) {
+    if (href && normalizePath(href) === currentPath) {
       link.classList.add('active');
     }
   });
