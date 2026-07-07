@@ -1,156 +1,194 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="guide_portal.css"/>
-<title>Hidden Gems — My Trails</title>
-</head>
-<body>
-<div id="app" class="screen active">
-  <div class="app-layout">
-<aside class="sidebar">
-      <div class="sidebar-brand">
-        <div class="brand-name">Hidden <span>Gems</span></div>
-        <div class="brand-sub">Guide Portal</div>
+{% extends "guide/layout.html" %}
+{% block content %}
+  <main class="main-content">
+    <div class="tab-panel active" id="tab-trails">
+      <div class="page-header">
+        <div class="page-title">My Trails & Destinations</div>
+        <div class="page-sub">The destinations you are certified and available to guide.</div>
       </div>
-      <div class="sidebar-guide">
-        <div class="guide-avatar">EO</div>
-        <div class="guide-info">
-          <div class="guide-name">Emeka Okafor</div>
-          <div class="guide-status" id="sidebar-status"><i class="bi bi-clock-history"></i> Pending review</div>
+      <div class="trail-grid" id="trails-grid">
+        <div class="trail-card">
+          <div class="trail-icon">
+            <i class="bi bi-signpost-2-fill text-success"></i>
+          </div>
+          <div style="flex:1;">
+            <div class="trail-name">Chappal Waddi Summit</div>
+            <div class="trail-loc"><i class="bi bi-geo-alt-fill text-muted"></i> Taraba State</div>
+            <div class="trail-tags">
+              <span class="diff-pill diff-extreme">Extreme</span>
+              <span class="diff-pill"
+                    style="background:var(--green-pale);
+                           color:var(--green);
+                           font-size:11px;
+                           padding:3px 10px;
+                           border-radius:20px;
+                           font-weight:600">Trekking</span>
+            </div>
+          </div>
+          <button class="trail-remove" onclick="removeTrail(this)" title="Remove">✕</button>
+        </div>
+        <div class="trail-card">
+          <div class="trail-icon">
+            <i class="bi bi-tree-fill text-success"></i>
+          </div>
+          <div style="flex:1;">
+            <div class="trail-name">Gashaka-Gumti Forest Trail</div>
+            <div class="trail-loc"><i class="bi bi-geo-alt-fill text-muted"></i> Taraba / Adamawa</div>
+            <div class="trail-tags">
+              <span class="diff-pill diff-hard">Hard</span>
+              <span class="diff-pill"
+                    style="background:var(--green-pale);
+                           color:var(--green);
+                           font-size:11px;
+                           padding:3px 10px;
+                           border-radius:20px;
+                           font-weight:600">Camping</span>
+            </div>
+          </div>
+          <button class="trail-remove" onclick="removeTrail(this)" title="Remove">✕</button>
+        </div>
+        <div class="trail-card">
+          <div class="trail-icon">
+            <i class="bi bi-sun-fill text-success"></i>
+          </div>
+          <div style="flex:1;">
+            <div class="trail-name">Mambilla Plateau Walk</div>
+            <div class="trail-loc"><i class="bi bi-geo-alt-fill text-muted"></i> Taraba State</div>
+            <div class="trail-tags">
+              <span class="diff-pill diff-easy">Easy</span>
+              <span class="diff-pill"
+                    style="background:var(--green-pale);
+                           color:var(--green);
+                           font-size:11px;
+                           padding:3px 10px;
+                           border-radius:20px;
+                           font-weight:600">Scenic</span>
+            </div>
+          </div>
+          <button class="trail-remove" onclick="removeTrail(this)" title="Remove">✕</button>
+        </div>
+        <div class="trail-card">
+          <div class="trail-icon">
+            <i class="bi bi-tent-fill text-success"></i>
+          </div>
+          <div style="flex:1;">
+            <div class="trail-name">Ngel Nyaki Forest Reserve</div>
+            <div class="trail-loc"><i class="bi bi-geo-alt-fill text-muted"></i> Taraba State</div>
+            <div class="trail-tags">
+              <span class="diff-pill diff-moderate">Moderate</span>
+              <span class="diff-pill"
+                    style="background:var(--green-pale);
+                           color:var(--green);
+                           font-size:11px;
+                           padding:3px 10px;
+                           border-radius:20px;
+                           font-weight:600">Wildlife</span>
+            </div>
+          </div>
+          <button class="trail-remove" onclick="removeTrail(this)" title="Remove">✕</button>
+        </div>
+        <div class="trail-card">
+          <div class="trail-icon">
+            <i class="bi bi-water text-success"></i>
+          </div>
+          <div style="flex:1;">
+            <div class="trail-name">Kiri Dam Shoreline</div>
+            <div class="trail-loc"><i class="bi bi-geo-alt-fill text-muted"></i> Adamawa State</div>
+            <div class="trail-tags">
+              <span class="diff-pill diff-easy">Easy</span>
+              <span class="diff-pill"
+                    style="background:var(--green-pale);
+                           color:var(--green);
+                           font-size:11px;
+                           padding:3px 10px;
+                           border-radius:20px;
+                           font-weight:600">Water</span>
+            </div>
+          </div>
+          <button class="trail-remove" onclick="removeTrail(this)" title="Remove">✕</button>
         </div>
       </div>
-      <nav class="sidebar-nav">
-        <div class="nav-section">Overview</div>
-        <div class="nav-item" onclick="switchTab('dashboard', this)"><span class="nav-icon"><i class="bi bi-grid-1x2-fill"></i></span> Dashboard</div>
-        <div class="nav-section">Manage</div>
-        <div class="nav-item" onclick="switchTab('bookings', this)"><span class="nav-icon"><i class="bi bi-calendar-event-fill"></i></span> Bookings <span class="nav-badge" id="booking-badge">3</span></div>
-        <div class="nav-item active" onclick="switchTab('trails', this)"><span class="nav-icon"><i class="bi bi-map-fill"></i></span> My Trails</div>
-        <div class="nav-item" onclick="switchTab('reviews', this)"><span class="nav-icon"><i class="bi bi-star-fill"></i></span> Reviews</div>
-        <div class="nav-section">Account</div>
-        <div class="nav-item" onclick="switchTab('profile', this)"><span class="nav-icon"><i class="bi bi-person-fill"></i></span> My Profile</div>
-        <div class="nav-item" onclick="showScreen('onboarding')"><span class="nav-icon"><i class="bi bi-box-arrow-left"></i></span> Sign out</div>
-      </nav>
-    </aside>
-    <main class="main-content">
-<div class="tab-panel active" id="tab-trails">
-        <div class="page-header">
-          <div class="page-title">My Trails & Destinations</div>
-          <div class="page-sub">The destinations you are certified and available to guide.</div>
-        </div>
-
-        <div class="trail-grid" id="trails-grid">
-          <div class="trail-card">
-            <div class="trail-icon"><i class="bi bi-signpost-2-fill text-success"></i></div>
-            <div style="flex:1;">
-              <div class="trail-name">Chappal Waddi Summit</div>
-              <div class="trail-loc"><i class="bi bi-geo-alt-fill text-muted"></i> Taraba State</div>
-              <div class="trail-tags">
-                <span class="diff-pill diff-extreme">Extreme</span>
-                <span class="diff-pill" style="background:var(--green-pale);color:var(--green);font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;">Trekking</span>
-              </div>
-            </div>
-            <button class="trail-remove" onclick="removeTrail(this)" title="Remove">✕</button>
-          </div>
-          <div class="trail-card">
-            <div class="trail-icon"><i class="bi bi-tree-fill text-success"></i></div>
-            <div style="flex:1;">
-              <div class="trail-name">Gashaka-Gumti Forest Trail</div>
-              <div class="trail-loc"><i class="bi bi-geo-alt-fill text-muted"></i> Taraba / Adamawa</div>
-              <div class="trail-tags">
-                <span class="diff-pill diff-hard">Hard</span>
-                <span class="diff-pill" style="background:var(--green-pale);color:var(--green);font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;">Camping</span>
-              </div>
-            </div>
-            <button class="trail-remove" onclick="removeTrail(this)" title="Remove">✕</button>
-          </div>
-          <div class="trail-card">
-            <div class="trail-icon"><i class="bi bi-sun-fill text-success"></i></div>
-            <div style="flex:1;">
-              <div class="trail-name">Mambilla Plateau Walk</div>
-              <div class="trail-loc"><i class="bi bi-geo-alt-fill text-muted"></i> Taraba State</div>
-              <div class="trail-tags">
-                <span class="diff-pill diff-easy">Easy</span>
-                <span class="diff-pill" style="background:var(--green-pale);color:var(--green);font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;">Scenic</span>
-              </div>
-            </div>
-            <button class="trail-remove" onclick="removeTrail(this)" title="Remove">✕</button>
-          </div>
-          <div class="trail-card">
-            <div class="trail-icon"><i class="bi bi-tent-fill text-success"></i></div>
-            <div style="flex:1;">
-              <div class="trail-name">Ngel Nyaki Forest Reserve</div>
-              <div class="trail-loc"><i class="bi bi-geo-alt-fill text-muted"></i> Taraba State</div>
-              <div class="trail-tags">
-                <span class="diff-pill diff-moderate">Moderate</span>
-                <span class="diff-pill" style="background:var(--green-pale);color:var(--green);font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;">Wildlife</span>
-              </div>
-            </div>
-            <button class="trail-remove" onclick="removeTrail(this)" title="Remove">✕</button>
-          </div>
-          <div class="trail-card">
-            <div class="trail-icon"><i class="bi bi-water text-success"></i></div>
-            <div style="flex:1;">
-              <div class="trail-name">Kiri Dam Shoreline</div>
-              <div class="trail-loc"><i class="bi bi-geo-alt-fill text-muted"></i> Adamawa State</div>
-              <div class="trail-tags">
-                <span class="diff-pill diff-easy">Easy</span>
-                <span class="diff-pill" style="background:var(--green-pale);color:var(--green);font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;">Water</span>
-              </div>
-            </div>
-            <button class="trail-remove" onclick="removeTrail(this)" title="Remove">✕</button>
-          </div>
-        </div>
-
-        <button class="add-trail-btn" onclick="openAddTrailModal()">+ Add a destination you cover</button>
+      <button class="add-trail-btn" onclick="openAddTrailModal()">+ Add a destination you cover</button>
+    </div>
+  </main>
+  <div class="modal-overlay" id="add-trail-modal">
+    <div class="modal">
+      <div class="modal-title">Add a destination</div>
+      <div class="modal-sub">Select a destination from the Hidden Gems listing to add to your covered trails.</div>
+      <div class="form-group">
+        <label>Search destinations</label>
+        <input type="text" placeholder="e.g. Idanre Hills, Erin Ijesha…" />
       </div>
-
-      <!-- ── REVIEWS ── -->
-    </main>
+      <div style="margin-top:4px;">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Suggested in Taraba & surrounding states:</div>
+        <div id="destination-options">
+          <div class="trail-card"
+               style="margin-bottom:8px;
+                      cursor:pointer"
+               onclick="addTrail('Aso Rock Formation','Plateau State','bi-signpost-fill','Moderate')">
+            <div class="trail-icon">
+              <i class="bi bi-signpost-fill text-success"></i>
+            </div>
+            <div>
+              <div class="trail-name">Aso Rock Formation</div>
+              <div class="trail-loc"><i class="bi bi-geo-alt-fill text-muted"></i> Plateau State</div>
+            </div>
+            <button style="margin-left:auto;
+                           background:var(--green-pale);
+                           color:var(--green);
+                           border:none;
+                           border-radius:8px;
+                           padding:6px 14px;
+                           font-size:12px;
+                           cursor:pointer;
+                           font-family:'DM Sans',sans-serif">+ Add</button>
+          </div>
+          <div class="trail-card"
+               style="margin-bottom:8px;
+                      cursor:pointer"
+               onclick="addTrail('Farin Ruwa Waterfall','Nassarawa State','bi-water','Easy')">
+            <div class="trail-icon">
+              <i class="bi bi-water text-success"></i>
+            </div>
+            <div>
+              <div class="trail-name">Farin Ruwa Waterfall</div>
+              <div class="trail-loc"><i class="bi bi-geo-alt-fill text-muted"></i> Nassarawa State</div>
+            </div>
+            <button style="margin-left:auto;
+                           background:var(--green-pale);
+                           color:var(--green);
+                           border:none;
+                           border-radius:8px;
+                           padding:6px 14px;
+                           font-size:12px;
+                           cursor:pointer;
+                           font-family:'DM Sans',sans-serif">+ Add</button>
+          </div>
+          <div class="trail-card"
+               style="cursor:pointer"
+               onclick="addTrail('Idanre Hills','Ondo State','bi-sun-fill','Moderate')">
+            <div class="trail-icon">
+              <i class="bi bi-sun-fill text-success"></i>
+            </div>
+            <div>
+              <div class="trail-name">Idanre Hills</div>
+              <div class="trail-loc"><i class="bi bi-geo-alt-fill text-muted"></i> Ondo State</div>
+            </div>
+            <button style="margin-left:auto;
+                           background:var(--green-pale);
+                           color:var(--green);
+                           border:none;
+                           border-radius:8px;
+                           padding:6px 14px;
+                           font-size:12px;
+                           cursor:pointer;
+                           font-family:'DM Sans',sans-serif">+ Add</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
   </div>
-</div>
-
-<div class="modal-overlay" id="add-trail-modal">
-  <div class="modal">
-    <div class="modal-title">Add a destination</div>
-    <div class="modal-sub">Select a destination from the Hidden Gems listing to add to your covered trails.</div>
-    <div class="form-group">
-      <label>Search destinations</label>
-      <input type="text" placeholder="e.g. Idanre Hills, Erin Ijesha…"/>
-    </div>
-    <div style="margin-top:4px;">
-      <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Suggested in Taraba & surrounding states:</div>
-      <div id="destination-options">
-        <div class="trail-card" style="margin-bottom:8px; cursor:pointer;" onclick="addTrail('Aso Rock Formation','Plateau State','bi-signpost-fill','Moderate')">
-          <div class="trail-icon"><i class="bi bi-signpost-fill text-success"></i></div>
-          <div><div class="trail-name">Aso Rock Formation</div><div class="trail-loc"><i class="bi bi-geo-alt-fill text-muted"></i> Plateau State</div></div>
-          <button style="margin-left:auto;background:var(--green-pale);color:var(--green);border:none;border-radius:8px;padding:6px 14px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;">+ Add</button>
-        </div>
-        <div class="trail-card" style="margin-bottom:8px; cursor:pointer;" onclick="addTrail('Farin Ruwa Waterfall','Nassarawa State','bi-water','Easy')">
-          <div class="trail-icon"><i class="bi bi-water text-success"></i></div>
-          <div><div class="trail-name">Farin Ruwa Waterfall</div><div class="trail-loc"><i class="bi bi-geo-alt-fill text-muted"></i> Nassarawa State</div></div>
-          <button style="margin-left:auto;background:var(--green-pale);color:var(--green);border:none;border-radius:8px;padding:6px 14px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;">+ Add</button>
-        </div>
-        <div class="trail-card" style="cursor:pointer;" onclick="addTrail('Idanre Hills','Ondo State','bi-sun-fill','Moderate')">
-          <div class="trail-icon"><i class="bi bi-sun-fill text-success"></i></div>
-          <div><div class="trail-name">Idanre Hills</div><div class="trail-loc"><i class="bi bi-geo-alt-fill text-muted"></i> Ondo State</div></div>
-          <button style="margin-left:auto;background:var(--green-pale);color:var(--green);border:none;border-radius:8px;padding:6px 14px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;">+ Add</button>
-        </div>
-      </div>
-    </div>
-    <div class="modal-actions">
-      <button class="btn-secondary" onclick="closeModal()">Cancel</button>
-    </div>
-  </div>
-</div>
-
-<div class="toast" id="toast">
-  <div class="toast-icon"><i class="bi bi-check-lg text-white"></i></div>
-  <span id="toast-msg">Done!</span>
-</div>
-<script src="guide_portal.js"></script>
-</body>
-</html>
+{% endblock %}

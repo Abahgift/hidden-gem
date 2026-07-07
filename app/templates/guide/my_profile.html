@@ -1,148 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="guide_portal.css"/>
-<title>Hidden Gems — My Profile</title>
-</head>
-<body>
-<div id="app" class="screen active">
-  <div class="app-layout">
-<aside class="sidebar">
-      <div class="sidebar-brand">
-        <div class="brand-name">Hidden <span>Gems</span></div>
-        <div class="brand-sub">Guide Portal</div>
+{% extends "guide/layout.html" %}
+{% block content %}
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <div class="tab-panel active" id="tab-profile">
+      <div class="page-header">
+        <div class="page-title">My Profile</div>
+        <div class="page-sub">How your profile appears to travelers searching for guides.</div>
       </div>
-      <div class="sidebar-guide">
-        <div class="guide-avatar">EO</div>
-        <div class="guide-info">
-          <div class="guide-name">Emeka Okafor</div>
-          <div class="guide-status" id="sidebar-status"><i class="bi bi-clock-history"></i> Pending review</div>
-        </div>
-      </div>
-      <nav class="sidebar-nav">
-        <div class="nav-section">Overview</div>
-        <div class="nav-item" onclick="switchTab('dashboard', this)"><span class="nav-icon"><i class="bi bi-grid-1x2-fill"></i></span> Dashboard</div>
-        <div class="nav-section">Manage</div>
-        <div class="nav-item" onclick="switchTab('bookings', this)"><span class="nav-icon"><i class="bi bi-calendar-event-fill"></i></span> Bookings <span class="nav-badge" id="booking-badge">3</span></div>
-        <div class="nav-item" onclick="switchTab('trails', this)"><span class="nav-icon"><i class="bi bi-map-fill"></i></span> My Trails</div>
-        <div class="nav-item" onclick="switchTab('reviews', this)"><span class="nav-icon"><i class="bi bi-star-fill"></i></span> Reviews</div>
-        <div class="nav-section">Account</div>
-        <div class="nav-item active" onclick="switchTab('profile', this)"><span class="nav-icon"><i class="bi bi-person-fill"></i></span> My Profile</div>
-        <div class="nav-item" onclick="showScreen('onboarding')"><span class="nav-icon"><i class="bi bi-box-arrow-left"></i></span> Sign out</div>
-      </nav>
-    </aside>
-    <main class="main-content">
-<div class="tab-panel active" id="tab-profile">
-        <div class="page-header">
-          <div class="page-title">My Profile</div>
-          <div class="page-sub">How your profile appears to travelers searching for guides.</div>
-        </div>
-
-        <div class="profile-hero">
-          <div class="profile-av-lg">EO</div>
-          <div>
-            <div class="profile-hero-name">Emeka Okafor</div>
-            <div class="profile-hero-bio">Born and raised in Taraba State, I've spent 12 years guiding hikers across Chappal Waddi and the Gashaka-Gumti forests. I speak Hausa, English, and basic French.</div>
-            <div class="profile-chips">
-              <span class="profile-chip">Hiking & Trekking</span>
-              <span class="profile-chip">Camping</span>
-              <span class="profile-chip">Nature Walks</span>
-              <span class="profile-chip">English</span>
-              <span class="profile-chip">Hausa</span>
-            </div>
+      <div class="profile-hero">
+        <div class="profile-av-lg">EO</div>
+        <div>
+          <div class="profile-hero-name">Emeka Okafor</div>
+          <div class="profile-hero-bio">
+            Born and raised in Taraba State, I've spent 12 years guiding
+            hikers across Chappal Waddi and the Gashaka-Gumti forests. I
+            speak Hausa, English, and basic French.
           </div>
-        </div>
-
-        <div class="card">
-          <div class="card-title">Personal information</div>
-          <div class="form-row">
-            <div class="edit-field-group">
-              <label>First name</label>
-              <input type="text" value="Emeka"/>
-            </div>
-            <div class="edit-field-group">
-              <label>Last name</label>
-              <input type="text" value="Okafor"/>
-            </div>
+          <div class="profile-chips">
+            <span class="profile-chip">Hiking & Trekking</span>
+            <span class="profile-chip">Camping</span>
+            <span class="profile-chip">Nature Walks</span>
+            <span class="profile-chip">English</span>
+            <span class="profile-chip">Hausa</span>
           </div>
-          <div class="edit-field-group">
-            <label>Email</label>
-            <input type="email" value="emeka.okafor@gmail.com"/>
-          </div>
-          <div class="edit-field-group">
-            <label>Phone</label>
-            <input type="tel" value="+234 803 456 7890"/>
-          </div>
-          <div class="edit-field-group">
-            <label>Bio</label>
-            <textarea style="min-height:90px;">Born and raised in Taraba State, I've spent 12 years guiding hikers across Chappal Waddi and the Gashaka-Gumti forests. I speak Hausa, English, and basic French.</textarea>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top:16px;">
-          <div class="card-title">Pricing & experience</div>
-          <div class="form-row">
-            <div class="edit-field-group">
-              <label>Price per day (₦)</label>
-              <input type="number" value="25000"/>
-            </div>
-            <div class="edit-field-group">
-              <label>Years of experience</label>
-              <input type="number" value="12"/>
-            </div>
-          </div>
-          <div class="edit-field-group">
-            <label>Maximum group size</label>
-            <select>
-              <option>Up to 5</option>
-              <option selected>Up to 10</option>
-              <option>Up to 20</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top:16px;">
-          <div class="card-title">Expertise & languages</div>
-          <div class="edit-field-group">
-            <label>Activities</label>
-            <div class="tag-grid">
-              <div class="tag-chip selected" onclick="toggleTag(this)">Hiking & Trekking</div>
-              <div class="tag-chip selected" onclick="toggleTag(this)">Camping</div>
-              <div class="tag-chip" onclick="toggleTag(this)">Rock Climbing</div>
-              <div class="tag-chip selected" onclick="toggleTag(this)">Nature Walks</div>
-              <div class="tag-chip" onclick="toggleTag(this)">River Kayaking</div>
-              <div class="tag-chip" onclick="toggleTag(this)">Photography Tours</div>
-            </div>
-          </div>
-          <div class="edit-field-group" style="margin-top:16px;">
-            <label>Languages</label>
-            <div class="tag-grid">
-              <div class="tag-chip selected" onclick="toggleTag(this)">English</div>
-              <div class="tag-chip selected" onclick="toggleTag(this)">Hausa</div>
-              <div class="tag-chip" onclick="toggleTag(this)">Yoruba</div>
-              <div class="tag-chip" onclick="toggleTag(this)">Igbo</div>
-              <div class="tag-chip" onclick="toggleTag(this)">French</div>
-            </div>
-          </div>
-        </div>
-
-        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
-          <button class="btn-secondary">Discard changes</button>
-          <button class="btn-primary" onclick="showToast('Profile saved successfully')">Save profile</button>
         </div>
       </div>
-    </main>
-  </div>
-</div>
-
-<div class="toast" id="toast">
-  <div class="toast-icon"><i class="bi bi-check-lg text-white"></i></div>
-  <span id="toast-msg">Done!</span>
-</div>
-<script src="guide_portal.js"></script>
-</body>
-</html>
+      <div class="card">
+        <div class="card-title">Personal information</div>
+        <div class="form-row">
+          <div class="edit-field-group">
+            <label>First name</label>
+            <input type="text" value="Emeka" />
+          </div>
+          <div class="edit-field-group">
+            <label>Last name</label>
+            <input type="text" value="Okafor" />
+          </div>
+        </div>
+        <div class="edit-field-group">
+          <label>Email</label>
+          <input type="email" value="emeka.okafor@gmail.com" />
+        </div>
+        <div class="edit-field-group">
+          <label>Phone</label>
+          <input type="tel" value="+234 803 456 7890" />
+        </div>
+        <div class="edit-field-group">
+          <label>Bio</label>
+          <textarea style="min-height: 90px">
+Born and raised in Taraba State, I've spent 12 years guiding hikers across Chappal Waddi and the Gashaka-Gumti forests. I speak Hausa, English, and basic French.</textarea>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 16px">
+        <div class="card-title">Pricing & experience</div>
+        <div class="form-row">
+          <div class="edit-field-group">
+            <label>Price per day (₦)</label>
+            <input type="number" value="25000" />
+          </div>
+          <div class="edit-field-group">
+            <label>Years of experience</label>
+            <input type="number" value="12" />
+          </div>
+        </div>
+        <div class="edit-field-group">
+          <label>Maximum group size</label>
+          <select>
+            <option>Up to 5</option>
+            <option selected>Up to 10</option>
+            <option>Up to 20</option>
+          </select>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 16px">
+        <div class="card-title">Expertise & languages</div>
+        <div class="edit-field-group">
+          <label>Activities</label>
+          <div class="tag-grid">
+            <div class="tag-chip selected" onclick="toggleTag(this)">Hiking & Trekking</div>
+            <div class="tag-chip selected" onclick="toggleTag(this)">Camping</div>
+            <div class="tag-chip" onclick="toggleTag(this)">Rock Climbing</div>
+            <div class="tag-chip selected" onclick="toggleTag(this)">Nature Walks</div>
+            <div class="tag-chip" onclick="toggleTag(this)">River Kayaking</div>
+            <div class="tag-chip" onclick="toggleTag(this)">Photography Tours</div>
+          </div>
+        </div>
+        <div class="edit-field-group" style="margin-top: 16px">
+          <label>Languages</label>
+          <div class="tag-grid">
+            <div class="tag-chip selected" onclick="toggleTag(this)">English</div>
+            <div class="tag-chip selected" onclick="toggleTag(this)">Hausa</div>
+            <div class="tag-chip" onclick="toggleTag(this)">Yoruba</div>
+            <div class="tag-chip" onclick="toggleTag(this)">Igbo</div>
+            <div class="tag-chip" onclick="toggleTag(this)">French</div>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex;
+                  justify-content: flex-end;
+                  gap: 10px;
+                  margin-top: 20px">
+        <button class="btn-secondary">Discard changes</button>
+        <button class="btn-primary" onclick="showToast('Profile saved successfully')">Save profile</button>
+      </div>
+    </div>
+  </main>
+{% endblock %}
