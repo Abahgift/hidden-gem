@@ -1,40 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <!-- -------------------------------------------
        HEAD SECTION
        =------------------------------------------- -->
   <head>
     <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='traveler/css/bootstrap/css/bootstrap.css') }}"
-    />
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='traveler/css/bootstrap/css/bootstrap.css') }}" />
     <!-- Style CSS -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='traveler/css/signUp.css') }}"
-    />
-
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='traveler/css/signUp.css') }}" />
     <!-- Custom Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
-      rel="stylesheet"
-    />
-
+    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+          rel="stylesheet" />
     <!-- Responsiveness -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <!-- SEO Optimizations -->
     <title>Hidden Gems | Sign Up</title>
-    <meta
-      name="description"
-      content="Explore hidden travel destinations across Nigeria. Discover culture, nature, and unforgettable experiences."
-    />
+    <meta name="description"
+          content="Explore hidden travel destinations across Nigeria. Discover culture, nature, and unforgettable experiences." />
   </head>
-
   <!-- --------------------------------------------
        BODY SECTION
        ------------------------------------------- -->
@@ -45,19 +33,15 @@
         <div class="col-md-4">
           <!-- header -->
           <div class="header col-md-12">
-            <a href="/"
-              ><img
-                src="{{ url_for('static', filename='traveler/assets/hidden_gem_logo.svg') }}"
-                alt=""
-                class="logo"
-            /></a>
-            <a href="/login/"
-              ><button type="button" class="btn btn-secondary">
-                Login instead
-              </button></a
-            >
+            <a href="/">
+              <img src="{{ url_for('static', filename='traveler/assets/hidden_gem_logo.svg') }}"
+                   alt=""
+                   class="logo" />
+            </a>
+            <a href="/login/">
+              <button type="button" class="btn btn-secondary">Login instead</button>
+            </a>
           </div>
-
           <!-- title -->
           <div>
             <h1>Sign up</h1>
@@ -66,82 +50,68 @@
               .
             </p>
           </div>
-
           <!-- sign-up form -->
           <div class="user-type col-12 col-md-12">
             <button class="btn btn-secondary">
               As Traveler
-              <img
-                src="{{ url_for('static', filename='traveler/assets/signUp/tourist 2.svg') }}"
-                alt="traveler icon"
-                class="icon"
-              />
+              <img src="{{ url_for('static', filename='traveler/assets/signUp/tourist 2.svg') }}"
+                   alt="traveler icon"
+                   class="icon" />
             </button>
             <button class="btn btn-secondary">
               As Tour Guide
-              <img
-                src="{{ url_for('static', filename='traveler/assets/signUp/tour-guide 2.svg') }}"
-                alt="tour guide icon"
-                class="icon"
-              />
+              <img src="{{ url_for('static', filename='traveler/assets/signUp/tour-guide 2.svg') }}"
+                   alt="tour guide icon"
+                   class="icon" />
             </button>
           </div>
-          <form action="/otp/" method="POST">
+          <form action="{{ url_for('signup') }}" method="POST">
+            {% set messages = get_flashed_messages() %}
+            {{ messages }}
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
             <!-- first name and last name -->
             <div class="names-wrapper col-md-12">
               <div class="mb-3 col-md-6">
                 <label for="firstName" class="form-label">First Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="firstName"
-                  placeholder="john"
-                />
+                <input type="text"
+                       class="form-control"
+                       id="firstName"
+                       name="firstname"
+                       placeholder="john" />
               </div>
               <div class="mb-3 col-md-6">
                 <label for="lastName" class="form-label">Last Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="lastName"
-                  placeholder="doe"
-                />
+                <input type="text"
+                       class="form-control"
+                       id="lastName"
+                       name="lastname"
+                       placeholder="doe" />
               </div>
             </div>
-
             <!-- email -->
             <div class="mb-3">
               <label for="Email" class="form-label">Email address</label>
-              <input
-                type="email"
-                class="form-control"
-                id="Email"
-                placeholder="john.doe@example.com"
-                aria-describedby="emailHelp"
-              />
-              <div id="emailHelp" class="form-text">
-                We'll never share your email with anyone else.
-              </div>
+              <input type="email"
+                     class="form-control"
+                     id="Email"
+                     name="email"
+                     placeholder="john.doe@example.com"
+                     aria-describedby="emailHelp" />
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
-              <input
-                type="password"
-                class="form-control"
-                id="password"
-                placeholder="••••••••"
-              />
+              <input type="password"
+                     class="form-control"
+                     id="password"
+                     name="password"
+                     placeholder="••••••••" />
             </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="check" />
-              <label class="form-check-label" for="check"
-                >I accept the terms and conditions</label
-              >
+              <label class="form-check-label" for="check">I accept the terms and conditions</label>
             </div>
-            <button type="submit" class="btn btn-primary col-12 create-account">
-              Create Account
-            </button>
-
+            <button type="submit" class="btn btn-primary col-12 create-account">Create Account</button>
             <p class="login-account text-center">
               Already have an account?
               <a href="/login/"><span class="login">Login</span></a>
@@ -151,7 +121,6 @@
         <div class="col-md-4"></div>
       </div>
     </div>
-
     <!-- ----------------------------------------------
          JAVASCRIPT SECTIONS
          ------------------------------------------- -->

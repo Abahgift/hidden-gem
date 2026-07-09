@@ -1,34 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <!-- ============================================
        HEAD SECTION
        ============================================ -->
   <head>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='traveler/css/bootstrap/css/bootstrap.css') }}" />
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='traveler/css/bootstrap/css/bootstrap.css') }}" />
     <!-- Style CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='traveler/css/homePage.css') }}" />
-
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='traveler/css/homePage.css') }}" />
     <!-- Custom Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
-      rel="stylesheet"
-    />
-
+    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+          rel="stylesheet" />
     <!-- Responsiveness -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <!-- SEO Optimizations -->
     <title>Hidden Gems | Discover Unique Travel Experiences in Nigeria</title>
-    <meta
-      name="description"
-      content="Explore hidden travel destinations across Nigeria. Discover culture, nature, and unforgettable experiences."
-    />
+    <meta name="description"
+          content="Explore hidden travel destinations across Nigeria. Discover culture, nature, and unforgettable experiences." />
   </head>
-
   <!-- ============================================
        BODY SECTION
        ============================================ -->
@@ -40,36 +34,29 @@
           <nav class="navbar navbar-expand-lg bg-body-tertiary custom-navbar">
             <div class="nav_content_wrapper">
               <!-- Logo -->
-              <a class="navbar-brand" href="/"
-                ><img
-                  src="{{ url_for('static', filename='traveler/assets/hidden_gem_logo.svg') }}"
-                  alt="Logo"
-                  width="auto"
-                  height="30"
-                  class="d-inline-block align-text-top"
-              /></a>
-
+              <a class="navbar-brand" href="/">
+                <img src="{{ url_for('static', filename='traveler/assets/hidden_gem_logo.svg') }}"
+                     alt="Logo"
+                     width="auto"
+                     height="30"
+                     class="d-inline-block align-text-top" />
+              </a>
               <!-- Collapsible toggle button for mobile -->
-              <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
+              <button class="navbar-toggler"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarNavDropdown"
+                      aria-controls="navbarNavDropdown"
+                      aria-expanded="false"
+                      aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-
               <!-- Menu items -->
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <div class="menu_item_wrapper">
                   <ul class="navbar-nav">
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#section_two"
-                        >Explore</a
-                      >
+                      <a class="nav-link active" aria-current="page" href="#section_two">Explore</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#guides_section">Guides</a>
@@ -78,21 +65,16 @@
                       <a class="nav-link" href="#about_section">About</a>
                     </li>
                   </ul>
-
                   <!-- sign up button and Arrow Icon -->
                   <div class="navbar-cta">
-                    <a href="/signup/"
-                      ><button type="button" class="btn btn-primary">
-                        Get Started
-                      </button></a
-                    >
-                    <img
-                      class="border-10000"
-                      src="{{ url_for('static', filename='traveler/assets/arrow.svg') }}"
-                      alt="Arrow Icon"
-                      width="40px"
-                      height="auto"
-                    />
+                    <a href="/signup/">
+                      <button type="button" class="btn btn-primary">Get Started</button>
+                    </a>
+                    <img class="border-10000"
+                         src="{{ url_for('static', filename='traveler/assets/arrow.svg') }}"
+                         alt="Arrow Icon"
+                         width="40px"
+                         height="auto" />
                   </div>
                 </div>
               </div>
@@ -100,7 +82,6 @@
           </nav>
         </div>
       </div>
-
       <!-- ============================================
          HERO SECTION -
          ============================================ -->
@@ -108,34 +89,31 @@
         <div class="col-md-12">
           <div class="hero-section">
             <h1 class="hero-title">
-              Nìgeriã is more<br />beautiful than you know.
+              Nìgeriã is more
+              <br />
+              beautiful than you know.
             </h1>
             <div class="pill-wrapper">
-              <a href="#"
-                ><span class="pill my-1"
-                  >Chappal Waddi, Taraba
-                  <img src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}" alt="arrow" /></span
-              ></a>
-              <a href="#"
-                ><span class="pill"
-                  >Idanre Hills, Ondo
-                  <img src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}" alt="arrow" /></span
-              ></a>
-              <a href="#"
-                ><span class="pill"
-                  >Erin Ijesha, Osun
-                  <img src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}" alt="arrow" /></span
-              ></a>
-              <a href="#"
-                ><span class="pill"
-                  >Ogunta Lake, Imo
-                  <img src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}" alt="arrow" /></span
-              ></a>
-              <a href="#"
-                ><span class="pill"
-                  >lots more
-                  <img src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}" alt="arrow" /></span
-              ></a>
+              <a href="#"><span class="pill my-1">Chappal Waddi, Taraba
+                <img src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}"
+                     alt="arrow" />
+              </span></a>
+              <a href="#"><span class="pill">Idanre Hills, Ondo
+                <img src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}"
+                     alt="arrow" />
+              </span></a>
+              <a href="#"><span class="pill">Erin Ijesha, Osun
+                <img src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}"
+                     alt="arrow" />
+              </span></a>
+              <a href="#"><span class="pill">Ogunta Lake, Imo
+                <img src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}"
+                     alt="arrow" />
+              </span></a>
+              <a href="#"><span class="pill">lots more
+                <img src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}"
+                     alt="arrow" />
+              </span></a>
             </div>
           </div>
           <div class="hero-description">
@@ -148,22 +126,19 @@
           <div class="hero-button-wrapper">
             <div>
               <!-- Button and Icon Alone -->
-              <a href="/signup/"><button type="button" class="btn btn-primary hero-button col-10">
-                Explore Now
-              </button></a>
-              <img
-                class="border-10000-hero col-1"
-                src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}"
-                alt="Arrow Icon"
-                width="auto"
-                height="auto"
-              />
+              <a href="/signup/">
+                <button type="button" class="btn btn-primary hero-button col-10">Explore Now</button>
+              </a>
+              <img class="border-10000-hero col-1"
+                   src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}"
+                   alt="Arrow Icon"
+                   width="auto"
+                   height="auto" />
             </div>
             <p class="terms text-end">* Terms & Conditions apply</p>
           </div>
         </div>
       </div>
-
       <!-- ============================================
          SECTION TWO -- CAROUSEL
          ============================================ -->
@@ -172,94 +147,69 @@
           <div class="divider"></div>
           <div class="title-and-icon">
             <h2 class="section-two-title" id="section_two">
-              Nigeria has waterfalls, mountains, and ancient hills. <br />Nobody
+              Nigeria has waterfalls, mountains, and ancient hills.
+              <br />
+              Nobody
               told you.
             </h2>
-            <img
-              src="{{ url_for('static', filename='traveler/assets/section-2-logo.svg') }}"
-              alt="hidden gems eye icon"
-            />
+            <img src="{{ url_for('static', filename='traveler/assets/section-2-logo.svg') }}"
+                 alt="hidden gems eye icon" />
           </div>
         </div>
       </div>
-
       <!-- -------------------- -->
       <!-- MAIN CAROUSEL -->
       <!-- ------------------- -->
       <div id="hiddenGemsCarousel" class="carousel slide position-relative">
         <!-- Slide indicators (dots) -->
         <div class="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#hiddenGemsCarousel"
-            data-bs-slide-to="0"
-            class="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#hiddenGemsCarousel"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#hiddenGemsCarousel"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#hiddenGemsCarousel"
-            data-bs-slide-to="3"
-            aria-label="Slide 4"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#hiddenGemsCarousel"
-            data-bs-slide-to="4"
-            aria-label="Slide 5"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#hiddenGemsCarousel"
-            data-bs-slide-to="5"
-            aria-label="Slide 6"
-          ></button>
+          <button type="button"
+                  data-bs-target="#hiddenGemsCarousel"
+                  data-bs-slide-to="0"
+                  class="active"
+                  aria-current="true"
+                  aria-label="Slide 1"></button>
+          <button type="button"
+                  data-bs-target="#hiddenGemsCarousel"
+                  data-bs-slide-to="1"
+                  aria-label="Slide 2"></button>
+          <button type="button"
+                  data-bs-target="#hiddenGemsCarousel"
+                  data-bs-slide-to="2"
+                  aria-label="Slide 3"></button>
+          <button type="button"
+                  data-bs-target="#hiddenGemsCarousel"
+                  data-bs-slide-to="3"
+                  aria-label="Slide 4"></button>
+          <button type="button"
+                  data-bs-target="#hiddenGemsCarousel"
+                  data-bs-slide-to="4"
+                  aria-label="Slide 5"></button>
+          <button type="button"
+                  data-bs-target="#hiddenGemsCarousel"
+                  data-bs-slide-to="5"
+                  aria-label="Slide 6"></button>
         </div>
-
         <div class="carousel-inner">
           <!-- Slide 1 - Obudu-->
           <div class="carousel-item active">
-            <img
-              src="{{ url_for('static', filename='traveler/assets/images/obudu-ranch.webp') }}"
-              class="d-block w-100 carousel-bg-img"
-              alt="Obudu Cattle Ranch"
-            />
-
+            <img src="{{ url_for('static', filename='traveler/assets/images/obudu-ranch.webp') }}"
+                 class="d-block w-100 carousel-bg-img"
+                 alt="Obudu Cattle Ranch" />
             <!-- Custom full-height caption overlay -->
-            <div
-              class="carousel-caption hg-caption d-flex align-items-stretch justify-content-between"
-            >
+            <div class="carousel-caption hg-caption d-flex align-items-stretch justify-content-between">
               <!-- Left arrow (custom, inside caption) -->
-              <div
-                class="hg-arrow-col d-flex align-items-center justify-content-center"
-              >
-                <button
-                  class="hg-arrow-btn"
-                  data-bs-target="#hiddenGemsCarousel"
-                  data-bs-slide="prev"
-                  aria-label="Previous"
-                >
-                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}" alt="" />
+              <div class="hg-arrow-col d-flex align-items-center justify-content-center">
+                <button class="hg-arrow-btn"
+                        data-bs-target="#hiddenGemsCarousel"
+                        data-bs-slide="prev"
+                        aria-label="Previous">
+                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}"
+                       alt="" />
                 </button>
               </div>
-
               <!-- Center content -->
-              <div
-                class="hg-center-col d-flex flex-column justify-content-between"
-              >
+              <div class="hg-center-col d-flex flex-column justify-content-between">
                 <h3 class="hg-location-name">Obudu Ranch, CrossRiver</h3>
                 <div class="hg-bottom-info">
                   <p class="hg-difficulty">MODERATE</p>
@@ -268,51 +218,39 @@
                       <span class="pill">Resort</span>
                       <span class="pill">Cattle Ranch</span>
                     </div>
-                    <a href="/signup/"><button class="btn btn-primary">Join next group</button></a>
+                    <a href="/signup/">
+                      <button class="btn btn-primary">Join next group</button>
+                    </a>
                   </div>
                 </div>
               </div>
-
               <!-- Right arrow (custom, inside caption) -->
-              <div
-                class="hg-arrow-col d-flex align-items-center justify-content-center"
-              >
-                <button
-                  class="hg-arrow-btn"
-                  data-bs-target="#hiddenGemsCarousel"
-                  data-bs-slide="next"
-                  aria-label="Next"
-                >
-                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}" alt="" />
+              <div class="hg-arrow-col d-flex align-items-center justify-content-center">
+                <button class="hg-arrow-btn"
+                        data-bs-target="#hiddenGemsCarousel"
+                        data-bs-slide="next"
+                        aria-label="Next">
+                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}"
+                       alt="" />
                 </button>
               </div>
             </div>
           </div>
-
           <!-- Slide 2 - Chappal Waddi -->
           <div class="carousel-item">
-            <img
-              src="{{ url_for('static', filename='traveler/assets/images/chappal_waddi_hidden_gem.webp') }}"
-              class="d-block w-100 carousel-bg-img"
-              alt="Chappal Waddi"
-            />
-            <div
-              class="carousel-caption hg-caption d-flex align-items-stretch justify-content-between"
-            >
-              <div
-                class="hg-arrow-col d-flex align-items-center justify-content-center"
-              >
-                <button
-                  class="hg-arrow-btn"
-                  data-bs-target="#hiddenGemsCarousel"
-                  data-bs-slide="prev"
-                >
-                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}" alt="" />
+            <img src="{{ url_for('static', filename='traveler/assets/images/chappal_waddi_hidden_gem.webp') }}"
+                 class="d-block w-100 carousel-bg-img"
+                 alt="Chappal Waddi" />
+            <div class="carousel-caption hg-caption d-flex align-items-stretch justify-content-between">
+              <div class="hg-arrow-col d-flex align-items-center justify-content-center">
+                <button class="hg-arrow-btn"
+                        data-bs-target="#hiddenGemsCarousel"
+                        data-bs-slide="prev">
+                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}"
+                       alt="" />
                 </button>
               </div>
-              <div
-                class="hg-center-col d-flex flex-column justify-content-between"
-              >
+              <div class="hg-center-col d-flex flex-column justify-content-between">
                 <h3 class="hg-location-name">Chappal Waddi, Taraba</h3>
                 <div class="hg-bottom-info">
                   <p class="hg-difficulty">MODERATE</p>
@@ -321,50 +259,38 @@
                       <span class="pill">Hiking</span>
                       <span class="pill">High Altitude</span>
                     </div>
-                    <a href="/signup/"><button class="btn btn-primary">Join next group</button></a>
+                    <a href="/signup/">
+                      <button class="btn btn-primary">Join next group</button>
+                    </a>
                   </div>
                 </div>
               </div>
-
               <!-- Right Arrow -->
-              <div
-                class="hg-arrow-col d-flex align-items-center justify-content-center"
-              >
-                <button
-                  class="hg-arrow-btn"
-                  data-bs-target="#hiddenGemsCarousel"
-                  data-bs-slide="next"
-                >
-                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}" alt="" />
+              <div class="hg-arrow-col d-flex align-items-center justify-content-center">
+                <button class="hg-arrow-btn"
+                        data-bs-target="#hiddenGemsCarousel"
+                        data-bs-slide="next">
+                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}"
+                       alt="" />
                 </button>
               </div>
             </div>
           </div>
-
           <!-- Slide 3 - Erin Ijesha -->
           <div class="carousel-item">
-            <img
-              src="{{ url_for('static', filename='traveler/assets/images/Erin Ijesha.webp') }}"
-              class="d-block w-100 carousel-bg-img"
-              alt="Slide 3"
-            />
-            <div
-              class="carousel-caption hg-caption d-flex align-items-stretch justify-content-between"
-            >
-              <div
-                class="hg-arrow-col d-flex align-items-center justify-content-center"
-              >
-                <button
-                  class="hg-arrow-btn"
-                  data-bs-target="#hiddenGemsCarousel"
-                  data-bs-slide="prev"
-                >
-                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}" alt="" />
+            <img src="{{ url_for('static', filename='traveler/assets/images/Erin Ijesha.webp') }}"
+                 class="d-block w-100 carousel-bg-img"
+                 alt="Slide 3" />
+            <div class="carousel-caption hg-caption d-flex align-items-stretch justify-content-between">
+              <div class="hg-arrow-col d-flex align-items-center justify-content-center">
+                <button class="hg-arrow-btn"
+                        data-bs-target="#hiddenGemsCarousel"
+                        data-bs-slide="prev">
+                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}"
+                       alt="" />
                 </button>
               </div>
-              <div
-                class="hg-center-col d-flex flex-column justify-content-between"
-              >
+              <div class="hg-center-col d-flex flex-column justify-content-between">
                 <h3 class="hg-location-name">Erin Ijesha Falls, Osun</h3>
                 <div class="hg-bottom-info">
                   <p class="hg-difficulty">BEGINNER</p>
@@ -373,49 +299,38 @@
                       <span class="pill">Waterfalls</span>
                       <span class="pill">Scenic</span>
                     </div>
-                    <a href="/signup/"><button class="btn btn-primary">Join next group</button></a>
+                    <a href="/signup/">
+                      <button class="btn btn-primary">Join next group</button>
+                    </a>
                   </div>
                 </div>
               </div>
               <!-- Right Arrow -->
-              <div
-                class="hg-arrow-col d-flex align-items-center justify-content-center"
-              >
-                <button
-                  class="hg-arrow-btn"
-                  data-bs-target="#hiddenGemsCarousel"
-                  data-bs-slide="next"
-                >
-                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}" alt="" />
+              <div class="hg-arrow-col d-flex align-items-center justify-content-center">
+                <button class="hg-arrow-btn"
+                        data-bs-target="#hiddenGemsCarousel"
+                        data-bs-slide="next">
+                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}"
+                       alt="" />
                 </button>
               </div>
             </div>
           </div>
-
           <!-- Slide 4 - Gashaka-Gumti National Park -->
           <div class="carousel-item">
-            <img
-              src="{{ url_for('static', filename='traveler/assets/images/Gashaka-Gumti.webp') }}"
-              class="d-block w-100 carousel-bg-img"
-              alt="Slide 3"
-            />
-            <div
-              class="carousel-caption hg-caption d-flex align-items-stretch justify-content-between"
-            >
-              <div
-                class="hg-arrow-col d-flex align-items-center justify-content-center"
-              >
-                <button
-                  class="hg-arrow-btn"
-                  data-bs-target="#hiddenGemsCarousel"
-                  data-bs-slide="prev"
-                >
-                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}" alt="" />
+            <img src="{{ url_for('static', filename='traveler/assets/images/Gashaka-Gumti.webp') }}"
+                 class="d-block w-100 carousel-bg-img"
+                 alt="Slide 3" />
+            <div class="carousel-caption hg-caption d-flex align-items-stretch justify-content-between">
+              <div class="hg-arrow-col d-flex align-items-center justify-content-center">
+                <button class="hg-arrow-btn"
+                        data-bs-target="#hiddenGemsCarousel"
+                        data-bs-slide="prev">
+                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}"
+                       alt="" />
                 </button>
               </div>
-              <div
-                class="hg-center-col d-flex flex-column justify-content-between"
-              >
+              <div class="hg-center-col d-flex flex-column justify-content-between">
                 <h3 class="hg-location-name">Gashaka-Gumti, Taraba</h3>
                 <div class="hg-bottom-info">
                   <p class="hg-difficulty">GUIDED</p>
@@ -424,49 +339,38 @@
                       <span class="pill">Wildlife</span>
                       <span class="pill">Park</span>
                     </div>
-                    <a href="/signup/"><button class="btn btn-primary">Join next group</button></a>
+                    <a href="/signup/">
+                      <button class="btn btn-primary">Join next group</button>
+                    </a>
                   </div>
                 </div>
               </div>
               <!-- Right Arrow -->
-              <div
-                class="hg-arrow-col d-flex align-items-center justify-content-center"
-              >
-                <button
-                  class="hg-arrow-btn"
-                  data-bs-target="#hiddenGemsCarousel"
-                  data-bs-slide="next"
-                >
-                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}" alt="" />
+              <div class="hg-arrow-col d-flex align-items-center justify-content-center">
+                <button class="hg-arrow-btn"
+                        data-bs-target="#hiddenGemsCarousel"
+                        data-bs-slide="next">
+                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}"
+                       alt="" />
                 </button>
               </div>
             </div>
           </div>
-
           <!-- Slide 5 - Oguta Lake -->
           <div class="carousel-item">
-            <img
-              src="{{ url_for('static', filename='traveler/assets/images/Oguta Lake.webp') }}"
-              class="d-block w-100 carousel-bg-img"
-              alt="Slide 3"
-            />
-            <div
-              class="carousel-caption hg-caption d-flex align-items-stretch justify-content-between"
-            >
-              <div
-                class="hg-arrow-col d-flex align-items-center justify-content-center"
-              >
-                <button
-                  class="hg-arrow-btn"
-                  data-bs-target="#hiddenGemsCarousel"
-                  data-bs-slide="prev"
-                >
-                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}" alt="" />
+            <img src="{{ url_for('static', filename='traveler/assets/images/Oguta Lake.webp') }}"
+                 class="d-block w-100 carousel-bg-img"
+                 alt="Slide 3" />
+            <div class="carousel-caption hg-caption d-flex align-items-stretch justify-content-between">
+              <div class="hg-arrow-col d-flex align-items-center justify-content-center">
+                <button class="hg-arrow-btn"
+                        data-bs-target="#hiddenGemsCarousel"
+                        data-bs-slide="prev">
+                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}"
+                       alt="" />
                 </button>
               </div>
-              <div
-                class="hg-center-col d-flex flex-column justify-content-between"
-              >
+              <div class="hg-center-col d-flex flex-column justify-content-between">
                 <h3 class="hg-location-name">Oguta Lake, Imo</h3>
                 <div class="hg-bottom-info">
                   <p class="hg-difficulty">BEGINNER</p>
@@ -475,49 +379,38 @@
                       <span class="pill">Lake</span>
                       <span class="pill">Scenic</span>
                     </div>
-                    <a href="/signup/"><button class="btn btn-primary">Join next group</button></a>
+                    <a href="/signup/">
+                      <button class="btn btn-primary">Join next group</button>
+                    </a>
                   </div>
                 </div>
               </div>
               <!-- Right Arrow -->
-              <div
-                class="hg-arrow-col d-flex align-items-center justify-content-center"
-              >
-                <button
-                  class="hg-arrow-btn"
-                  data-bs-target="#hiddenGemsCarousel"
-                  data-bs-slide="next"
-                >
-                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}" alt="" />
+              <div class="hg-arrow-col d-flex align-items-center justify-content-center">
+                <button class="hg-arrow-btn"
+                        data-bs-target="#hiddenGemsCarousel"
+                        data-bs-slide="next">
+                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}"
+                       alt="" />
                 </button>
               </div>
             </div>
           </div>
-
           <!-- Slide 6 - Idanre Hills -->
           <div class="carousel-item">
-            <img
-              src="{{ url_for('static', filename='traveler/assets/images/Idanre Hills.webp') }}"
-              class="d-block w-100 carousel-bg-img"
-              alt="Slide 3"
-            />
-            <div
-              class="carousel-caption hg-caption d-flex align-items-stretch justify-content-between"
-            >
-              <div
-                class="hg-arrow-col d-flex align-items-center justify-content-center"
-              >
-                <button
-                  class="hg-arrow-btn"
-                  data-bs-target="#hiddenGemsCarousel"
-                  data-bs-slide="prev"
-                >
-                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}" alt="" />
+            <img src="{{ url_for('static', filename='traveler/assets/images/Idanre Hills.webp') }}"
+                 class="d-block w-100 carousel-bg-img"
+                 alt="Slide 3" />
+            <div class="carousel-caption hg-caption d-flex align-items-stretch justify-content-between">
+              <div class="hg-arrow-col d-flex align-items-center justify-content-center">
+                <button class="hg-arrow-btn"
+                        data-bs-target="#hiddenGemsCarousel"
+                        data-bs-slide="prev">
+                  <img src="{{ url_for('static', filename='traveler/assets/left-arrow.svg') }}"
+                       alt="" />
                 </button>
               </div>
-              <div
-                class="hg-center-col d-flex flex-column justify-content-between"
-              >
+              <div class="hg-center-col d-flex flex-column justify-content-between">
                 <h3 class="hg-location-name">Idanre Hills, Ondo</h3>
                 <div class="hg-bottom-info">
                   <p class="hg-difficulty">MODERATE</p>
@@ -526,39 +419,39 @@
                       <span class="pill">Hiking</span>
                       <span class="pill">High Altitude</span>
                     </div>
-                    <a href="/signup/"><button class="btn btn-primary">Join next group</button></a>
+                    <a href="/signup/">
+                      <button class="btn btn-primary">Join next group</button>
+                    </a>
                   </div>
                 </div>
               </div>
               <!-- Right Arrow -->
-              <div
-                class="hg-arrow-col d-flex align-items-center justify-content-center"
-              >
-                <button
-                  class="hg-arrow-btn"
-                  data-bs-target="#hiddenGemsCarousel"
-                  data-bs-slide="next"
-                >
-                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}" alt="" />
+              <div class="hg-arrow-col d-flex align-items-center justify-content-center">
+                <button class="hg-arrow-btn"
+                        data-bs-target="#hiddenGemsCarousel"
+                        data-bs-slide="next">
+                  <img src="{{ url_for('static', filename='traveler/assets/right-arrow.svg') }}"
+                       alt="" />
                 </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-
       <!-- ============================================
          SECTION THREE -- OFFERINGS
          ============================================ -->
       <div class="row section-three my-5 pt-2">
         <div class="col-md-12">
           <h2 class="section-two-title">
-            Explore safely. <br />
-            We handle everything, <br />from end-to-end.
+            Explore safely.
+            <br />
+            We handle everything,
+            <br />
+            from end-to-end.
           </h2>
         </div>
       </div>
-
       <div class="row offering-wrapper mb-5 pb-5" id="about_section">
         <!-- Offering 1 -->
         <div class="col-md-4 offering-cols">
@@ -572,16 +465,12 @@
               searchable.
             </p>
           </div>
-
           <div class="offering-img-wrapper">
-            <img
-              src="{{ url_for('static', filename='traveler/assets/images/obudu_mini.webp') }}"
-              alt=""
-              class="offering-img"
-            />
+            <img src="{{ url_for('static', filename='traveler/assets/images/obudu_mini.webp') }}"
+                 alt=""
+                 class="offering-img" />
           </div>
         </div>
-
         <!-- Offering 2 -->
         <div class="col-md-4 offering-cols">
           <div class="offerring-heading">
@@ -595,14 +484,11 @@
             </p>
           </div>
           <div class="offering-img">
-            <img
-              src="{{ url_for('static', filename='traveler/assets/images/guide.webp') }}"
-              alt=""
-              class="offering-img"
-            />
+            <img src="{{ url_for('static', filename='traveler/assets/images/guide.webp') }}"
+                 alt=""
+                 class="offering-img" />
           </div>
         </div>
-
         <!-- Offering 3 -->
         <div class="col-md-4 offering-cols">
           <div class="offerring-heading">
@@ -615,29 +501,26 @@
             </p>
           </div>
           <div class="offering-img">
-            <img
-              src="{{ url_for('static', filename='traveler/assets/images/safety_info.png') }}"
-              alt=""
-              class="offering-img"
-            />
+            <img src="{{ url_for('static', filename='traveler/assets/images/safety_info.png') }}"
+                 alt=""
+                 class="offering-img" />
           </div>
         </div>
       </div>
-
       <!-- ============================================
          SECTION FOUR - GUIDE
          ============================================ -->
       <div class="row guide-bg-img">
         <!-- empty column -->
         <div class="col-md-3"></div>
-
         <!-- Guide Info -->
         <div class="col-md-4" id="guides_section">
           <div class="guide-section">
             <p class="hg-difficulty">FOR GUIDES</p>
             <h3 class="guide-title">
-              You know these trails. <br />
-              <span style="font-weight: 500"> Now get paid for it.</span>
+              You know these trails.
+              <br />
+              <span style="font-weight: 500">Now get paid for it.</span>
             </h3>
           </div>
           <div class="guide-description">
@@ -660,22 +543,17 @@
           <div class="guide-button-wrapper">
             <div>
               <!-- Button and Icon Alone -->
-              <a href="signUp.html">
-                <button type="button" class="btn btn-primary guide-button col-10">
-                  Join as a Guide
-                </button>
+              <a href="/signup/">
+                <button type="button" class="btn btn-primary guide-button col-10">Join as a Guide</button>
               </a>
-              <img
-                class="border-10000-hero col-1"
-                src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}"
-                alt="Arrow Icon"
-                width="auto"
-                height="auto"
-              />
+              <img class="border-10000-hero col-1"
+                   src="{{ url_for('static', filename='traveler/assets/arrow-black.svg') }}"
+                   alt="Arrow Icon"
+                   width="auto"
+                   height="auto" />
             </div>
           </div>
         </div>
-
         <!-- More Guide Details -->
         <div class="col-md-4">
           <div class="guide-section-2">
@@ -690,7 +568,6 @@
               <span class="pill-2">Hausa & Engligh</span>
             </div>
           </div>
-
           <div class="metrics">
             <div class="each-metric col-md-4">
               <h3>48</h3>
@@ -707,17 +584,14 @@
           </div>
         </div>
       </div>
-
       <!-- ============================================
         SECTION 5 -TESIMONIAL
          ============================================ -->
       <div class="row section-five ms-auto align-items-center">
         <div class="col-md-5 col-12">
-          <img
-            src="{{ url_for('static', filename='traveler/assets/images/chidima.webp') }}"
-            alt="Chidima"
-            class="testimonial-image img-fluid"
-          />
+          <img src="{{ url_for('static', filename='traveler/assets/images/chidima.webp') }}"
+               alt="Chidima"
+               class="testimonial-image img-fluid" />
         </div>
         <div class="col-md-7 col-12 testimonial-section">
           <h2 class="testimonnial-text">
@@ -725,19 +599,17 @@
             guide, I booked in 10 minutes, and it was the best weekend of my
             life."
           </h2>
-
           <div class="testimonial-detail">
             <h5>Chidinma Alade</h5>
+            <p class="testimonial-para">Traveler from Lagos. Visited Ikogosi Warm Spring</p>
             <p class="testimonial-para">
-              Traveler from Lagos. Visited Ikogosi Warm Spring
-            </p>
-            <p class="testimonial-para">
-              <img src="{{ url_for('static', filename='traveler/assets/rating.svg') }}" alt="rating-star" /> 4.8
+              <img src="{{ url_for('static', filename='traveler/assets/rating.svg') }}"
+                   alt="rating-star" />
+              4.8
             </p>
           </div>
         </div>
       </div>
-
       <!-- ============================================
         SECTION 5 - PRE-FOOTER
          ============================================ -->
@@ -745,39 +617,48 @@
         <div class="col-md-12">
           <div class="pre-footer-section">
             <h2 class="pre-footer-title">
-              Explore <span class="span-1">Nigeria</span> and all of <br />her
+              Explore <span class="span-1">Nigeria</span> and all of
+              <br />
+              her
               <span class="span-2">beautiful</span> locations
             </h2>
             <p>Pick a destination, find your guide, go.</p>
           </div>
         </div>
       </div>
-
       <!-- ============================================
           FOOTER
          ============================================ -->
       <div class="row footer d-flex justify-content-between align-items-center px-5 py-3">
         <div class="col-md-4 mb-3">
-        <img src="{{ url_for('static', filename='traveler/assets/footer-logo.svg') }}" alt="logo" width="120px" height="auto"/>
+          <img src="{{ url_for('static', filename='traveler/assets/footer-logo.svg') }}"
+               alt="logo"
+               width="120px"
+               height="auto" />
         </div>
-
         <div class="col-md-4 mx-auto my-auto text-center align-middle">
-        <p class="my-auto text-start text-md-end">(C) 2026 Hidden Gem. All rights reserved</p>
+          <p class="my-auto text-start text-md-end">(C) 2026 Hidden Gem. All rights reserved</p>
         </div>
-        
         <div class="social-media-icons col-md-4 mt-3 d-flex justify-content-start justify-content-md-end">
-          <a href="#"><img src="{{ url_for('static', filename='traveler/assets/Instagram.svg') }}" alt="IG"></a>
-          <a href="#"><img src="{{ url_for('static', filename='traveler/assets/linkedin.svg') }}" alt="LinkedIn"></a>
-          <a href="#"><img src="{{ url_for('static', filename='traveler/assets/X.svg') }}" alt="X"></a>
+          <a href="#">
+            <img src="{{ url_for('static', filename='traveler/assets/Instagram.svg') }}"
+                 alt="IG">
+          </a>
+          <a href="#">
+            <img src="{{ url_for('static', filename='traveler/assets/linkedin.svg') }}"
+                 alt="LinkedIn">
+          </a>
+          <a href="#">
+            <img src="{{ url_for('static', filename='traveler/assets/X.svg') }}"
+                 alt="X">
+          </a>
         </div>
       </div>
-
-
-    <!-- ============================================
+      <!-- ============================================
          JAVASCRIPT SECTIONS
          ============================================ -->
-    <script src="{{ url_for('static', filename='traveler/css/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='traveler/js/jquery-3.7.1.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='traveler/js/homePage.js') }}"></script>
-  </body>
-</html>
+      <script src="{{ url_for('static', filename='traveler/css/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='traveler/js/jquery-3.7.1.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='traveler/js/homePage.js') }}"></script>
+    </body>
+  </html>
