@@ -1,89 +1,128 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <!-- -------------------------------------------
        HEAD SECTION
        =------------------------------------------- -->
   <head>
     <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='traveler/css/bootstrap/css/bootstrap.css') }}"
-    />
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='traveler/css/bootstrap/css/bootstrap.css') }}" />
     <!-- Style CSS -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='traveler/css/otp.css') }}"
-    />
-
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='traveler/css/otp.css') }}" />
     <!-- Custom Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
-      rel="stylesheet"
-    />
-
+    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+          rel="stylesheet" />
     <!-- Responsiveness -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <!-- SEO Optimizations -->
     <title>Hidden Gems | Enter OTP</title>
-    <meta
-      name="description"
-      content="Explore hidden travel destinations across Nigeria. Discover culture, nature, and unforgettable experiences."
-    />
+    <meta name="description"
+          content="Explore hidden travel destinations across Nigeria. Discover culture, nature, and unforgettable experiences." />
   </head>
-
   <!-- --------------------------------------------
        BODY SECTION
        ------------------------------------------- -->
   <body>
     <div class="container-fluid min-vh-100">
-      <div
-        class="row bg-img d-flex justify-content-center align-items-center vh-100"
-      >
+      <div class="row bg-img d-flex justify-content-center align-items-center vh-100">
         <div class="col-md-4 wrapper text-center ms-auto me-auto">
-          <a href="/"
-            ><img
-              src="{{ url_for('static', filename='traveler/assets/hidden_gem_logo.svg') }}"
-              alt=""
-              class="logo"
-          /></a>
-
+          <a href="/">
+            <img src="{{ url_for('static', filename='traveler/assets/hidden_gem_logo.svg') }}"
+                 alt=""
+                 class="logo" />
+          </a>
           <!-- title -->
           <div class="title">
             <h4>Enter the OTP sent to your email</h4>
-            <p class="subtext">
-              Please enter the 6-digit code sent to your email
-            </p>
+            <p class="subtext">Please enter the 6-digit code sent to your email</p>
           </div>
-
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{% if category == 'errormsg' or category == 'error' or category == 'danger' %}danger{% else %}info{% endif %} alert-dismissible fade show mb-4"
+                     role="alert">
+                  {{ message }}
+                  <button type="button"
+                          class="btn-close"
+                          data-bs-dismiss="alert"
+                          aria-label="Close"></button>
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
           <!-- boxes -->
-          <div class="otp-boxes">
-            <div class="each-box">
-              <input type="number" class="form-control" placeholder="0" />
+          <form action="" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="otp" id="otp-hidden">
+            <div class="otp-boxes">
+              <div class="each-box">
+                <input type="text"
+                       class="form-control text-center otp-input"
+                       inputmode="numeric"
+                       pattern="[0-9]*"
+                       maxlength="1"
+                       autocomplete="one-time-code">
+              </div>
+              <div class="each-box">
+                <input type="text"
+                       class="form-control text-center otp-input"
+                       inputmode="numeric"
+                       pattern="[0-9]*"
+                       maxlength="1"
+                       autocomplete="one-time-code">
+              </div>
+              <div class="each-box">
+                <input type="text"
+                       class="form-control text-center otp-input"
+                       inputmode="numeric"
+                       pattern="[0-9]*"
+                       maxlength="1"
+                       autocomplete="one-time-code">
+              </div>
+              <div class="each-box">
+                <input type="text"
+                       class="form-control text-center otp-input"
+                       inputmode="numeric"
+                       pattern="[0-9]*"
+                       maxlength="1"
+                       autocomplete="one-time-code">
+              </div>
+              <div class="each-box">
+                <input type="text"
+                       class="form-control text-center otp-input"
+                       inputmode="numeric"
+                       pattern="[0-9]*"
+                       maxlength="1"
+                       autocomplete="one-time-code">
+              </div>
+              <div class="each-box">
+                <input type="text"
+                       class="form-control text-center otp-input"
+                       inputmode="numeric"
+                       pattern="[0-9]*"
+                       maxlength="1"
+                       autocomplete="one-time-code">
+              </div>
             </div>
-            <div class="each-box">
-              <input type="number" class="form-control" placeholder="0" />
+            <!-- Otp timer and resend otp link -->
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <!-- Left Side: The Timer Text -->
+              <div id="timer-container" class="text-start mb-5 small-text">
+                Resend Code in <span id="otp-counter" class="timer">00:30</span>
+              </div>
+              <!-- Right Side: The Hidden Link (Shown when timer finishes) -->
+              <a href="#"
+                 id="resend-link"
+                 class="text-success small-text fw-medium text-end text-decoration-none d-none"
+                 onclick="resendOTP(event)">Resend OTP</a>
             </div>
-            <div class="each-box">
-              <input type="number" class="form-control" placeholder="0" />
-            </div>
-            <div class="each-box">
-              <input type="number" class="form-control" placeholder="0" />
-            </div>
-            <div class="each-box">
-              <input type="number" class="form-control" placeholder="0" />
-            </div>
-            <div class="each-box">
-              <input type="number" class="form-control" placeholder="0" />
-            </div>
-          </div>
-
-          <p class="text-start mb-5 small-text">
-            Resend Code in <span class="timer">00:30</span>
-          </p>
+            <!-- Form Submit Button -->
+            <button class='btn btn-primary col-12 mb-3' type="submit">Verify Account</button>
+          </form>
           <p class="login-account text-center">
             Already have an account?
             <a href="/login/"><span class="login">Login</span></a>

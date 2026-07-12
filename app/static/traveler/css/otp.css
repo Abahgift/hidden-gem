@@ -54,6 +54,27 @@ a {
   --border-radius-pill: 625rem;
 }
 
+
+.btn-primary {
+  background-color: var(--green-primary-dark);
+  color: var(--green-dark-3);
+  border: none;
+  border-radius: var(--border-radius-md);
+  transition: transform 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--green-primary);
+  color: var(--green-dark-3);
+  border: none;
+  transform: scale(1.01);
+}
+
+
 /* ---------------------------------------------------------- */
 /* STYLING STARTS HERE */
 /* ---------------------------------------------------------- */

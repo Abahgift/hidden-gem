@@ -50,25 +50,36 @@
               .
             </p>
           </div>
-          <!-- sign-up form -->
-          <div class="user-type col-12 col-md-12">
-            <button class="btn btn-secondary">
-              As Traveler
-              <img src="{{ url_for('static', filename='traveler/assets/signUp/tourist 2.svg') }}"
-                   alt="traveler icon"
-                   class="icon" />
-            </button>
-            <button class="btn btn-secondary">
-              As Tour Guide
-              <img src="{{ url_for('static', filename='traveler/assets/signUp/tour-guide 2.svg') }}"
-                   alt="tour guide icon"
-                   class="icon" />
-            </button>
-          </div>
+          <!-- The Form -->
           <form action="{{ url_for('signup') }}" method="POST">
-            {% set messages = get_flashed_messages() %}
-            {{ messages }}
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="alert alert-danger alert-dismissible fade show mb-4"
+                       role="alert">
+                    <strong>Error:</strong> {{ message }}
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="Close"></button>
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <!-- Radio Button -->
+            <div class="user-type">
+              <input type="radio" id="traveler" name="user_role" value="traveler" checked>
+              <label for="traveler" class="user-card col-6">
+                As Traveler
+                <img src="{{ url_for('static', filename='traveler/assets/signUp/tourist 2.svg') }}">
+              </label>
+              <input type="radio" id="guide" name="user_role" value="guide">
+              <label for="guide" class="user-card col-6">
+                As Tour Guide
+                <img src="{{ url_for('static', filename='traveler/assets/signUp/tour-guide 2.svg') }}">
+              </label>
+            </div>
             <!-- first name and last name -->
             <div class="names-wrapper col-md-12">
               <div class="mb-3 col-md-6">
@@ -99,18 +110,33 @@
                      aria-describedby="emailHelp" />
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password"
-                     class="form-control"
-                     id="password"
-                     name="password"
-                     placeholder="••••••••" />
+            <!-- password and confirm password -->
+            <div class="row gx-2 password_wrapper">
+              <!-- password -->
+              <div class="col-12 col-md-6 mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password"
+                       class="form-control"
+                       id="password"
+                       name="password"
+                       placeholder="••••••••" />
+              </div>
+              <!-- confirm password -->
+              <div class="col-12 col-md-6 mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password"
+                       class="form-control"
+                       id="confirm_password"
+                       name="confirm_password"
+                       placeholder="••••••••" />
+              </div>
             </div>
+            <!-- Checkbox -->
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="check" />
               <label class="form-check-label" for="check">I accept the terms and conditions</label>
             </div>
+            <!-- Buttons -->
             <button type="submit" class="btn btn-primary col-12 create-account">Create Account</button>
             <p class="login-account text-center">
               Already have an account?

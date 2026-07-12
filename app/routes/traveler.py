@@ -1,7 +1,13 @@
-from flask import render_template
+from unicodedata import category
+
+from datetime import datetime
+from flask import render_template, request, url_for, redirect,session,flash
 from app import app
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from app.models import db, User
+from app.routes.auth import send_otp_email
+
 
 @app.route("/")
 def landing_page():
@@ -10,17 +16,56 @@ def landing_page():
 
 @app.route("/signup/", methods=["GET","POST"])
 def signup():
+    if request.method == "POST":
+        firstname = request.form.get('firstname')
+        lastname = request.form.get('lastname')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        confirmpassword = request.form.get("confirm_password")
+        userrole = request.form.get('user_role') 
+        verification = False
+
+        # Validation
+        if firstname and lastname and email and password:
+            if password == confirmpassword:
+                hash = generate_password_hash(password)
+                user = User(first_name=firstname, last_name=lastname, email=email,
+                            password_hash=hash, role=userrole, is_verified=False)
+                db.session.add(user)
+                db.session.commit()
+
+                try:
+                    send_otp_email(email)
+                except Exception as e:
+                    flash(f"Account created, but we couldn't send your verification code: {str(e)}", category="errormsg")
+
+                return redirect(url_for('verify_otp_page'))
+            else:
+                flash("Both passwords must match", category="errormsg")
+                return redirect(url_for('signup'))
+        else:
+            flash("All fields are required", category='errormsg')
+            return redirect(url_for('signup'))
+
     return render_template("traveler/signUp.html", title="Sign Up")
+
+
+
+# @app.route("/otp/", methods=["GET","POST"])
+# def otp():
+#     user = User()
+#     if otp == user.otp_code and datetime.utcnow() < user.otp_expires_at:
+#         user.is_verified = True
+#         user.otp_code = None
+#         db.session.commit()
+
+#     return render_template("traveler/otp.html", title="OTP Verification")
+
 
 
 @app.route("/login/")
 def login():
     return render_template("traveler/login.html", title="Login")
-
-
-@app.route("/otp/", methods=["GET","POST"])
-def otp():
-    return render_template("traveler/otp.html", title="OTP Verification")
 
 
 @app.route("/dashboard/", methods=["GET", "POST"])
@@ -107,3 +152,10 @@ def book_guide():
 @app.route("/booking-confirmation/")
 def booking_confirmation():
     return render_template("traveler/booking_confirmation.html", title="Booking Confirmation")
+
+
+
+# TO BE DELETED
+@app.route("/random/")
+def random_route():
+    return render_template('auth/verify_otp.html', title='Verify your email')

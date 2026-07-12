@@ -145,3 +145,32 @@ a {
 .create-account {
   margin-top: 1rem;
 }
+
+
+
+.user-type {
+  display: flex;
+  gap: 16px;
+}
+
+
+.user-type input[type="radio"] {
+    display: none;
+}
+
+.user-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+
+    background: #DFF8BF;
+    cursor: pointer;
+}
+
+.user-type input[type="radio"]:checked + .user-card {
+    background: #22c55e;
+    color: white;
+}

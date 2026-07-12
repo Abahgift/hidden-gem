@@ -1,9 +1,11 @@
 from flask import Flask
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect
+from flask_mailman import Mail
 
 
 csrf = CSRFProtect()
+mail = Mail()
 
 """ Application Factory Function """
 def create_app():
@@ -14,6 +16,7 @@ def create_app():
     db.init_app(app)
     Migrate(app,db)   # This sets up version control for the Database
     csrf.init_app(app)
+    mail.init_app(app)
 
     return app
 
