@@ -12,6 +12,22 @@
     <title>Hidden Gems — Dashboard</title>
   </head>
   <body>
+    <!-- Flash Messages -->
+    <div class="flash-container position-fixed top-0 start-50 translate-middle-x mt-3"
+         style="z-index: 2000;
+                width: 500px;
+                max-width: 90%">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show">
+              {{ message }}
+              <button class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </div>
     <div id="app" class="screen active">
       <div class="app-layout">
         <!-- LEFT SIDEBAR -->
@@ -35,65 +51,49 @@
           <nav class="sidebar-nav">
             <div class="nav-section">Overview</div>
             <a class="nav-item{% if current_page == 'dashboard' %} active{% endif %}"
-               href="{{ url_for('guide_dashboard') }}"
+               href="{{ url_for("guide_dashboard") }}"
                aria-current="{% if current_page == 'dashboard' %}page{% endif %}">
               <span class="nav-icon"><i class="bi bi-grid-1x2-fill"></i></span> Dashboard
             </a>
             <div class="nav-section">Manage</div>
             <a class="nav-item{% if current_page == 'bookings' %} active{% endif %}"
-               href="{{ url_for('guide_bookings') }}"
+               href="{{ url_for("guide_bookings") }}"
                aria-current="{% if current_page == 'bookings' %}page{% endif %}">
               <span class="nav-icon"><i class="bi bi-calendar-event-fill"></i></span> Bookings <span class="nav-badge" id="booking-badge">3</span>
             </a>
             <a class="nav-item{% if current_page == 'trails' %} active{% endif %}"
-               href="{{ url_for('guide_trails') }}"
+               href="{{ url_for("guide_trails") }}"
                aria-current="{% if current_page == 'trails' %}page{% endif %}">
               <span class="nav-icon"><i class="bi bi-map-fill"></i></span> My Trails
             </a>
             <a class="nav-item{% if current_page == 'reviews' %} active{% endif %}"
-               href="{{ url_for('guide_reviews') }}"
+               href="{{ url_for("guide_reviews") }}"
                aria-current="{% if current_page == 'reviews' %}page{% endif %}">
               <span class="nav-icon"><i class="bi bi-star-fill"></i></span> Reviews
             </a>
             <div class="nav-section">Account</div>
             <a class="nav-item{% if current_page == 'profile' %} active{% endif %}"
-               href="{{ url_for('guide_profile') }}"
+               href="{{ url_for("guide_profile") }}"
                aria-current="{% if current_page == 'profile' %}page{% endif %}">
               <span class="nav-icon"><i class="bi bi-person-fill"></i></span> My Profile
             </a>
-            <a class="nav-item" href="{{ url_for('login') }}">
+            <a class="nav-item" href="{{ url_for("login") }}">
               <span class="nav-icon"><i class="bi bi-box-arrow-left"></i></span> Sign out
             </a>
           </nav>
         </aside>
-        <!-- MESSAGES CONTAINER -->
-        <div class="messages">
-          {% with messages = get_flashed_messages(with_categories=true) %} {% if
-            messages %} {% for category, message in messages %}
-            <div class="alert alert-{{ category }} alert-dismissible fade show"
-                 role="alert">
-              {{ message }}
-              <button type="button"
-                      class="btn-close"
-                      data-bs-dismiss="alert"
-                      aria-label="Close"></button>
-            </div>
-          {% endfor %}
-        {% endif %}
-      {% endwith %}
+        <!-- MAIN CONTENT  -->
+        {% block content %}
+        {% endblock %}
+      </div>
     </div>
-    <!-- MAIN CONTENT  -->
-    {% block content %}
-    {% endblock %}
-  </div>
-</div>
-<div class="toast" id="toast">
-  <div class="toast-icon">
-    <i class="bi bi-check-lg text-white"></i>
-  </div>
-  <span id="toast-msg">Done!</span>
-</div>
-<script>
+    <div class="toast" id="toast">
+      <div class="toast-icon">
+        <i class="bi bi-check-lg text-white"></i>
+      </div>
+      <span id="toast-msg">Done!</span>
+    </div>
+    <script>
   window.guidePageMap = {
     app: "{{ url_for('guide_dashboard') }}",
     dashboard: "{{ url_for('guide_dashboard') }}",
@@ -103,8 +103,8 @@
     profile: "{{ url_for('guide_profile') }}",
     onboarding: "{{ url_for('login') }}",
   };
-</script>
-<script src="{{ url_for('static', filename='guide/js/guide_portal.js') }}"></script>
-{% block js %}{% endblock %}
-</body>
+    </script>
+    <script src="{{ url_for('static', filename='guide/js/guide_portal.js') }}"></script>
+    {% block js %}{% endblock %}
+  </body>
 </html>

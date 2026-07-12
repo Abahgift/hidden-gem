@@ -27,6 +27,12 @@ def signup():
 
         # Validation
         if firstname and lastname and email and password:
+            # Uniqueness check
+            existing_user = User.query.filter_by(email=email).first()
+            if existing_user:
+                flash("Email address already registered. Please log in.", category="errormsg")
+                return redirect(url_for('signup'))
+
             if password == confirmpassword:
                 hash = generate_password_hash(password)
                 user = User(first_name=firstname, last_name=lastname, email=email,
@@ -48,18 +54,6 @@ def signup():
             return redirect(url_for('signup'))
 
     return render_template("traveler/signUp.html", title="Sign Up")
-
-
-
-# @app.route("/otp/", methods=["GET","POST"])
-# def otp():
-#     user = User()
-#     if otp == user.otp_code and datetime.utcnow() < user.otp_expires_at:
-#         user.is_verified = True
-#         user.otp_code = None
-#         db.session.commit()
-
-#     return render_template("traveler/otp.html", title="OTP Verification")
 
 
 
@@ -152,10 +146,3 @@ def book_guide():
 @app.route("/booking-confirmation/")
 def booking_confirmation():
     return render_template("traveler/booking_confirmation.html", title="Booking Confirmation")
-
-
-
-# TO BE DELETED
-@app.route("/random/")
-def random_route():
-    return render_template('auth/verify_otp.html', title='Verify your email')

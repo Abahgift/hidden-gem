@@ -93,42 +93,13 @@ def verify_otp_page():
             session['user_id'] = user.id
             session['user_role'] = user.role
 
-            flash("Email verified successfully! Welcome to Hidden Gems.")
-            return redirect(url_for('dashboard'))
+            if user.role == 'traveler':
+                flash("Email verified successfully! Welcome to Hidden Gems.")
+                return redirect(url_for('dashboard'))
+            else:
+                flash("Email verified successfully! Welcome to Hidden Gems.")
+                return redirect(url_for('guide_dashboard'))
         else:
             flash("Invalid code. Please try again.", category="errormsg")
         
     return render_template('traveler/otp.html')
-
-
-
-
-# @app.route('/verify-otp/', methods=['POST'])
-# def verify_otp():
-#     user_input = request.form.get('otp')
-
-#     stored_otp = session.get('otp_code')
-#     stored_email = session.get('otp_email')
-#     expires_at = session.get('otp_expires')
-
-#     if not stored_otp or not expires_at or datetime.utcnow() > datetime.fromisoformat(expires_at):
-#         session.pop('otp_code', None)
-#         session.pop('otp_email', None)
-#         session.pop('otp_expires', None)
-#         flash("Your code has expired. Please request a new one.")
-#         return redirect(url_for('signup'))
-
-#     if user_input == stored_otp:
-#         user = User.query.filter_by(email=stored_email).first()
-#         if user:
-#             user.is_verified = True
-#             db.session.commit()
-
-#         session.pop('otp_code', None)
-#         session.pop('otp_expires', None)
-#         session.pop('otp_email', None)
-#         flash("Email verified! You can now log in.")
-#         return redirect(url_for('login'))  # ← point this at your actual login route
-
-#     flash("Invalid code. Please try again.") # Yet to plug this in
-#     return redirect(url_for('verify_otp_page')) # Yet to plug this in
