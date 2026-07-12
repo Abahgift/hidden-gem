@@ -63,7 +63,7 @@ const countdown = setInterval(() => {
     clearInterval(countdown);
     
     // Change layout states
-    timerContainer.classList.add('text-muted'); // Optional: fade out old timer text
+    timerContainer.classList.add('text-muted'); // fade out old timer text
     resendLink.classList.remove('d-none');     // Reveal the resend link on the right
   }
 }, 1000);

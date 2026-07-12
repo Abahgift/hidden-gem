@@ -57,8 +57,35 @@ def signup():
 
 
 
-@app.route("/login/")
+@app.route("/login/", methods=['GET',"POST"])
 def login():
+    if request.method == "POST":
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        user = User.query.filter(User.email==email).first()
+
+        if user:
+            stored_password = user.password_hash
+            check = check_password_hash(stored_password, password)
+
+            if check:
+                session['useronline'] = user.id
+                if user.role == 'traveler':
+                    session['traveleronline'] = user.id
+                    return redirect(url_for('dashboard'))
+                
+                if user.role == 'guide':
+                    session['guideonline'] = user.id
+                    return redirect(url_for('guide_dashboard'))
+                
+            else:
+                flash("Password is incorrect. Please check again", category="errormsg")
+                return redirect(url_for("login"))
+        else:
+            flash("Email not found. Please register an account", category="errormsg")
+            return redirect(url_for("login"))
+ 
     return render_template("traveler/login.html", title="Login")
 
 
