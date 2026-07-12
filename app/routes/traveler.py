@@ -91,7 +91,12 @@ def login():
 
 @app.route("/dashboard/", methods=["GET", "POST"])
 def dashboard():
-    return render_template("traveler/dashboard.html", title="Dashboard")
+    if session.get("useronline") is None:
+        flash("You must be logged in to access your dashboard",category="errormsg")
+        return redirect(url_for("login"))
+    
+    user = User.query.get(session.get("useronline"))
+    return render_template("traveler/dashboard.html", title="Dashboard", user=user)
 
 
 @app.route("/explore/")
@@ -132,9 +137,47 @@ def cancelled_bookings():  # New route for past bookings
 
 # ===============================
 # PROFILE STARTS HERE
-@app.route("/profile/")
-def profile():
-    return render_template("traveler/profile.html", title="Profile") #attach actual dashboard-profile page
+@app.route("/profile/<int:id>/", methods=['GET','POST'])
+def profile(id):
+    if session.get("useronline") is None:
+        flash("You must be logged in to access your profile", category="errormsg")
+        return redirect(url_for("login"))
+    
+    # Prevents a user from accidentally editing another different user's profile
+    user = User.query.get(session.get("useronline"))
+    if user.id != id:
+        flash("You are not the owner of that profile",category="errormsg")
+        return redirect(url_for('dashboard'))
+    
+    if request.method == "POST":
+        firstname = request.form.get('firstname')
+        lastname = request.form.get('lastname')
+        phone = request.form.get('phone')
+        state_of_residence = request.form.get('state')
+        # profile_pic = request.files.get('profile_pic') # for Later
+
+        if firstname == '' or lastname == "":
+            return redirect(url_for('profile', id=id))
+        else:
+            user.first_name = firstname
+            user.last_name = lastname
+            user.phone_number = phone
+            user.state_of_residence = state_of_residence
+
+            # if profile_pic:       # will come later and will influence the indentation too
+            #     name, ext = os.path.splitext(profile_pic.filename)
+            #     generated = secrets.token_hex(32)
+            #     filename = f'{generated}{ext}'
+            #     upload_path = f'pkg/static/uploads/{filename}'
+            #     profile_pic.save(upload_path)
+
+            #     user.photo_url = filename
+
+            db.session.commit()
+            flash('Profile Updated Successfully!', category='success')
+            return redirect(url_for('profile', id=id))
+    
+    return render_template("traveler/profile.html", title="Profile", user=user) 
 
 
 @app.route("/profile/saved-destinations/")

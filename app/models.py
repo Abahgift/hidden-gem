@@ -53,6 +53,8 @@ class User(db.Model):
     email = db.Column(db.String(150), unique=True, nullable=False, index=True)
     password_hash = db.Column(db.String(255), nullable=False)
     phone_number = db.Column(db.String(20), nullable=True)
+    state_of_residence = db.Column(db.String(100), nullable=True)
+
 
     role = db.Column(
         db.Enum("traveler", "guide", "admin", name="user_role"),

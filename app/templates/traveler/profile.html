@@ -1,150 +1,121 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <!-- -------------------------------------------
        HEAD SECTION
        =------------------------------------------- -->
   <head>
     <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='traveler/css/bootstrap/css/bootstrap.css') }}"
-    />
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='traveler/css/bootstrap/css/bootstrap.css') }}" />
     <!-- Style CSS -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='traveler/css/profile.css') }}"
-    />
-
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='traveler/css/profile.css') }}" />
     <!-- Custom Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
-      rel="stylesheet"
-    />
-
+    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+          rel="stylesheet" />
     <!-- Responsiveness -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <!-- SEO Optimizations -->
     <title>Hidden Gems | {{ title }}</title>
-    <meta
-      name="description"
-      content="Explore hidden travel destinations across Nigeria. Discover culture, nature, and unforgettable experiences."
-    />
+    <meta name="description"
+          content="Explore hidden travel destinations across Nigeria. Discover culture, nature, and unforgettable experiences." />
   </head>
-
   <!-- --------------------------------------------
        BODY SECTION
        ------------------------------------------- -->
   <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{% if category == 'errormsg' or category == 'error' or category == 'danger' %}danger{% else %}info{% endif %} alert-dismissible fade show mb-4"
+               role="alert">
+            {{ message }}
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
     <div class="container-fluid">
       <div class="row">
         <!--  HEADER IS HERE -->
-        <div
-          class="db_header py-2 px-5 col-12 col-md-12 d-flex justify-space-between align-items-center"
-        >
+        <div class="db_header py-2 px-5 col-12 col-md-12 d-flex justify-space-between align-items-center">
           <!-- Logo -->
           <div class="col-8 col-md-4">
-            <img
-              src="{{ url_for('static', filename='traveler/assets/hidden_gem_logo.svg') }}"
-              alt="hiddenGem logo"
-            />
+            <img src="{{ url_for('static', filename='traveler/assets/hidden_gem_logo.svg') }}"
+                 alt="hiddenGem logo" />
           </div>
-
           <!-- Caption -->
-          <div
-            class="col-md-4 text-center d-flex align-items-center justify-content-center"
-          >
+          <div class="col-md-4 text-center d-flex align-items-center justify-content-center">
             <p class="my-auto caption">My Profile</p>
           </div>
-
           <!-- Notification and Avatar -->
-          <div
-            class="col-md-4 d-flex justify-content-end align-items-center align-end"
-          >
+          <div class="col-md-4 d-flex justify-content-end align-items-center align-end">
             <!--Notification -->
-            <a href="/notifications/"
-              ><div
-                class="notif_wrapper d-none d-md-flex justify-content-center align-items-center me-2"
-              >
-                <img
-                  src="{{ url_for('static', filename='traveler/assets/dashboard/notif_icon.svg') }}"
-                  alt="notification icon"
-                /></div
-            ></a>
+            <a href="/notifications/">
+              <div class="notif_wrapper d-none d-md-flex justify-content-center align-items-center me-2">
+                <img src="{{ url_for('static', filename='traveler/assets/dashboard/notif_icon.svg') }}"
+                     alt="notification icon" />
+              </div>
+            </a>
             <!--Avatar Icon -->
             <div class="d-flex align-items-center">
-              <img
-                src="{{ url_for('static', filename='traveler/assets/dashboard/Avatar.svg') }}"
-                alt="avatar icon"
-                width="32px"
-                height="32px"
-                class="me-1"
-              />
+              <img src="{{ url_for('static', filename='traveler/assets/dashboard/Avatar.svg') }}"
+                   alt="avatar icon"
+                   width="32px"
+                   height="32px"
+                   class="me-1" />
             </div>
-            <p class="username my-auto">GiftOfGod</p>
+            <p class="username my-auto">{{ user.first_name.title() }}</p>
           </div>
         </div>
-
         <!-- NAVBAR -->
         <div class="row my-2 d-flex justify-content-center px-3 px-md-0">
-          <div
-            class="col-12 col-md-6 db_navbar d-flex justify-content-between align-items-center rounded-2"
-          >
+          <div class="col-12 col-md-6 db_navbar d-flex justify-content-between align-items-center rounded-2">
             <!-- NavBar Items -->
-
             <!-- Explore -->
-            <a href="/dashboard/"
-              ><div class="navbar_item d-flex align-items-center">
-                <img
-                  src="{{ url_for('static', filename='traveler/assets/dashboard/explore_inactive.svg') }}"
-                  alt="explore-icon"
-                  class="me-2"
-                />
+            <a href="/dashboard/">
+              <div class="navbar_item d-flex align-items-center">
+                <img src="{{ url_for('static', filename='traveler/assets/dashboard/explore_inactive.svg') }}"
+                     alt="explore-icon"
+                     class="me-2" />
                 <p class="nav_text_active my-auto">Explore</p>
-              </div></a
-            >
-
+              </div>
+            </a>
             <!-- Guides -->
-            <a href="/guides/"
-              ><div class="navbar_item d-flex align-items-center">
-                <img
-                  src="{{ url_for('static', filename='traveler/assets/dashboard/guides_inactive.svg') }}"
-                  alt="guides-icon"
-                  class="me-2"
-                />
+            <a href="/guides/">
+              <div class="navbar_item d-flex align-items-center">
+                <img src="{{ url_for('static', filename='traveler/assets/dashboard/guides_inactive.svg') }}"
+                     alt="guides-icon"
+                     class="me-2" />
                 <p class="nav_text_active my-auto">Guides</p>
-              </div></a
-            >
-
+              </div>
+            </a>
             <!-- Bookings -->
-            <a href="/bookings/"
-              ><div class="navbar_item d-flex align-items-center">
-                <img
-                  src="{{ url_for('static', filename='traveler/assets/dashboard/bookings_inactive.svg') }}"
-                  alt="bookings-icon"
-                  class="me-2"
-                />
+            <a href="/bookings/">
+              <div class="navbar_item d-flex align-items-center">
+                <img src="{{ url_for('static', filename='traveler/assets/dashboard/bookings_inactive.svg') }}"
+                     alt="bookings-icon"
+                     class="me-2" />
                 <p class="nav_text_active my-auto">Bookings</p>
-              </div></a
-            >
-
+              </div>
+            </a>
             <!-- My Profile -->
-            <a href="/profile/"
-              ><div class="navbar_item_active d-flex align-items-center">
-                <img
-                  src="{{ url_for('static', filename='traveler/assets/dashboard/profile_icon_active.svg') }}"
-                  alt="myprofile-icon"
-                  class="me-2"
-                />
+            <a href="/profile/">
+              <div class="navbar_item_active d-flex align-items-center">
+                <img src="{{ url_for('static', filename='traveler/assets/dashboard/profile_icon_active.svg') }}"
+                     alt="myprofile-icon"
+                     class="me-2" />
                 <p class="nav_text_active my-auto">My Profile</p>
-              </div></a
-            >
+              </div>
+            </a>
           </div>
         </div>
-
         <!-- PROFILE-->
         <!-- heading -->
         <div class="row">
@@ -156,61 +127,50 @@
           </div>
           <!-- filter pills -->
           <div class="filter_pill_wrapper mb-5 px-3 px-md-5">
-            <a href="/profile/"
-              ><span class="filter_pill_active fw-medium"
-                >Personal Info</span
-              ></a
-            >
-            <a href="/profile/saved-destinations/"
-              ><span class="filter_pill">Saved destinations</span></a
-            >
-            <a href="/profile/preference/"
-              ><span class="filter_pill">Preference</span></a
-            >
-            <a href="/profile/recent-activity/"
-              ><span class="filter_pill">Recent Activity</span></a
-            >
+            <a href="/profile/"><span class="filter_pill_active fw-medium">Personal Info</span></a>
+            <a href="/profile/saved-destinations/"><span class="filter_pill">Saved destinations</span></a>
+            <a href="/profile/preference/"><span class="filter_pill">Preference</span></a>
+            <a href="/profile/recent-activity/"><span class="filter_pill">Recent Activity</span></a>
           </div>
         </div>
-
         <!-- Profile Settings Start Here -->
         <div class="row px-3 px-md-5">
-          <div
-            class="col-12 d-flex flex-column flex-lg-row align-items-start justify-content-between gap-4 gap-lg-5 wrapper"
-          >
+          <div class="col-12 d-flex flex-column flex-lg-row align-items-start justify-content-between gap-4 gap-lg-5 wrapper">
             <!--Left Sidebar for Guides Details Summary-->
             <div class="col-12 col-lg-4 rounded-3 mb-4 mb-lg-5">
               <div class="side p-4 rounded-3">
                 <!-- Upper Details wrapper -->
-                <div
-                  class="wrapper d-flex flex-column flex-md-row align-items-start"
-                >
-                  <img
-                    src="{{ url_for('static', filename='traveler/assets/dashboard/Avatars_reviews.svg') }}"
-                    alt="guide-avatar"
-                    class="me-0 me-md-4 mb-3 mb-md-0"
-                    style="width: 100px; height: 100px"
-                  />
+                <div class="wrapper d-flex flex-column flex-md-row align-items-start">
+                  <img src="{{ url_for('static', filename='traveler/assets/dashboard/Avatars_reviews.svg') }}"
+                       alt="guide-avatar"
+                       class="me-0 me-md-4 mb-3 mb-md-0"
+                       style="width: 100px;
+                              height: 100px" />
                   <div class="about_only col-12 col-md-9">
-                    <h3 class="p-0 m-0 mb-1">Aliyi Jibrin</h3>
-                    <p class="subtext p-0 m-0 mb-1">giftabah@gmail.com</p>
+                    <h3 class="p-0 m-0 mb-1">{{ user.first_name.title() }} {{ user.last_name.title() }}</h3>
+                    <p class="subtext p-0 m-0 mb-1">{{ user.email }}</p>
                     <p class="subtext mb-2">Member since April 2025</p>
                     <div class="metrics_wrapper d-flex justify-content-between">
                       <h6 class="the_metric">
-                        2<br /><span class="the_metric_label">Bookings</span>
+                        2
+                        <br />
+                        <span class="the_metric_label">Bookings</span>
                       </h6>
                       <h6 class="the_metric">
-                        1<br /><span class="the_metric_label">Reviews</span>
+                        1
+                        <br />
+                        <span class="the_metric_label">Reviews</span>
                       </h6>
                       <h6 class="the_metric">
-                        4<br /><span class="the_metric_label">Saved</span>
+                        4
+                        <br />
+                        <span class="the_metric_label">Saved</span>
                       </h6>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
             <!--Main div for Personal Info -->
             <div class="col-12 col-lg-7 main">
               <!-- Personal Info -->
@@ -218,140 +178,159 @@
                 <!-- personal info-->
                 <div class="row">
                   <div class="col-md-12 side mb-4 p-4 rounded-3">
-                    <h5>Personal Info</h5>
-
-                    <!-- First Name and Last Name -->
-                    <div
-                      class="names-wrapper my-3 col-12 flex-column flex-md-row"
-                    >
-                      <div class="mb-3 col-12 col-md-6">
-                        <label for="firstName" class="form-label"
-                          >First Name</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="firstName"
-                          placeholder="john"
-                          value="Gift"
-                        />
+                    <form action="" method="POST" enctype="multipart/form-data">
+                      {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                          {% for message in messages %}
+                            <div class="alert alert-success alert-dismissible fade show mb-4"
+                                 role="alert">
+                              <strong>Success</strong> {{ message }}
+                              <button type="button"
+                                      class="btn-close"
+                                      data-bs-dismiss="alert"
+                                      aria-label="Close"></button>
+                            </div>
+                          {% endfor %}
+                        {% endif %}
+                      {% endwith %}
+                      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                      <h5>Personal Info</h5>
+                      <!-- First Name and Last Name -->
+                      <div class="names-wrapper my-3 col-12 flex-column flex-md-row">
+                        <div class="mb-3 col-12 col-md-6">
+                          <label for="firstName" class="form-label">First Name</label>
+                          <input type="text"
+                                 class="form-control"
+                                 id="firstname"
+                                 name="firstname"
+                                 placeholder="john"
+                                 value="{{ user.first_name.title() }}" />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="lastName" class="form-label">Last Name</label>
+                          <input type="text"
+                                 class="form-control"
+                                 id="lastname"
+                                 name="lastname"
+                                 placeholder="doe"
+                                 value="{{ user.last_name.title() }}" />
+                        </div>
                       </div>
-                      <div class="mb-3 col-md-6">
-                        <label for="lastName" class="form-label"
-                          >Last Name</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="lastName"
-                          placeholder="doe"
-                          value="Abah"
-                        />
+                      <!-- Email and Phone -->
+                      <div class="names-wrapper my-2 col-12 flex-column flex-md-row">
+                        <div class="mb-3 col-12 col-md-6">
+                          <label for="firstName" class="form-label">Email Address</label>
+                          <input type="text"
+                                 class="form-control"
+                                 id="email"
+                                 name="email"
+                                 placeholder="Enter email"
+                                 value="{{ user.email }}"
+                                 disabled />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="lastName" class="form-label">Phone number</label>
+                          {% if user.phone_number %}
+                            <input type="text"
+                                   class="form-control"
+                                   id="phone"
+                                   name="phone"
+                                   placeholder="Enter phone"
+                                   value="{{ user.phone_number }}" />
+                          {% else %}
+                            <input type="tel"
+                                   class="form-control"
+                                   id="phone"
+                                   name="phone"
+                                   maxlength="11"
+                                   inputmode="numeric"
+                                   placeholder="Enter phone" />
+                          {% endif %}
+                        </div>
                       </div>
-                    </div>
-
-                    <!-- Email and Phone -->
-                    <div
-                      class="names-wrapper my-2 col-12 flex-column flex-md-row"
-                    >
-                      <div class="mb-3 col-12 col-md-6">
-                        <label for="firstName" class="form-label"
-                          >Email Address</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="firstName"
-                          placeholder="Enter email"
-                          value="giftabah@gmail.com"
-                        />
+                      <!-- State-->
+                      <div class="names-wrapper my-2 col-12">
+                        <div class="mb-3 col-12">
+                          <label for="firstName" class="form-label">State of residence</label>
+                          {% if user.phone_number %}
+                            <input type="text"
+                                   class="form-control"
+                                   id="state"
+                                   name="state"
+                                   placeholder="Enter state"
+                                   value="{{ user.state_of_residence }}" />
+                          {% else %}
+                            <input type="text"
+                                   class="form-control"
+                                   id="state"
+                                   name="state"
+                                   placeholder="Enter state" />
+                          {% endif %}
+                        </div>
                       </div>
-                      <div class="mb-3 col-md-6">
-                        <label for="lastName" class="form-label"
-                          >Phone number</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="lastName"
-                          placeholder="Enter phone"
-                          value="08170077248"
-                        />
-                      </div>
-                    </div>
-
-                    <!-- State-->
-                    <div class="names-wrapper my-2 col-12">
-                      <div class="mb-3 col-12">
-                        <label for="firstName" class="form-label"
-                          >State of residence</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="firstName"
-                          placeholder="Enter state"
-                        />
-                      </div>
-                    </div>
+                      <!-- Button -->
+                      <button class="btn btn-primary">Update Profile Details</button>
+                    </form>
                   </div>
                 </div>
               </div>
-
               <!-- Change Password -->
               <div class="row d-flex justify-content-center">
-                <!-- Password -->
-                <div class="row">
-                  <div class="col-md-12 side mb-5 p-4 rounded-3">
-                    <h5>Change password</h5>
-
-                    <!-- Current Password-->
-                    <div class="names-wrapper my-3 col-12">
-                      <div class="mb-3 col-12">
-                        <label for="firstName" class="form-label"
-                          >Current password</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="firstName"
-                          placeholder="Enter current password"
-                        />
+                <form action="" method="POST" enctype="multipart/form-data">
+                  {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                      {% for message in messages %}
+                        <div class="alert alert-success alert-dismissible fade show mb-4"
+                             role="alert">
+                          <strong>Success</strong> {{ message }}
+                          <button type="button"
+                                  class="btn-close"
+                                  data-bs-dismiss="alert"
+                                  aria-label="Close"></button>
+                        </div>
+                      {% endfor %}
+                    {% endif %}
+                  {% endwith %}
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                  <!-- Password -->
+                  <div class="row">
+                    <div class="col-md-12 side mb-5 p-4 rounded-3">
+                      <h5>Change password</h5>
+                      <!-- Current Password-->
+                      <div class="names-wrapper my-3 col-12">
+                        <div class="mb-3 col-12">
+                          <label for="password" class="form-label">Current password</label>
+                          <input type="text"
+                                 class="form-control"
+                                 id="password"
+                                 name="password"
+                                 placeholder="Enter current password" />
+                        </div>
                       </div>
+                      <!-- New Password and Confirm Password -->
+                      <div class="names-wrapper mb-2 col-12 flex-column flex-md-row">
+                        <div class="mb-3 col-12 col-md-6">
+                          <label for="newPassword" class="form-label">New Password</label>
+                          <input type="text"
+                                 class="form-control"
+                                 id="newpassword"
+                                 name="newpassword"
+                                 placeholder="Min. 8 characters" />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="confirmPassword" class="form-label">Confirm password</label>
+                          <input type="text"
+                                 class="form-control"
+                                 id="confirmpassword"
+                                 name="confirmpassword"
+                                 placeholder="Repeat new password" />
+                        </div>
+                      </div>
+                      <!-- Button -->
+                      <button type="submit" class="btn btn-primary">Update password</button>
                     </div>
-
-                    <!-- New Password and Confirm Password -->
-                    <div
-                      class="names-wrapper mb-2 col-12 flex-column flex-md-row"
-                    >
-                      <div class="mb-3 col-12 col-md-6">
-                        <label for="firstName" class="form-label"
-                          >New Password</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="firstName"
-                          placeholder="Min. 8 characters"
-                        />
-                      </div>
-                      <div class="mb-3 col-md-6">
-                        <label for="lastName" class="form-label"
-                          >Last Name</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="lastName"
-                          placeholder="Repeat new password"
-                        />
-                      </div>
-                    </div>
-
-                    <!-- Button -->
-                    <button class="btn btn-primary">Update password</button>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
@@ -364,5 +343,11 @@
     <script src="{{ url_for('static', filename='traveler/css/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='traveler/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ url_for('static', filename='traveler/js/profile.js') }}"></script>
+    <script>
+      document.getElementById('phone').addEventListener('input', function (e) {
+    // Replace any non-digits with an empty string
+    this.value = this.value.replace(/[^0-9]/g, '');
+});
+    </script>
   </body>
 </html>
