@@ -81,6 +81,7 @@ def login():
                 
             else:
                 flash("Password is incorrect. Please check again", category="errormsg")
+
                 return redirect(url_for("login"))
         else:
             flash("Email not found. Please register an account", category="errormsg")
@@ -137,47 +138,64 @@ def cancelled_bookings():  # New route for past bookings
 
 # ===============================
 # PROFILE STARTS HERE
-@app.route("/profile/<int:id>/", methods=['GET','POST'])
+@app.route("/profile/<int:id>/", methods=['GET', 'POST'])
 def profile(id):
     if session.get("useronline") is None:
         flash("You must be logged in to access your profile", category="errormsg")
         return redirect(url_for("login"))
-    
+
     # Prevents a user from accidentally editing another different user's profile
     user = User.query.get(session.get("useronline"))
     if user.id != id:
-        flash("You are not the owner of that profile",category="errormsg")
+        flash("You are not the owner of that profile", category="danger")
         return redirect(url_for('dashboard'))
-    
+
     if request.method == "POST":
-        firstname = request.form.get('firstname')
-        lastname = request.form.get('lastname')
-        phone = request.form.get('phone')
-        state_of_residence = request.form.get('state')
-        # profile_pic = request.files.get('profile_pic') # for Later
 
-        if firstname == '' or lastname == "":
+        form_type = request.form.get('form_type')
+
+        if form_type == 'profile':
+            firstname = request.form.get('firstname')
+            lastname = request.form.get('lastname')
+            phone = request.form.get('phone')
+            state = request.form.get('state')
+
+            if not firstname or not lastname:
+                flash('First and last name cannot be empty.', category='danger')
+            else:
+                user.first_name = firstname
+                user.last_name = lastname
+                user.phone_number = phone
+                user.state_of_residence = state
+                db.session.commit()
+                flash('Profile Updated Successfully!', category='success')
+
             return redirect(url_for('profile', id=id))
+        
+        elif form_type == 'password':
+            current_pwd = request.form.get('password')
+            new_pwd = request.form.get('newpassword')
+            confirm_pwd = request.form.get('confirmpassword')
+
+            if not check_password_hash(user.password_hash, current_pwd):
+                flash('Current password is incorrect. Try again', category='danger')
+
+            elif new_pwd != confirm_pwd:
+                flash('New password and confirm password do not match.', category='danger')
+            else:
+                user.password_hash = generate_password_hash(new_pwd)
+                db.session.commit()
+                flash('Password updated successfully.', category='success')
+            return redirect(url_for('profile', id=id))
+        
         else:
-            user.first_name = firstname
-            user.last_name = lastname
-            user.phone_number = phone
-            user.state_of_residence = state_of_residence
-
-            # if profile_pic:       # will come later and will influence the indentation too
-            #     name, ext = os.path.splitext(profile_pic.filename)
-            #     generated = secrets.token_hex(32)
-            #     filename = f'{generated}{ext}'
-            #     upload_path = f'pkg/static/uploads/{filename}'
-            #     profile_pic.save(upload_path)
-
-            #     user.photo_url = filename
-
-            db.session.commit()
-            flash('Profile Updated Successfully!', category='success')
+            flash('Invalid form submission.', category='danger')
             return redirect(url_for('profile', id=id))
-    
-    return render_template("traveler/profile.html", title="Profile", user=user) 
+        
+
+    # GET request
+    return render_template("traveler/profile.html", title="Profile", user=user)
+
 
 
 @app.route("/profile/saved-destinations/")

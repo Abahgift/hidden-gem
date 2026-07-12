@@ -104,7 +104,7 @@
           </div>
         </a>
         <!-- My Profile -->
-        <a href="/profile/">
+        <a href="/profile/{{ user.id }}">
           <div class="navbar_item d-flex align-items-center">
             <img src="{{ url_for('static', filename='traveler/assets/dashboard/profile_inactive.svg') }}"
                  alt="myprofile-icon"
