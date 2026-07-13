@@ -1,7 +1,6 @@
-from unicodedata import category
 
 from datetime import datetime
-from flask import render_template, request, url_for, redirect,session,flash
+from flask import render_template, request, url_for, redirect, session, flash
 from app import app
 from werkzeug.security import generate_password_hash, check_password_hash
 

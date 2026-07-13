@@ -1,9 +1,36 @@
-from flask import render_template
+import os
+from flask import render_template, request, url_for, flash, session, redirect
 from app import app
+from app.utils.auth_helpers import admin_required, check_admin_credentials
+
+
 
 @app.route("/admin/login/", methods=["GET","POST"])
 def admin_login():
-    return render_template("admin/login.html", title="Login")
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        check = check_admin_credentials(email, password)
+
+        if check:
+            session["is_admin"] = True
+            return redirect(url_for('admin_analytics'))
+        else:
+            flash("Invalid credentials")
+            return render_template("admin/login.html", title="Admin Login")
+
+    # GET request
+    return render_template("admin/login.html", title="Admin Login")
+
+
+# Logout
+@app.route("/admin/logout/")
+def admin_logout():
+    session.pop('is_admin', None)
+    return redirect(url_for('admin_login'))
+
+
 
 @app.route("/admin/analytics/")
 def admin_analytics():
