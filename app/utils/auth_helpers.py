@@ -1,7 +1,8 @@
 import hmac
 from hmac import compare_digest
 from functools import wraps
-from flask import session, redirect, url_for, current_app
+from unicodedata import category
+from flask import session, redirect, url_for, current_app, flash
 
 
 def check_admin_credentials(email, password):
@@ -19,6 +20,7 @@ def admin_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
         if not session.get('is_admin'):
+            flash("Unauthourized", category='danger')
             return redirect(url_for('admin_login'))
         return f(*args, **kwargs)
     return decorated

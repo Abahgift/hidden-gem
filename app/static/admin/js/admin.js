@@ -44,3 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+
+// -----------------------------------------------
+// JS for Image Upload Drag and Drop

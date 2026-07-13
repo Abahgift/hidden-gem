@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,29 +6,21 @@
     <title>Admin | {{ title }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='admin/css/bootstrap/css/bootstrap.min.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='admin/css/styles.css') }}"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='admin/css/bootstrap/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='admin/css/styles.css') }}" />
   </head>
   <body>
     <div class="app-shell">
       <aside class="sidebar">
         <div class="sidebar-brand">
           <!-- <div class="brand-name">Hidden <span>Gems</span></div> -->
-          <img
-            src="{{ url_for('static', filename='admin/assets/hg_logo_white.svg') }}"
-            alt="hidden gem logo"
-            class="logo"
-          />
+          <img src="{{ url_for('static', filename='admin/assets/hg_logo_white.svg') }}"
+               alt="hidden gem logo"
+               class="logo" />
           <div class="brand-sub">Admin Dashboard</div>
         </div>
         <div class="sidebar-admin">
@@ -44,126 +36,252 @@
           <a class="nav-item" href="/admin/analytics/">Analytics</a>
           <a class="nav-item" href="/admin/applications/">Applications</a>
           <a class="nav-item" href="/admin/guides/">All guides</a>
-          <a class="nav-item active" href="/admin/destinations/"
-            >Destinations</a
-          >
+          <a class="nav-item active" href="/admin/destinations/">Destinations</a>
           <a class="nav-item" href="/admin/bookings/">All bookings</a>
           <a class="nav-item" href="/admin/reviews/">Reviews</a>
         </nav>
       </aside>
-
       <main class="main-content">
         <div class="page-header">
           <div>
             <div class="page-title">Destinations</div>
-            <div class="page-sub">
-              Edit featured travel destinations and maintain their details.
-            </div>
+            <div class="page-sub">Edit featured travel destinations and maintain their details.</div>
           </div>
-          <button class="btn btn-green">Add destination</button>
+          <!-- Off Canvas Button for Adding New Destinations -->
+          <button class="btn btn-green"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasRight"
+                  aria-controls="offcanvasRight">Add destination</button>
         </div>
-
         <div class="filter-row">
-          <button
-            class="filter-btn active"
-            data-group="difficulty"
-            data-filter="all"
-          >
-            All
-          </button>
-          <button class="filter-btn" data-group="difficulty" data-filter="easy">
-            Easy
-          </button>
-          <button
-            class="filter-btn"
-            data-group="difficulty"
-            data-filter="moderate"
-          >
-            Moderate
-          </button>
-          <button class="filter-btn" data-group="difficulty" data-filter="hard">
-            Hard
-          </button>
-          <button
-            class="filter-btn"
-            data-group="difficulty"
-            data-filter="extreme"
-          >
-            Extreme
-          </button>
-          <input
-            class="search-input ml-auto"
-            type="text"
-            placeholder="Search destinations"
-            data-search="difficulty"
-          />
+          <button class="filter-btn active" data-group="difficulty" data-filter="all">All</button>
+          <button class="filter-btn" data-group="difficulty" data-filter="easy">Easy</button>
+          <button class="filter-btn" data-group="difficulty" data-filter="moderate">Moderate</button>
+          <button class="filter-btn" data-group="difficulty" data-filter="hard">Hard</button>
+          <button class="filter-btn" data-group="difficulty" data-filter="extreme">Extreme</button>
+          <input class="search-input ml-auto"
+                 type="text"
+                 placeholder="Search destinations"
+                 data-search="difficulty" />
         </div>
-
         <div class="dest-grid">
-          <div
-            class="dest-card"
-            data-group="difficulty"
-            data-difficulty="extreme"
-          >
+          {# EACH CARD #}
+          <div class="dest-card" data-group="difficulty" data-difficulty="extreme">
             <div class="dest-card-hero">M</div>
             <div class="dest-card-body">
               <div class="dest-card-name">Chappal Waddi Summit</div>
               <div class="dest-card-loc">Taraba State</div>
               <div class="dest-card-tags">
-                <span class="pill pill-extreme">Extreme</span
-                ><span class="chip">Trekking</span
-                ><span class="chip">Camping</span>
+                <span class="pill pill-extreme">Extreme</span><span class="chip">Trekking</span><span class="chip">Camping</span>
               </div>
               <div class="dest-card-actions">
-                <button class="btn btn-sm btn-outline">Edit</button
-                ><button class="btn btn-sm btn-danger">Delete</button>
+                <button class="btn btn-sm btn-outline">Edit</button>
+                <button class="btn btn-sm btn-danger">Delete</button>
               </div>
             </div>
           </div>
-
           <div class="dest-card" data-group="difficulty" data-difficulty="hard">
             <div class="dest-card-hero">F</div>
             <div class="dest-card-body">
               <div class="dest-card-name">Gashaka-Gumti Forest</div>
               <div class="dest-card-loc">Taraba / Adamawa</div>
               <div class="dest-card-tags">
-                <span class="pill pill-hard">Hard</span
-                ><span class="chip">Forest</span
-                ><span class="chip">Wildlife</span>
+                <span class="pill pill-hard">Hard</span><span class="chip">Forest</span><span class="chip">Wildlife</span>
               </div>
               <div class="dest-card-actions">
-                <button class="btn btn-sm btn-outline">Edit</button
-                ><button class="btn btn-sm btn-danger">Delete</button>
+                <button class="btn btn-sm btn-outline">Edit</button>
+                <button class="btn btn-sm btn-danger">Delete</button>
               </div>
             </div>
           </div>
-
-          <div
-            class="dest-card"
-            data-group="difficulty"
-            data-difficulty="moderate"
-          >
+          <div class="dest-card" data-group="difficulty" data-difficulty="moderate">
             <div class="dest-card-hero">H</div>
             <div class="dest-card-body">
               <div class="dest-card-name">Idanre Hills</div>
               <div class="dest-card-loc">Ondo State</div>
               <div class="dest-card-tags">
-                <span class="pill pill-moderate">Moderate</span
-                ><span class="chip">Scenic</span
-                ><span class="chip">Cultural</span>
+                <span class="pill pill-moderate">Moderate</span><span class="chip">Scenic</span><span class="chip">Cultural</span>
               </div>
               <div class="dest-card-actions">
-                <button class="btn btn-sm btn-outline">Edit</button
-                ><button class="btn btn-sm btn-danger">Delete</button>
+                <button class="btn btn-sm btn-outline">Edit</button>
+                <button class="btn btn-sm btn-danger">Delete</button>
               </div>
             </div>
           </div>
         </div>
       </main>
     </div>
-
+    <!-- OFFCANVAS -->
+    <div class="px-2 offcanvas offcanvas-end offcanvas-wide"
+         tabindex="-1"
+         id="offcanvasRight"
+         aria-labelledby="offcanvasRightLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">New Destination</h5>
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+      </div>
+      <!-- Offcanvas Body Starts Here -->
+      <div class="offcanvas-body">
+        <div class="row py-2 justify-content-center">
+          <div class="col-12">
+            <div class="form-wrapper">
+              <form action="" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <!-- Destination Name -->
+                <div class="mb-4">
+                  <label for="destination_name" class="form-label fw-medium">Destination Name</label>
+                  <input type="text"
+                         class="form-control"
+                         id="destination_name"
+                         name="destination_name"
+                         placeholder="e.g. Ikogosi Warm Springs"
+                         required>
+                </div>
+                <!-- State & Difficulty -->
+                <div class="row">
+                  <!-- State -->
+                  <div class="col-md-6 mb-4">
+                    <label for="state" class="form-label fw-medium">State</label>
+                    <select class="form-select" id="state" name="state" required>
+                      <option value="" selected disabled>Select State</option>
+                      <!-- Generate dynamically in Flask -->
+                      {% for state in states %}
+                        <option value="{{ state }}">{{ state }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <!-- Difficulty -->
+                  <div class="col-md-6 mb-4">
+                    <label for="difficulty" class="form-label fw-medium">Difficulty</label>
+                    <select class="form-select" id="difficulty" name="difficulty" required>
+                      <option value="" selected disabled>Select Difficulty</option>
+                      <option value="Easy">Easy</option>
+                      <option value="Moderate">Moderate</option>
+                      <option value="Hard">Hard</option>
+                      <option value="Extreme">Extreme</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- Activity Types -->
+                <div class="mb-4">
+                  <label for="activity_input" class="form-label fw-medium">Activity Type(s)</label>
+                  <input type="text"
+                         class="form-control"
+                         id="activity_input"
+                         placeholder="Type an activity and press Enter">
+                  <!-- Hidden field submitted to backend -->
+                  <input type="hidden" name="activity_types" id="activity_types">
+                  <!-- Pills appear here -->
+                  <div id="activity_pills" class="d-flex flex-wrap gap-2 mt-3"></div>
+                </div>
+                <!-- Description -->
+                <div class="mb-4">
+                  <label for="description" class="form-label fw-medium">Description</label>
+                  <textarea class="form-control"
+                            id="description"
+                            name="description"
+                            rows="5"
+                            placeholder="What makes this place special? What should travelers expect?"
+                            required></textarea>
+                </div>
+                <!-- Safety Notes -->
+                <div class="mb-4">
+                  <label for="safety_notes" class="form-label fw-medium">Safety Notes</label>
+                  <textarea class="form-control"
+                            id="safety_notes"
+                            name="safety_notes"
+                            rows="4"
+                            placeholder="Any safety considerations travelers should know..."
+                            required></textarea>
+                </div>
+                <!-- Destination Image -->
+                <div class="mb-4">
+                  <label for="destination_image" class="form-label fw-medium">Destination Image</label>
+                  <input type="file"
+                         class="form-control"
+                         id="destination_image"
+                         name="destination_image"
+                         accept="image/*"
+                         required>
+                </div>
+                <!-- Submit -->
+                <button type="submit" class="btn btn-green col-12 px-5 mb-2">Add Destination</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {# Scripts #}
     <script src="{{ url_for('static', filename='admin/css/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='admin/js/admin.js') }}"></script>
     <script src="{{ url_for('static', filename='admin/js/jquery-3.7.1.min.js') }}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+        const input = document.getElementById("activity_input");
+        const hidden = document.getElementById("activity_types");
+        const container = document.getElementById("activity_pills");
+
+        let activities = [];
+
+        input.addEventListener("keydown", function(e) {
+
+            if (e.key === "Enter") {
+
+                // Prevent the form from submitting
+                e.preventDefault();
+
+                const value = input.value.trim();
+
+                if (!value) return;
+
+                // Prevent duplicates
+                if (activities.includes(value)) {
+                    input.value = "";
+                    return;
+                }
+
+                activities.push(value);
+
+                // Update hidden input
+                hidden.value = activities.join(",");
+
+                // Create pill
+                const pill = document.createElement("span");
+                pill.className = "activity-pill rounded-pill bg-success d-flex align-items-center gap-2 px-3 py-2";
+                pill.dataset.value = value;
+
+                pill.innerHTML = `
+                    ${value}
+                    <button type="button" class="btn-close btn-close-white" aria-label="Remove">
+                    </button>
+                `;
+
+                // Remove pill
+                pill.querySelector("button").addEventListener("click", () => {
+
+                    activities = activities.filter(a => a !== value);
+
+                    hidden.value = activities.join(",");
+
+                    pill.remove();
+
+                });
+
+                container.appendChild(pill);
+
+                // Clear input
+                input.value = "";
+
+            }
+
+        });
+
+    });
+    </script>
   </body>
 </html>
