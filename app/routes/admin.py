@@ -2,7 +2,7 @@ import os, secrets
 from flask import render_template, request, url_for, flash, session, redirect
 from app import app
 from app.utils.auth_helpers import admin_required, check_admin_credentials
-from app.models import db, Destination, destination_activities, Activity
+from app.models import db, Destination, Activity
 
 
 @app.route("/admin/login/", methods=["GET","POST"])
@@ -92,7 +92,10 @@ def admin_destinations():
         "Zamfara"
     ]
 
-   
+    dests = Destination.query.all()
+    acts = Activity.query.all()
+
+    # ENTIRE LOGIC FOR ADDING A NEW DESTINATION
     if request.method == 'POST':
 
         #1 Getting activity types from the form
@@ -141,6 +144,7 @@ def admin_destinations():
             if activity is None:
                 activity = Activity(name=activity_name, icon=None)
                 db.session.add(activity)
+                db.session.flush()
 
             new_dest.activity_tags.append(activity)
 
@@ -150,8 +154,10 @@ def admin_destinations():
         flash("Destination added successfully!", "success")
         return redirect(url_for("admin_destinations"))
 
+
     # Get request
-    return render_template("admin/destinations.html", title="Destinations", states=NIGERIAN_STATES)
+    return render_template("admin/destinations.html", title="Destinations", states=NIGERIAN_STATES, dests=dests, acts=acts)
+
 
 
 @app.route("/admin/bookings/")

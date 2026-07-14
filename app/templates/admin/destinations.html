@@ -66,48 +66,29 @@
         </div>
         <div class="dest-grid">
           {# EACH CARD #}
-          <div class="dest-card" data-group="difficulty" data-difficulty="extreme">
-            <div class="dest-card-hero">M</div>
-            <div class="dest-card-body">
-              <div class="dest-card-name">Chappal Waddi Summit</div>
-              <div class="dest-card-loc">Taraba State</div>
-              <div class="dest-card-tags">
-                <span class="pill pill-extreme">Extreme</span><span class="chip">Trekking</span><span class="chip">Camping</span>
-              </div>
-              <div class="dest-card-actions">
-                <button class="btn btn-sm btn-outline">Edit</button>
-                <button class="btn btn-sm btn-danger">Delete</button>
-              </div>
-            </div>
-          </div>
-          <div class="dest-card" data-group="difficulty" data-difficulty="hard">
-            <div class="dest-card-hero">F</div>
-            <div class="dest-card-body">
-              <div class="dest-card-name">Gashaka-Gumti Forest</div>
-              <div class="dest-card-loc">Taraba / Adamawa</div>
-              <div class="dest-card-tags">
-                <span class="pill pill-hard">Hard</span><span class="chip">Forest</span><span class="chip">Wildlife</span>
-              </div>
-              <div class="dest-card-actions">
-                <button class="btn btn-sm btn-outline">Edit</button>
-                <button class="btn btn-sm btn-danger">Delete</button>
+          {% for dest in dests %}
+            <div class="dest-card">
+              <img src="/static/uploads/{{ dest.image_path }}"
+                   alt="Location Image"
+                   class="img-fluid">
+              <div class="dest-card-body">
+                <div class="dest-card-name">{{ dest.name }}</div>
+                <div class="dest-card-loc">
+                  <p>{{ dest.state }} State</p>
+                </div>
+                <div class="dest-card-tags">
+                  <span class="pill pill-extreme">{{ dest.difficulty_level }}</span>
+                  {% for act in acts %}
+                    <span class="chip">{{ act.name }}</span>
+                  {% endfor %}
+                </div>
+                <div class="dest-card-actions">
+                  <button class="btn btn-sm btn-outline">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="dest-card" data-group="difficulty" data-difficulty="moderate">
-            <div class="dest-card-hero">H</div>
-            <div class="dest-card-body">
-              <div class="dest-card-name">Idanre Hills</div>
-              <div class="dest-card-loc">Ondo State</div>
-              <div class="dest-card-tags">
-                <span class="pill pill-moderate">Moderate</span><span class="chip">Scenic</span><span class="chip">Cultural</span>
-              </div>
-              <div class="dest-card-actions">
-                <button class="btn btn-sm btn-outline">Edit</button>
-                <button class="btn btn-sm btn-danger">Delete</button>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </main>
     </div>

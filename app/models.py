@@ -192,7 +192,7 @@ class Destination(db.Model):
         default="Easy",
     )
     safety_notes = db.Column(db.Text, nullable=True)
-    image_path = db.Column(db.String(10), nullable=True)  # emoji shown on cards
+    image_path = db.Column(db.String(255), nullable=True)  # emoji shown on cards
 
     created_by_admin_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=True)
 
